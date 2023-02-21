@@ -4,7 +4,6 @@
  */
 package cat.copernic.roap.entidades;
 
-import java.util.Date;
 import lombok.Data;
 
 /**
@@ -12,11 +11,13 @@ import lombok.Data;
  * @author Adrix
  */
 @Data
-public class Pedidos {
+public class Producto {
     private int ID;
-    private String cliente;
-    private Date Fecha;
-    private String Email;
-    private int Telefono;
-    private String DPostal;
+    private String Nombre;
+    private int Unidades;
+    private float Precio;
+    private String PrendaRopa;
+    private String EstadoProducto;
+    private int Talla;
+    private String Color;
 }

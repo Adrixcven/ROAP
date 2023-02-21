@@ -12,11 +12,8 @@ import lombok.Data;
  * @author Adrix
  */
 @Data
-public class Pedidos {
-    private int ID;
-    private String cliente;
-    private Date Fecha;
-    private String Email;
-    private int Telefono;
-    private String DPostal;
+public class ProductAdded {
+    private int IDPedido;
+    private int IDProducto;
+    private int Cantidad;
 }

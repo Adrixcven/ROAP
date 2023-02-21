@@ -4,6 +4,7 @@
  */
 package cat.copernic.roap.entidades;
 
+import java.sql.Time;
 import java.util.Date;
 import lombok.Data;
 
@@ -12,11 +13,11 @@ import lombok.Data;
  * @author Adrix
  */
 @Data
-public class Pedidos {
+public class Envio {
     private int ID;
-    private String cliente;
+    private String IDPedido;
     private Date Fecha;
-    private String Email;
-    private int Telefono;
-    private String DPostal;
+    private Time Hora;
+    private String Estado;
+    private ProductAdded pertenencia;
 }
