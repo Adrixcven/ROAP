@@ -18,4 +18,5 @@ public class Usuario {
     private String Email;
     private int Telefono;
     private String DPostal;
+    private String Rol;
 }

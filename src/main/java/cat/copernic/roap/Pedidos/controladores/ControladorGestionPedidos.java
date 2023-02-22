@@ -4,7 +4,6 @@
  */
 package cat.copernic.roap.Pedidos.controladores;
 
-import cat.copernic.roap.entidades.Envio;
 import cat.copernic.roap.entidades.Pedidos;
 import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
@@ -16,24 +15,27 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author Adrix
  */
 @Controller
-public class ControladorGestionEnvio {
-    @GetMapping("/GestionEnvio")
+public class ControladorGestionPedidos {
+    @GetMapping("/GestionPedidos")
     public String inici(Model model){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
-        var envio = new Envio();
-        envio.setID(1);
-        envio.setIDPedido("02");
-        envio.setEstado("Completado");
-        var envio1 = new Envio();
-        envio.setID(2);
-        envio.setIDPedido("02");
-        envio.setEstado("Cancelado");
+        var pedido = new Pedidos();
+        pedido.setID(1);
+        pedido.setCliente("Fran Comido");
+        pedido.setEstado("Completado");
+        pedido.setPrecioTotal(90);
+        var pedido1 = new Pedidos();
+        pedido.setID(1);
+        pedido.setCliente("Fran Comido");
+        pedido.setEstado("Cancelado");
+        pedido.setPrecioTotal(90);
         
-        var envios = new ArrayList<Envio>();
-        envios.add(envio);
-        envios.add(envio1);
+        var pedidos = new ArrayList<Pedidos>();
+        pedidos.add(pedido);
+        pedidos.add(pedido1);
         //Enviem l'ArrayList de gossos
-        model.addAttribute("envios", envios);
+        model.addAttribute("pedidos", pedidos);
+        
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
-        return "Pedidos/GestionEnvio"; //Retorn de la pàgina Login.html.
+        return "Pedidos/GestionPedidos"; //Retorn de la pàgina Login.html.
     }
 }

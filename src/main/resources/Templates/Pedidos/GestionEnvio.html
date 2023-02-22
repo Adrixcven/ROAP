@@ -5,11 +5,52 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Gestionar Envios</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+        <div>
+            <button>Atras</button>
+        </div>
+        <div>
+            <button>Inventario</button>
+            <button>Compras</button>
+            <button>Pedidos</button>
+        </div>
+        <div style="display:flex; align-items:center; margin-top:20px;">
+            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
+                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
+            </div>
+            <p>Nombre</p>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Estado del envío</th>
+                    <th>Fecha del envío</th>
+                    <th>Hora del envío</th>
+                    <th>Dirección del envio</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="envios : ${envios}"> 
+                    <td th:text="${envios.ID}"></td>
+                    <td th:text="${envios.IDPedido}"></td>
+                    <td>December 25, 2022</td>
+                    <td>22:30</td>
+                    <td th:text="${envios.Estado}"></td> 
+                </tr>
+            </tbody>
+        </table>
+        <div >
+            <input type="text" name="search" placeholder="Buscar...">
+            <button type="submit">Buscar</button>
+        </div>
+        <div>
+            <button>Modificar</button>
+        </div>
     </body>
 </html>

@@ -5,11 +5,37 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Pagina Inicial</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+        <div>
+            <button>Gestionar Usuarios</button>
+        </div>
+        <div>
+            <button>Gestionar módulos</button>
+        </div>
+        <div style="display:flex; align-items:center; margin-top:20px;">
+            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
+                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
+            </div>
+            <p>Nombre</p>
+        </div>
+        <button>
+            <img th:src="@{'/imatges/pedidos.png'}" width='50' height='50'/>
+            <span>Pedidos</span>
+        </button>
+        <button>
+            <img th:src="@{'/imatges/inventario.png'}" width='50' height='50'/>
+            <span>Inventario</span>
+        </button>
+        <button>
+            <img th:src="@{'/imatges/encargos.png'}" width='50' height='50'/>
+            <span>Encargos</span>
+        </button>
+        <div>
+            <button>Cerrar Sesión</button>
+        </div>
     </body>
 </html>

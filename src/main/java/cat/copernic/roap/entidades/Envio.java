@@ -19,5 +19,4 @@ public class Envio {
     private Date Fecha;
     private Time Hora;
     private String Estado;
-    private ProductAdded pertenencia;
 }

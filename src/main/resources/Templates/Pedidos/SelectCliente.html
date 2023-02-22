@@ -5,11 +5,79 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Seleccionar Cliente</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+        <div>
+            <button>Atras</button>
+        </div>
+        <div>
+            <button>Inventario</button>
+            <button>Compras</button>
+            <button>Pedidos</button>
+        </div>
+        <div style="display:flex; align-items:center; margin-top:20px;">
+            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
+                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
+            </div>
+            <p>Nombre</p>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>DNI</th>
+                    <th>Nombre y Apellido</th>
+                    <th>Edad</th>
+                    <th>Email</th>
+                    <th>Telefono</th>
+                    <th>Dirección postal</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>34324234T</td>
+                    <td>Fernando Gutierrez</td>
+                    <td>55</td>
+                    <td>Cancelado</td>
+                    <td>627381029</td>
+                    <td>08222</td>
+                </tr>
+                <tr>
+                    <td>34324222T</td>
+                    <td>Fernanda Gutierrez</td>
+                    <td>32</td>
+                    <td>Cancelado</td>
+                    <td>627381029</td>
+                    <td>08222</td>
+                </tr>
+                <tr>
+                    <td>34324245T</td>
+                    <td>Luis Gutierrez</td>
+                    <td>20</td>
+                    <td>Cancelado</td>
+                    <td>627381029</td>
+                    <td>08222</td>
+                </tr>
+                <tr>
+                    <td>34324255T</td>
+                    <td>Luisa Gutierrez</td>
+                    <td>44</td>
+                    <td>Cancelado</td>
+                    <td>627381029</td>
+                    <td>08222</td>
+                </tr>
+            </tbody>
+        </table>
+        <div >
+            <input type="text" name="search" placeholder="Buscar...">
+            <button type="submit">Buscar</button>
+        </div>
+        <div>
+            <button>Modificar</button>
+            <button>Dar de baja</button>
+        </div>
     </body>
 </html>

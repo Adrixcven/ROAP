@@ -16,7 +16,6 @@ public class Pedidos {
     private int ID;
     private String cliente;
     private Date Fecha;
-    private String Email;
-    private int Telefono;
-    private String DPostal;
+    private String Estado;
+    private int PrecioTotal;
 }

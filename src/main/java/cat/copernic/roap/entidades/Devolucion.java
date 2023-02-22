@@ -13,8 +13,8 @@ import lombok.Data;
  */
 @Data
 public class Devolucion {
-    private String ID;
-    private Cliente cliente;
+    private int ID;
+    private String Cliente;
     private Date Fecha;
     private String Estado;
 }
