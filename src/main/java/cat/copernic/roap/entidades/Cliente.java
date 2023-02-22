@@ -17,5 +17,5 @@ public class Cliente {
     private int Edat;
     private String Email;
     private int Telefono;
-    private String DPostal;
+    private int DPostal;
 }

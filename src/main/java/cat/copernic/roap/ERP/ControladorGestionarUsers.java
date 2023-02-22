@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ControladorGestionarUsers {
-    @GetMapping("/GestionUsers")
+    @GetMapping("/gestionusers")
     public String inici(Model model){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
         var usuario = new Usuario();
         usuario.setDNI("12222222T");

@@ -11,12 +11,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <div>
-            <button>Atras</button>
+            <button><a href="/addcliente">Atras</a></button>
         </div>
         <div>
             <button>Inventario</button>
             <button>Compras</button>
-            <button>Pedidos</button>
+            <button><a href="/pedidos">Pedidos</a></button>
         </div>
         <div style="display:flex; align-items:center; margin-top:20px;">
             <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
@@ -37,37 +37,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>34324234T</td>
-                    <td>Fernando Gutierrez</td>
-                    <td>55</td>
-                    <td>Cancelado</td>
-                    <td>627381029</td>
-                    <td>08222</td>
-                </tr>
-                <tr>
-                    <td>34324222T</td>
-                    <td>Fernanda Gutierrez</td>
-                    <td>32</td>
-                    <td>Cancelado</td>
-                    <td>627381029</td>
-                    <td>08222</td>
-                </tr>
-                <tr>
-                    <td>34324245T</td>
-                    <td>Luis Gutierrez</td>
-                    <td>20</td>
-                    <td>Cancelado</td>
-                    <td>627381029</td>
-                    <td>08222</td>
-                </tr>
-                <tr>
-                    <td>34324255T</td>
-                    <td>Luisa Gutierrez</td>
-                    <td>44</td>
-                    <td>Cancelado</td>
-                    <td>627381029</td>
-                    <td>08222</td>
+                <tr th:each="clientes : ${clientes}"> 
+                    <td th:text="${clientes.ID}"></td>
+                    <td th:text="${clientes.Nombre}"></td>
+                    <td th:text="${clientes.Edat}"></td>
+                    <td th:text="${clientes.Email}"></td>
+                    <td th:text="${clientes.Telefono}"></td>
+                    <td th:text="${clientes.DPostal}"></td>
                 </tr>
             </tbody>
         </table>
@@ -75,9 +51,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <input type="text" name="search" placeholder="Buscar...">
             <button type="submit">Buscar</button>
         </div>
+        
         <div>
-            <button>Modificar</button>
-            <button>Dar de baja</button>
+            <a></a>
+            <button><a href="/addcliente">Seleccionar</a></button>
         </div>
     </body>
 </html>

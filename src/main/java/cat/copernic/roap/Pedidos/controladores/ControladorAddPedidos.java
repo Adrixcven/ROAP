@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ControladorAddPedidos {
-    @GetMapping("/AddPedido")
+    @GetMapping("/addpedido")
     public String inici(){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
         return "Pedidos/AddPedidos"; //Retorn de la pàgina Login.html.

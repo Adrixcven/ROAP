@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ControladorPaginaInicial {
-    @GetMapping("/Inicial")
+    @GetMapping("/inicial")
     public String inici(){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
         return "PaginaInicial"; //Retorn de la pàgina Login.html.

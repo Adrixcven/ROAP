@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ControladorGestionEnvio {
-    @GetMapping("/GestionEnvio")
+    @GetMapping("/gestionenvio")
     public String inici(Model model){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
         var envio = new Envio();
         envio.setID(1);
