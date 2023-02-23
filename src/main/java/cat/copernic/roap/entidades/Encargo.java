@@ -11,12 +11,11 @@ import lombok.Data;
  * @author Adrix
  */
 @Data
-public class Usuario {
-    private String DNI;
-    private String Nombre;
-    private int Edat;
-    private String Email;
-    private int Telefono;
-    private String DPostal;
-    private String Rol;
+public class Encargo {
+    private String nombre;
+    private int unidades;
+    private int precio;
+    private String tipoPrenda;
+    private String estadoPrenda;
+    private String talla;
 }

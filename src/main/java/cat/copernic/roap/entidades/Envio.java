@@ -4,6 +4,8 @@
  */
 package cat.copernic.roap.entidades;
 
+import java.sql.Time;
+import java.util.Date;
 import lombok.Data;
 
 /**
@@ -11,12 +13,10 @@ import lombok.Data;
  * @author Adrix
  */
 @Data
-public class Usuario {
-    private String DNI;
-    private String Nombre;
-    private int Edat;
-    private String Email;
-    private int Telefono;
-    private String DPostal;
-    private String Rol;
+public class Envio {
+    private int ID;
+    private String IDPedido;
+    private Date Fecha;
+    private Time Hora;
+    private String Estado;
 }

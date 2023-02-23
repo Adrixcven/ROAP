@@ -11,12 +11,7 @@ import lombok.Data;
  * @author Adrix
  */
 @Data
-public class Usuario {
-    private String DNI;
+public class Categorias {
+    private int ID;
     private String Nombre;
-    private int Edat;
-    private String Email;
-    private int Telefono;
-    private String DPostal;
-    private String Rol;
 }
