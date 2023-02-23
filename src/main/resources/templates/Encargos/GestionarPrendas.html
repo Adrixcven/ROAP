@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Gestionar Prendas</title>
+    </head>
+    <body>
+        <div>
+            <button><a href="/encargosProveedor">Atras</a></button>
+        </div>
+        <div>
+            <button>Inventario</button>
+            <button><a href="/encargos">Encargos</button>
+            <button><a href="/pedidos">Pedidos</a></button>
+        </div>
+        <div style="display:flex; align-items:center; margin-top:20px;">
+            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
+                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
+            </div>
+            <p>Nombre</p>
+        </div>
+        <h2>Gestionar Prendas</h2>
+        <form method="post" action="">
+            <table border="1">
+                <tr>
+                    <td><label for="nombre">Nombre</label></td>
+                    <td><label for="unidades">Unidades</label></td>
+                    <td><label for="precio">Precio</label></td>
+                    <td><label for="tipoPrenda">Tipo de prenda</label></td>
+                    <td><label for="estadoPrenda">Estado de la prenda</label></td>
+                    <td><label for="talla">Talla</label></td>
+                </tr>
+                <tr>
+                    <td><label for="nombre">Camiseta fre</label></td>
+                    <td><label for="unidades">7</label></td>
+                    <td><label for="precio">5</label></td>
+                    <td><label for="tipoPrenda">Camiseta</label></td>
+                    <td><label for="estadoPrenda">OK</label></td>
+                    <td><label for="talla">L</label></td>
+                </tr>
+            </table>
+
+            <input type="submit" value="Buscar">
+
+            <input type="submit" value="Modificar">
+
+            <input type="submit" value="Eliminar">
+        </form>
+
+    </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Gestionar Categoria</title>
+    </head>
+    <body>
+        <div>
+            <button><a href="/encargosProveedor">Atras</a></button>
+        </div>
+        <div>
+            <button>Inventario</button>
+            <button><a href="/encargos">Encargos</button>
+            <button><a href="/pedidos">Pedidos</a></button>
+        </div>
+        <div style="display:flex; align-items:center; margin-top:20px;">
+            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
+                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
+            </div>
+            <p>Nombre</p>
+        </div>
+        <h2>Gestionar Categoria</h2>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>camiseta frozen</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>pantalon cargo</td>
+            </tr>
+            <tr>
+                <td>73</td>
+                <td>zapato chulo</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>medias negras</td>
+            </tr>
+        </table>
+        <br>
+        <button type="button">Añadir</button>
+        <input type="text">
+        <button type="button">Buscar</button>
+        <input type="text">
+        <button type="button">Modificar</button>
+        <button type="button">Eliminar</button>
+    </body>
+</html>
