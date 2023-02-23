@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Pedidos</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <button><a href="/inicial">Atras</a></button>
+        </div>
+        <div>
+            <button>Inventario</button>
+            <button>Compras</button>
+            <button><a href="/pedidos">Pedidos</a></button>
+        </div>
+        <div style="display:flex; align-items:center; margin-top:20px;">
+            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
+                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
+            </div>
+            <p>Nombre</p>
+        </div>
+        <div>
+            <h3>Devoluciones</h3>
+            <div>
+                <button><a href="/addDevolucion">Añadir Devolución</a></button>
+                <button><a href="/gestiondevolucion">Gestionar Devolución</a></button>
+            </div>
+        </div>
+        <div>
+            <h3>Pedidos</h3>
+            <div>
+                <button><a href="/addpedido">Añadir Pedido</button>
+                <button><a href="/gestionpedido">Gestionar Pedidos</a></button>
+            </div>
+        </div>
+        <div>
+            <h3>Envío</h3>
+            <div>
+                <button><a href="/gestionenvio">Gestionar Envios</a></button>
+            </div>
+        </div>
+    </body>
+</html>
