@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ControladorModificarPrenda {
     @GetMapping("/modificarPrendas")
     public String inici(){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
-        var prenda = new Prenda();
+       var prenda = new Prenda();
         prenda.setNombre ("Juan");
         prenda.setUnidades (3);
         prenda.setPrecio (20);
@@ -27,13 +27,13 @@ public class ControladorModificarPrenda {
         prenda.setTalla (4);
         prenda.setColor("Negro");
         var prenda1 = new Prenda();
-        prenda.setNombre ("Alba");
-        prenda.setUnidades (7);
-        prenda.setPrecio (10);
-        prenda.setPrendaRopa ("Camiseta frozen");
-        prenda.setEstadoProducto ("OK");
-        prenda.setTalla (20);
-        prenda.setColor("Azul");
+        prenda1.setNombre ("Alba");
+        prenda1.setUnidades (7);
+        prenda1.setPrecio (10);
+        prenda1.setPrendaRopa ("Camiseta frozen");
+        prenda1.setEstadoProducto ("OK");
+        prenda1.setTalla (20);
+        prenda1.setColor("Azul");
         
         var prendas = new ArrayList<Prenda>();
         prendas.add(prenda);

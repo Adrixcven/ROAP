@@ -22,22 +22,28 @@
         <h2>Gestionar Prendas</h2>
         <form method="post" action="">
             <table border="1">
-                <tr>
-                    <td><label for="nombre">Nombre</label></td>
-                    <td><label for="unidades">Unidades</label></td>
-                    <td><label for="precio">Precio</label></td>
-                    <td><label for="tipoPrenda">Tipo de prenda</label></td>
-                    <td><label for="estadoPrenda">Estado de la prenda</label></td>
-                    <td><label for="talla">Talla</label></td>
-                </tr>
-                <tr>
-                    <td><label for="nombre">Camiseta fre</label></td>
-                    <td><label for="unidades">7</label></td>
-                    <td><label for="precio">5</label></td>
-                    <td><label for="tipoPrenda">Camiseta</label></td>
-                    <td><label for="estadoPrenda">OK</label></td>
-                    <td><label for="talla">L</label></td>
-                </tr>
+                <thead>
+                    <tr>
+                        <td><label for="nombre">Nombre</label></td>
+                        <td><label for="unidades">Unidades</label></td>
+                        <td><label for="precio">Precio</label></td>
+                        <td><label for="tipoPrenda">Tipo de prenda</label></td>
+                        <td><label for="estadoPrenda">Estado de la prenda</label></td>
+                        <td><label for="talla">Talla</label></td>
+                        <td><label for="color">Color</label></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="prendas : ${prendas}"> 
+                        <td th:text="${prendas.Nombre}"></td>
+                        <td th:text="${prendas.Unidades}"></td>
+                        <td th:text="${prendas.Precio}"></td>
+                        <td th:text="${prendas.PrendaRopa}"></td>
+                        <td th:text="${prendas.EstadoProducto}"></td> 
+                        <td th:text="${prendas.Talla}"></td> 
+                        <td th:text="${prendas.Color}"></td> 
+                    </tr>
+                </tbody>
             </table>
 
             <input type="submit" value="Buscar">
