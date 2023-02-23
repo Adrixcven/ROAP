@@ -25,6 +25,7 @@
 </head>
 <body>
     <table  border="1">
+        <thead>
         <tr>
             <th colspan="1">Nombre</th>
             <th colspan="1">Unidades</th>
@@ -33,38 +34,45 @@
             <th colspan="1">Estado de la prenda</th>
             <th colspan="1">Talla</th>
         </tr>
-        <tr>
-            <td colspan="1">Pantalon cargo</td>
-            <td colspan="1">7</td>
-            <td colspan="1">13$</td>
-            <td colspan="1">Pantalón</td>
-            <td colspan="1">OK</td>
-            <td colspan="1">L</td>
-        </tr>
+        </thead>
+                <tbody>                    
+                    <tr th:each="encargos : ${encargos}"> 
+                        <td th:text="${encargos.nombre}"></td>
+                        <td th:text="${encargos.unidades}"></td>
+                        <td th:text="${encargos.precio}"></td>
+                        <td th:text="${encargos.tipoPrenda}"></td>
+                        <td th:text="${encargos.estadoPrenda}"></td> 
+                        <td th:text="${encargos.talla}"></td> 
+                    </tr>
+                </tbody>
     </table>
 </body>
 <h3>Encargo 2</h3>
-    </head>
-    <body>
-        <table  border="1">
-            <tr>
-                <th colspan="1">Nombre</th>
-                <th colspan="1">Unidades</th>
-                <th colspan="1">Precio</th>
-                <th colspan="1">Tipo de prenda</th>
-                <th colspan="1">Estado de la prenda</th>
-                <th colspan="1">Talla</th>
-            </tr>
-            <tr>
-                <td colspan="1">Camiseta frozen</td>
-                <td colspan="1">4</td>
-                <td colspan="1">15$</td>
-                <td colspan="1">Camiseta</td>
-                <td colspan="1">OK</td>
-                <td colspan="1">S</td>
-            </tr>
-        </table>
-    </body>
+</head>
+<body>
+    <table  border="1">
+        <thead>
+        <tr>
+            <th colspan="1">Nombre</th>
+            <th colspan="1">Unidades</th>
+            <th colspan="1">Precio</th>
+            <th colspan="1">Tipo de prenda</th>
+            <th colspan="1">Estado de la prenda</th>
+            <th colspan="1">Talla</th>
+        </tr>
+        </thead>
+                <tbody>                    
+                    <tr th:each="encargos : ${encargos}"> 
+                        <td th:text="${encargos.nombre}"></td>
+                        <td th:text="${encargos.unidades}"></td>
+                        <td th:text="${encargos.precio}"></td>
+                        <td th:text="${encargos.tipoPrenda}"></td>
+                        <td th:text="${encargos.estadoPrenda}"></td> 
+                        <td th:text="${encargos.talla}"></td> 
+                    </tr>
+                </tbody>
+    </table>
+</body>
 
-    </body>
-    </html>
+</body>
+</html>
