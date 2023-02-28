@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cat.copernic.roap.entidades;
+package cat.copernic.roap.models;
 
 import java.util.Date;
 import lombok.Data;
@@ -12,9 +12,8 @@ import lombok.Data;
  * @author Adrix
  */
 @Data
-public class Devolucion {
-    private int ID;
-    private String Cliente;
-    private Date Fecha;
-    private String Estado;
+public class ProductAdded {
+    private int IDPedido;
+    private int IDProducto;
+    private int Cantidad;
 }

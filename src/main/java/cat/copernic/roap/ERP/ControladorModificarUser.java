@@ -4,7 +4,10 @@
  */
 package cat.copernic.roap.ERP;
 
+import cat.copernic.roap.DAO.UsuarioDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
@@ -13,8 +16,14 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ControladorModificarUser {
+    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosDAO al controlador
+    private UsuarioDAO UsuarioDAO;
     @GetMapping("/modifyuser")
-    public String inici(){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
+    public String inici(Model model){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
+        
+        var usuarioej = UsuarioDAO.findById("12345678A");
+        
+        model.addAttribute("usuarioej", usuarioej);
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
         return "ModificarUser"; //Retorn de la pàgina Login.html.
     }

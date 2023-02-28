@@ -4,8 +4,10 @@
  */
 package cat.copernic.roap.Pedidos.controladores;
 
-import cat.copernic.roap.entidades.Pedidos;
+import cat.copernic.roap.DAO.PedidosDAO;
+import cat.copernic.roap.models.Pedidos;
 import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,25 +18,11 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ControladorGestionPedidos {
+        @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosDAO al controlador
+    private PedidosDAO PedidosDAO; 
     @GetMapping("/gestionpedidos")
     public String inici(Model model){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
-        var pedido = new Pedidos();
-        pedido.setID(1);
-        pedido.setCliente("Fran Comido");
-        pedido.setEstado("Completado");
-        pedido.setPrecioTotal(90);
-        var pedido1 = new Pedidos();
-        pedido.setID(1);
-        pedido.setCliente("Fran Comido");
-        pedido.setEstado("Cancelado");
-        pedido.setPrecioTotal(90);
-        
-        var pedidos = new ArrayList<Pedidos>();
-        pedidos.add(pedido);
-        pedidos.add(pedido1);
-        //Enviem l'ArrayList de gossos
-        model.addAttribute("pedidos", pedidos);
-        
+        model.addAttribute("pedidos", PedidosDAO.findAll());
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
         return "Pedidos/GestionPedidos"; //Retorn de la pàgina Login.html.
     }
