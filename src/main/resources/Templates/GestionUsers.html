@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Gestionar Usuarios</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <button><a href="/inicial">Atras</a></button>
+        </div>
+        <div>
+            <button><a href="/adduser">Añadir Usuario</a></button>
+        </div>
+        <div>
+            <button><a href="/modifyuser">Modificar Usuario</a></button>
+        </div>
+        <div style="display:flex; align-items:center; margin-top:20px;">
+            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
+                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
+            </div>
+            <p>Nombre</p>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Rol</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="usuarios : ${usuarios}"> 
+                    <td th:text="${usuarios.Nombre}"></td>
+                    <td th:text="${usuarios.Rol}"></td> 
+                    <td><input type="checkbox"></td>
+                </tr>
+               
+            </tbody>
+        </table>
+    </body>
+</html>
