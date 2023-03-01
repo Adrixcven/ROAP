@@ -5,6 +5,9 @@
 package cat.copernic.roap.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -16,12 +19,19 @@ import lombok.Data;
 @Entity
 @Table(name = "Prenda")
 public class Prenda {
-    private int ID;
-    private String Nombre;
-    private int Unidades;
-    private float Precio;
-    private String PrendaRopa;
-    private String EstadoProducto;
-    private int Talla;
-    private String Color;
+    
+    
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int id;
+    
+    private String nombre;
+    private int unidades;
+    private float precio;
+    private String tipo;
+    private String estado;
+    private int talla;
+    private String color;
 }

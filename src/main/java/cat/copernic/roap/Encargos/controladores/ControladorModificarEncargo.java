@@ -21,15 +21,15 @@ public class ControladorModificarEncargo {
          var encargo = new Encargo();
         encargo.setUnidades(1);
         encargo.setPrecio(4);
-        encargo.setTipoPrenda("Camiseta");
-        encargo.setEstadoPrenda("OK");
+        encargo.setTipo("Camiseta");
+        encargo.setEstado("OK");
         encargo.setTalla("L");
         
         var encargo1 = new Encargo();
         encargo.setUnidades(4);
         encargo.setPrecio(15);
-        encargo.setTipoPrenda("Pantalón");
-        encargo.setEstadoPrenda("OK");
+        encargo.setTipo("Pantalón");
+        encargo.setEstado("OK");
         encargo.setTalla("S");
         
         var encargos = new ArrayList<Encargo>();

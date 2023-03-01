@@ -23,16 +23,16 @@ public class ControladorBorrarEncargo {
         encargo.setNombre("Camiseta frozen chula");
         encargo.setUnidades(1);
         encargo.setPrecio(4);
-        encargo.setTipoPrenda("Camiseta");
-        encargo.setEstadoPrenda("OK");
+        encargo.setTipo("Camiseta");
+        encargo.setEstado("OK");
         encargo.setTalla("L");
         
         var encargo1 = new Encargo();
         encargo1.setNombre("Pantalon cargo");
         encargo1.setUnidades(4);
         encargo1.setPrecio(15);
-        encargo1.setTipoPrenda("Pantalón");
-        encargo1.setEstadoPrenda("OK");
+        encargo1.setTipo("Pantalón");
+        encargo1.setEstado("OK");
         encargo1.setTalla("S");
         
         var encargos = new ArrayList<Encargo>();

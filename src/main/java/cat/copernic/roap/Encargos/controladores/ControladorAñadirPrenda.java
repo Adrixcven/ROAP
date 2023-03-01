@@ -22,16 +22,16 @@ public class ControladorAñadirPrenda {
         prenda.setNombre ("Juan");
         prenda.setUnidades (3);
         prenda.setPrecio (20);
-        prenda.setPrendaRopa ("Pantalon cargo");
-        prenda.setEstadoProducto ("OK");
+        prenda.setTipo ("Pantalon cargo");
+        prenda.setEstado ("OK");
         prenda.setTalla (4);
         prenda.setColor("Negro");
         var prenda1 = new Prenda();
         prenda.setNombre ("Alba");
         prenda.setUnidades (7);
         prenda.setPrecio (10);
-        prenda.setPrendaRopa ("Camiseta frozen");
-        prenda.setEstadoProducto ("OK");
+        prenda.setTipo ("Camiseta frozen");
+        prenda.setEstado ("OK");
         prenda.setTalla (20);
         prenda.setColor("Azul");
         
