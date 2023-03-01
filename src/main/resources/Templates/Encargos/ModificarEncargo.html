@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Modificar Encargo</title>
+    </head>
+    <body>
+        <div>
+            <button><a href="/encargos">Atras</a></button>
+        </div>
+        <div>
+            <button>Inventario</button>
+            <button><a href="/encargos">Encargos</button>
+            <button><a href="/pedidos">Pedidos</a></button>
+        </div>
+        <div style="display:flex; align-items:center; margin-top:20px;">
+            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
+                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
+            </div>
+            <p>Nombre</p>
+        </div>
+        <h2>Modificar Encargo</h2>
+        <form method="post" action="">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required><br>
+
+            <label for="unidades">Unidades:</label>
+            <input type="number" id="unidades" name="unidades" required><br>
+
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" name="precio" required><br>
+
+            <label for="tipoPrenda">Tipo de prenda:</label>
+            <input type="text" id="tipoPrenda" name="tipoPrenda" required><br>
+
+            <label for="estadoPrenda">Estado de la prenda:</label>
+            <input type="text" id="estadoPrenda" name="estadoPrenda" required><br>
+
+            <label for="talla">Talla:</label>
+            <input type="text" id="talla" name="talla" required><br>
+            
+            <label for="estadoPrenda">Eliminar:</label>
+            <button id="erase-btn" class="left-align" value="Añadir Encargo">X</button><br>
+            
+            <label for="estadoPrenda">Añadir:</label>
+            <button id="add-btn" class="left-align" value="Añadir Encargo">+</button><br>
+            
+            <label for="estadoPrenda">Restar:</label>            
+            <button id="delete-btn" class="left-align" value="Añadir Encargo">-</button><br>
+
+            <input type="submit" value="Guardar">
+        </form>
+
+    </body>
+</html>

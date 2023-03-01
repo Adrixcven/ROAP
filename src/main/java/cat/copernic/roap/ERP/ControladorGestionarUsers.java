@@ -4,9 +4,12 @@
  */
 package cat.copernic.roap.ERP;
 
-import cat.copernic.roap.entidades.Envio;
-import cat.copernic.roap.entidades.Usuario;
+
+import cat.copernic.roap.DAO.UsuarioDAO;
+import cat.copernic.roap.models.Envio;
+import cat.copernic.roap.models.Usuario;
 import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,22 +20,11 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ControladorGestionarUsers {
+    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosDAO al controlador
+    private UsuarioDAO UsuarioDAO;
     @GetMapping("/gestionusers")
     public String inici(Model model){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
-        var usuario = new Usuario();
-        usuario.setDNI("12222222T");
-        usuario.setNombre("Fran Gutierr");
-        usuario.setRol("Vendedor");
-        var usuario1 = new Usuario();
-        usuario1.setDNI("12222223T");
-        usuario1.setNombre("Fran Gutierreez");
-        usuario1.setRol("Proveedor");
-        
-        var usuarios = new ArrayList<Usuario>();
-        usuarios.add(usuario);
-        usuarios.add(usuario1);
-        //Enviem l'ArrayList de gossos
-        model.addAttribute("usuarios", usuarios);
+        model.addAttribute("usuarios", UsuarioDAO.findAll());
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
         return "GestionUsers"; //Retorn de la pàgina Login.html.
     }

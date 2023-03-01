@@ -14,8 +14,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <button><a href="/pedidos">Atras</a></button>
         </div>
         <div>
-            <button>Inventario</button>
-            <button>Compras</button>
+            <button><a>Inventario</a></button>
+            <button><a>Compras</a></button>
             <button><a href="/pedidos">Pedidos</a></button>
         </div>
         <div style="display:flex; align-items:center; margin-top:20px;">
@@ -36,7 +36,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <tbody>
                 <tr th:each="devoluciones : ${devoluciones}"> 
                     <td th:text="${devoluciones.ID}"></td>
-                    <td>December 25, 2022</td>
+                    <td th:text="${devoluciones.Fecha}"></td>
                     <td th:text="${devoluciones.Cliente}"></td> 
                     <td th:text="${devoluciones.Estado}"></td> 
                 </tr>
@@ -44,11 +44,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </table>
         <div >
             <input type="text" name="search" placeholder="Buscar...">
-            <button type="submit">Buscar</button>
+            <button type="submit"><a>Buscar</a></button>
         </div>
         <div>
             <button><a href="/modificardevolucion">Modificar</a></button>
-            <button>Dar de baja</button>
+            <button><a>Dar de baja</a></button>
         </div>
     </body>
 </html>

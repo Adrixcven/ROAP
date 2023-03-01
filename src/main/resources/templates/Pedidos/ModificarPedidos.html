@@ -5,11 +5,11 @@
     </head>
     <body>
         <div>
-            <button><a href="/gestionpedidos">Atras</a></button>
+            <button><a href="/pedidos">Atras</a></button>
         </div>
         <div>
-            <button>Inventario</button>
-            <button>Compras</button>
+            <button><a>Inventario</a></button>
+            <button><a>Compras</a></button>
             <button><a href="/pedidos">Pedidos</a></button>
         </div>
         <div style="display:flex; align-items:center; margin-top:20px;">
@@ -22,16 +22,16 @@
         <form method="post" action="">
             <label for="producto">Producto:</label>
             <select id="selector" name="selector">
-                <option value="opcion1">Pantalon kjj</option>
-                <option value="opcion2">Camisa black face</option>
-                <option value="opcion3">Calcetines cool</option>
+                <option th:each="productos : ${productos}" 
+                        th:value="${productos.ID}" 
+                        th:text="${productos.Nombre}"></option>
             </select>
 
             <label for="cantidad">Cantidad</label>
-            <input type="number" id="cantidad" name="cantidad" required><br>
+            <input type="number" id="cantidad" name="cantidad" value="" required><br>
             
             <label for="direccion">Dirección de envio</label>
-            <input type="text" id="direccion" name="direccion" required><br>
+            <input type="text" id="direccion" name="direccion" value="" required><br>
 
             <input type="submit" value="Guardar Pedido">
         </form>

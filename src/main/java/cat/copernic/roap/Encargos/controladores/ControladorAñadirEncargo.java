@@ -5,8 +5,8 @@
 package cat.copernic.roap.Encargos.controladores;
 
 import cat.copernic.roap.Pedidos.controladores.*;
-import cat.copernic.roap.entidades.Devolucion;
-import cat.copernic.roap.entidades.Encargo;
+import cat.copernic.roap.models.Devolucion;
+import cat.copernic.roap.models.Encargo;
 import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,15 +22,15 @@ public class ControladorAñadirEncargo {
         var encargo = new Encargo();
         encargo.setUnidades(1);
         encargo.setPrecio(4);
-        encargo.setTipoPrenda("Camiseta");
-        encargo.setEstadoPrenda("OK");
+        encargo.setTipo("Camiseta");
+        encargo.setEstado("OK");
         encargo.setTalla("L");
         
         var encargo1 = new Encargo();
         encargo.setUnidades(4);
         encargo.setPrecio(15);
-        encargo.setTipoPrenda("Pantalón");
-        encargo.setEstadoPrenda("OK");
+        encargo.setTipo("Pantalón");
+        encargo.setEstado("OK");
         encargo.setTalla("S");
         
         var encargos = new ArrayList<Encargo>();
