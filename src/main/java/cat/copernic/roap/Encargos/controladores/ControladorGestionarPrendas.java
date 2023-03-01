@@ -27,8 +27,6 @@ public class ControladorGestionarPrendas {
 
     @GetMapping("/gestionarPrendas")
     public String inici(Model model) { //Aquest és el mètode que generarà la resposta (recurs a retornar)
-        Optional<Prenda> prenda = PrendaDAO.findById(1);
-        prenda.ifPresent(System.out::println);
         model.addAttribute("prenda", PrendaDAO.findAll());
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
         return "Encargos/GestionarPrendas"; //Retorn de la pàgina Login.html.
