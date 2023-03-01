@@ -5,11 +5,11 @@
     </head>
     <body>
         <div>
-            <button><a href="/gestionenvio">Atras</a></button>
+            <button><a href="/pedidos">Atras</a></button>
         </div>
         <div>
-            <button>Inventario</button>
-            <button>Compras</button>
+            <button><a>Inventario</a></button>
+            <button><a>Compras</a></button>
             <button><a href="/pedidos">Pedidos</a></button>
         </div>
         <div style="display:flex; align-items:center; margin-top:20px;">
@@ -17,8 +17,9 @@
                 <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
             </div>
             <p>Nombre</p>
+            
         </div>
-        <h2>Añadir Devolución</h2>
+        <h2>Modificar Envio</h2>
         <form method="post" action="">
             <label for="radio">Estado del envio: </label><br>
             <input type="radio" id="Completado" name="Completado" value="Completado">
@@ -29,10 +30,10 @@
             <label for="radio3">Cancelado</label><br><br>
 
             <label for="fecha">Fecha:</label><br>
-            <input type="date" id="fecha" name="fecha"><br><br>
+            <input type="date" id="fecha" name="fecha" value=""><br><br>
 
             <label for="texto">Hora:</label><br>
-            <input type="time" id="hora" name="hora"><br><br>
+            <input type="time" id="hora" name="hora" value=""><br><br>
 
             <input type="submit" value="Guardar">
         </form>
