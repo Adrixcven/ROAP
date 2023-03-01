@@ -21,12 +21,7 @@ public class ControladorGestionModulos {
     @GetMapping("/gestionmodulo")
     public String inici(Model model){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
         
-        var pedidos = ModulosDAO.findById(1);
-        var inventario = ModulosDAO.findById(2);
-        var encargos = ModulosDAO.findById(3);
-        model.addAttribute("pedidos", pedidos );
-        model.addAttribute("inventario", inventario );
-        model.addAttribute("encargos", encargos );
+        model.addAttribute("modulos", ModulosDAO.findAll());
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
         return "GestionModulos"; //Retorn de la pàgina Login.html.
     }

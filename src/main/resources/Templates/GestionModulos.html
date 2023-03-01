@@ -19,41 +19,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             </div>
             <p>Nombre</p>
         </div>
-        <div class="block">
-            <h2>Pedidos</h2>
+        <div class="block" th:each="modulos : ${modulos}">
+            <h2 th:text="${modulos.nombre}"></h2>
             <div>
-                <img th:src="@{'/imatges/pedidos.png'}" width='50' height='50'/>
+                <img th:if="${modulos.ID} == 1" th:src="@{'/imatges/pedidos.png'}" width='50' height='50'/>
+                <img th:if="${modulos.ID} == 2" th:src="@{'/imatges/inventario.png'}" width='50' height='50'/>
+                <img th:if="${modulos.ID} == 3" th:src="@{'/imatges/encargos.png'}" width='50' height='50'/>
             </div>
             <label class="checkbox">
-                <input type="checkbox" th:checked="${pedidos.proveedor}"> Proveedor
+                <input type="checkbox" th:checked="${modulos.proveedor}"> Proveedor
             </label>
             <label class="checkbox">
-                <input type="checkbox" th:checked="${pedidos.vendedor}"> Vendedor
+                <input type="checkbox" th:checked="${modulos.vendedor}"> Vendedor
             </label>
         </div>
-        <div class="block">
-            <h2>Inventario</h2>
-            <div>
-                <img th:src="@{'/imatges/inventario.png'}" width='50' height='50'/>
-            </div>
-            <label class="checkbox">
-                <input type="checkbox" th:checked="${inventario.proveedor}"> Proveedor
-            </label>
-            <label class="checkbox">
-                <input type="checkbox" th:checked="${inventario.vendedor}"> Vendedor
-            </label>
-        </div>
-        <div class="block">
-            <h2>Encargos</h2>
-            <div>
-                <img th:src="@{'/imatges/encargos.png'}" width='50' height='50'/>
-            </div>
-            <label class="checkbox">
-                <input type="checkbox" th:checked="${encargos.proveedor}"> Proveedor
-            </label>
-            <label class="checkbox">
-                <input type="checkbox" th:checked="${encargos.vendedor}"> Vendedor
-            </label>
-        </div>
+       
     </body>
 </html>
