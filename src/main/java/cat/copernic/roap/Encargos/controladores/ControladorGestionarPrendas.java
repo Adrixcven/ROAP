@@ -5,8 +5,8 @@
 package cat.copernic.roap.Encargos.controladores;
 
 import cat.copernic.roap.Pedidos.controladores.*;
-import cat.copernic.roap.entidades.Pedidos;
-import cat.copernic.roap.entidades.Prenda;
+import cat.copernic.roap.models.Pedidos;
+import cat.copernic.roap.models.Prenda;
 import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
