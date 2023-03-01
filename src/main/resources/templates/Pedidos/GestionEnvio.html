@@ -39,8 +39,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <tr th:each="envios : ${envios}"> 
                     <td th:text="${envios.ID}"></td>
                     <td th:text="${envios.Estado}"></td>
-                    <td>December 25, 2022</td>
-                    <td>22:30</td>
+                    <td th:text="${envios.Fecha}"></td>
+                    <td th:text="${envios.Hora}"></td>
                     <td th:text="${envios.DireccionEnvio}"></td> 
                 </tr>
             </tbody>

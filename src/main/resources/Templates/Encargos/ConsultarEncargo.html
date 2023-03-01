@@ -21,7 +21,7 @@
         </div>
         <h2>Consultar Encargos</h2>
     <head>
-    <h3>Encargo 1</h3>
+<h3>Encargo 1</h3>
 </head>
 <body>
     <table  border="1">
@@ -36,39 +36,13 @@
         </tr>
         </thead>
                 <tbody>                    
-                    <tr th:each="encargos : ${encargos}"> 
-                        <td th:text="${encargos.nombre}"></td>
-                        <td th:text="${encargos.unidades}"></td>
-                        <td th:text="${encargos.precio}"></td>
-                        <td th:text="${encargos.tipoPrenda}"></td>
-                        <td th:text="${encargos.estadoPrenda}"></td> 
-                        <td th:text="${encargos.talla}"></td> 
-                    </tr>
-                </tbody>
-    </table>
-</body>
-<h3>Encargo 2</h3>
-</head>
-<body>
-    <table  border="1">
-        <thead>
-        <tr>
-            <th colspan="1">Nombre</th>
-            <th colspan="1">Unidades</th>
-            <th colspan="1">Precio</th>
-            <th colspan="1">Tipo de prenda</th>
-            <th colspan="1">Estado de la prenda</th>
-            <th colspan="1">Talla</th>
-        </tr>
-        </thead>
-                <tbody>                    
-                    <tr th:each="encargos : ${encargos}"> 
-                        <td th:text="${encargos.nombre}"></td>
-                        <td th:text="${encargos.unidades}"></td>
-                        <td th:text="${encargos.precio}"></td>
-                        <td th:text="${encargos.tipoPrenda}"></td>
-                        <td th:text="${encargos.estadoPrenda}"></td> 
-                        <td th:text="${encargos.talla}"></td> 
+                    <tr th:each="encargo : ${encargo}"> 
+                        <td th:text="${encargo.nombre}"></td>
+                        <td th:text="${encargo.unidades}"></td>
+                        <td th:text="${encargo.precio}"></td>
+                        <td th:text="${encargo.tipo}"></td>
+                        <td th:text="${encargo.estado}"></td> 
+                        <td th:text="${encargo.talla}"></td> 
                     </tr>
                 </tbody>
     </table>

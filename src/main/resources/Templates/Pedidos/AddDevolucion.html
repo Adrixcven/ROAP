@@ -22,9 +22,7 @@
         <form method="post" action="">
             <label for="producto">Producto:</label>
             <select id="selector" name="selector">
-                <option value="opcion1">Pantalon kjj</option>
-                <option value="opcion2">Camisa black face</option>
-                <option value="opcion3">Calcetines cool</option>
+                <option th:each="v : ${productos}" th:value="${productos.ID}" th:text="${productos.Nombre}"></option>
             </select>
 
             <label for="cantidad">Cantidad</label>
@@ -33,7 +31,7 @@
             <label for="cliente">Cliente:</label>
             <label for="nombrecliente">Cliente</label>
             <button><a href="/selectcliente">Seleccionar Cliente</a></button>
-            
+
             <input type="submit" value="Guardar">
         </form>
 

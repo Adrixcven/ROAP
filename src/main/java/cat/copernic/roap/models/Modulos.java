@@ -11,6 +11,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.sql.Time;
+import java.util.Date;
 import lombok.Data;
 
 /**
@@ -19,10 +21,9 @@ import lombok.Data;
  */
 @Data
 @Entity
-@Table(name = "Producto")
-public class Producto implements Serializable {
-    
-    //Identificació de la classe per poder deserialitzar de manera correcta
+@Table(name = "Modulos")
+public class Modulos implements Serializable {
+     //Identificació de la classe per poder deserialitzar de manera correcta
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -30,17 +31,11 @@ public class Producto implements Serializable {
     private int ID;
     
     @Column(name = "nombre")
-    private String Nombre;
-    @Column(name = "unidades")
-    private int Unidades;
-    @Column(name = "precio")
-    private float Precio;
-    @Column(name = "prendaropa")
-    private String PrendaRopa;
-    @Column(name = "estadoproducto")
-    private String EstadoProducto;
-    @Column(name = "talla")
-    private int Talla;
-    @Column(name = "color")
-    private String Color;
+    private String nombre;
+    
+    @Column(name = "proveedor")
+    private boolean proveedor;
+    
+    @Column(name = "vendedor")
+    private boolean vendedor;
 }
