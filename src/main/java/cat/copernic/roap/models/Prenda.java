@@ -4,6 +4,8 @@
  */
 package cat.copernic.roap.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.Data;
 
 /**
@@ -11,6 +13,8 @@ import lombok.Data;
  * @author Adrix
  */
 @Data
+@Entity
+@Table(name = "Prenda")
 public class Prenda {
     private int ID;
     private String Nombre;
