@@ -20,29 +20,19 @@
             <p>Nombre</p>
         </div>
         <h2>Gestionar Categoria</h2>
-        <table border="1">
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>camiseta frozen</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>pantalon cargo</td>
-            </tr>
-            <tr>
-                <td>73</td>
-                <td>zapato chulo</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>medias negras</td>
-            </tr>
+    <body>
+        <table  border="1">
+            <thead>
+                <tr>
+                     <td><label for="Nombre">Nombre</label></td>
+                </tr>
+            </thead>
+            <tbody>                    
+                <tr th:each="Categorias : ${Categorias}"> 
+                    <td th:text="${Categorias.Nombre}"></td>
+                </tr>
+            </tbody>
         </table>
-        <br>
         <button type="button">Añadir</button>
         <input type="text">
         <button type="button">Buscar</button>

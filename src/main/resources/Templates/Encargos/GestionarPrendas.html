@@ -27,21 +27,21 @@
                         <td><label for="nombre">Nombre</label></td>
                         <td><label for="unidades">Unidades</label></td>
                         <td><label for="precio">Precio</label></td>
-                        <td><label for="tipoPrenda">Tipo de prenda</label></td>
-                        <td><label for="estadoPrenda">Estado de la prenda</label></td>
+                        <td><label for="tipo">Tipo de prenda</label></td>
+                        <td><label for="estado">Estado de la prenda</label></td>
                         <td><label for="talla">Talla</label></td>
                         <td><label for="color">Color</label></td>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="prendas : ${prendas}"> 
-                        <td th:text="${prendas.Nombre}"></td>
-                        <td th:text="${prendas.Unidades}"></td>
-                        <td th:text="${prendas.Precio}"></td>
-                        <td th:text="${prendas.PrendaRopa}"></td>
-                        <td th:text="${prendas.EstadoProducto}"></td> 
-                        <td th:text="${prendas.Talla}"></td> 
-                        <td th:text="${prendas.Color}"></td> 
+                    <tr th:each="prenda : ${prenda}"> 
+                        <td th:text="${prenda.nombre}"></td>
+                        <td th:text="${prenda.unidades}"></td>
+                        <td th:text="${prenda.precio}"></td>
+                        <td th:text="${prenda.tipo}"></td>
+                        <td th:text="${prenda.estado}"></td>
+                        <td th:text="${prenda.talla}"></td> 
+                        <td th:text="${prenda.color}"></td> 
                     </tr>
                 </tbody>
             </table>

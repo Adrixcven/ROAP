@@ -36,7 +36,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <tbody>
                 <tr th:each="devoluciones : ${devoluciones}"> 
                     <td th:text="${devoluciones.ID}"></td>
-                    <td>December 25, 2022</td>
+                    <td th:text="${devoluciones.Fecha}"></td>
                     <td th:text="${devoluciones.Cliente}"></td> 
                     <td th:text="${devoluciones.Estado}"></td> 
                 </tr>

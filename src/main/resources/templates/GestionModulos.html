@@ -25,10 +25,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <img th:src="@{'/imatges/pedidos.png'}" width='50' height='50'/>
             </div>
             <label class="checkbox">
-                <input type="checkbox"> Proveedor
+                <input type="checkbox" th:checked="${pedidos.proveedor}"> Proveedor
             </label>
             <label class="checkbox">
-                <input type="checkbox"> Vendedor
+                <input type="checkbox" th:checked="${pedidos.vendedor}"> Vendedor
             </label>
         </div>
         <div class="block">
@@ -37,10 +37,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <img th:src="@{'/imatges/inventario.png'}" width='50' height='50'/>
             </div>
             <label class="checkbox">
-                <input type="checkbox"> Proveedor
+                <input type="checkbox" th:checked="${inventario.proveedor}"> Proveedor
             </label>
             <label class="checkbox">
-                <input type="checkbox"> Vendedor
+                <input type="checkbox" th:checked="${inventario.vendedor}"> Vendedor
             </label>
         </div>
         <div class="block">
@@ -49,10 +49,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <img th:src="@{'/imatges/encargos.png'}" width='50' height='50'/>
             </div>
             <label class="checkbox">
-                <input type="checkbox"> Proveedor
+                <input type="checkbox" th:checked="${encargos.proveedor}"> Proveedor
             </label>
             <label class="checkbox">
-                <input type="checkbox"> Vendedor
+                <input type="checkbox" th:checked="${encargos.vendedor}"> Vendedor
             </label>
         </div>
     </body>

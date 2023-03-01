@@ -38,7 +38,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <tbody>
                 <tr th:each="pedidos : ${pedidos}"> 
                     <td th:text="${pedidos.ID}"></td>
-                    <td>December 25, 2022</td>
+                    <td th:text="${pedidos.Fecha}"></td>
                     <td th:text="${pedidos.cliente}"></td>
                     <td th:text="${pedidos.Estado}"></td> 
                     <td th:text="${pedidos.PrecioTotal}"></td> 
