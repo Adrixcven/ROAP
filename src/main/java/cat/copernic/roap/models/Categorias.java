@@ -18,7 +18,7 @@ import lombok.Data;
  */
 @Data
 @Entity
-@Table(name = "Cliente")
+@Table(name = "Categorias")
 public class Categorias implements Serializable {
     //Identificació de la classe per poder deserialitzar de manera correcta
     private static final long serialVersionUID = 1L;
