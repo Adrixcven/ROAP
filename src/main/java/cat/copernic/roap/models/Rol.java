@@ -4,14 +4,12 @@
  */
 package cat.copernic.roap.models;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
 
 /**
@@ -20,9 +18,8 @@ import lombok.Data;
  */
 @Data
 @Entity
-@Table(name = "Pedidos")
-public class Pedidos implements Serializable {
-    
+@Table(name = "Rol")
+public class Rol  implements Serializable {
     //Identificació de la classe per poder deserialitzar de manera correcta
     private static final long serialVersionUID = 1L;
 
@@ -30,10 +27,6 @@ public class Pedidos implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int ID;
     
-    private String cliente;
-    private String vendedor;
-    private Date fecha;
-    private String estado;
-    @Column(name = "preciototal")
-    private int precioTotal;
+    private String Nombre;
+    
 }

@@ -34,4 +34,5 @@ public class Prenda {
     private String estado;
     private int talla;
     private String color;
+    private int categoria;
 }

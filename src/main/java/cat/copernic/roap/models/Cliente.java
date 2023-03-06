@@ -26,9 +26,9 @@ public class Cliente  implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private String DNI;
     
-    private String Nombre;
-    private int Edat;
-    private String Email;
-    private int Telefono;
-    private int DPostal;
+    private String nombre;
+    private int edat;
+    private String email;
+    private int telefono;
+    private int dpostal;
 }

@@ -11,12 +11,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <div>
-            <button><a href="/pedidos">Atras</a></button>
+            <button><a th:href="@{/pedidos}">Atras</a></button>
         </div>
         <div>
             <button><a>Inventario</a></button>
             <button><a>Compras</a></button>
-            <button><a href="/pedidos">Pedidos</a></button>
+            <button><a th:href="@{/pedidos}">Pedidos</a></button>
         </div>
         <div style="display:flex; align-items:center; margin-top:20px;">
             <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
@@ -38,10 +38,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <tbody>
                 <tr th:each="pedidos : ${pedidos}"> 
                     <td th:text="${pedidos.ID}"></td>
-                    <td th:text="${pedidos.Fecha}"></td>
+                    <td th:text="${pedidos.fecha}"></td>
                     <td th:text="${pedidos.cliente}"></td>
-                    <td th:text="${pedidos.Estado}"></td> 
-                    <td th:text="${pedidos.PrecioTotal}"></td> 
+                    <td th:text="${pedidos.estado}"></td> 
+                    <td th:text="${pedidos.precioTotal}"></td> 
                 </tr>
             </tbody>
         </table>
@@ -50,7 +50,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <button type="submit"><a>Buscar</a></button>
         </div>
         <div>
-            <button><a href="/modificarpedidos">Modificar</a></button>
+            <button><a th:href="@{/modificarpedidos}">Modificar</a></button>
             <button><a>Dar de baja</a></button>
         </div>
     </body>
