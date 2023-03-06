@@ -29,20 +29,12 @@ public class Producto implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int ID;
     
-    @Column(name = "nombre")
     private String nombre;
-    @Column(name = "unidades")
     private int unidades;
-    @Column(name = "precio")
     private float precio;
-    @Column(name = "prendaropa")
     private String prendaropa;
-    @Column(name = "estadoproducto")
     private String estadoproducto;
-    @Column(name = "talla")
     private int talla;
-    @Column(name = "color")
     private String color;
-    @Column(name = "categoria")
     private int categoria;
 }

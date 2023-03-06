@@ -26,9 +26,10 @@ public class ProductAdded  implements Serializable {
     
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    private int ID;
+    
     private int IDPedido;
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+
     private int IDProducto;
     
     private int Cantidad;

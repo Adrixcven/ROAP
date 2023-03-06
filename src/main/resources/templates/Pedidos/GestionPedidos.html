@@ -38,10 +38,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <tbody>
                 <tr th:each="pedidos : ${pedidos}"> 
                     <td th:text="${pedidos.ID}"></td>
-                    <td th:text="${pedidos.Fecha}"></td>
+                    <td th:text="${pedidos.fecha}"></td>
                     <td th:text="${pedidos.cliente}"></td>
-                    <td th:text="${pedidos.Estado}"></td> 
-                    <td th:text="${pedidos.PrecioTotal}"></td> 
+                    <td th:text="${pedidos.estado}"></td> 
+                    <td th:text="${pedidos.precioTotal}"></td> 
                 </tr>
             </tbody>
         </table>

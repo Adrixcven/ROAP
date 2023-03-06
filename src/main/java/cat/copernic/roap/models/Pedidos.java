@@ -4,6 +4,7 @@
  */
 package cat.copernic.roap.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -33,5 +34,6 @@ public class Pedidos implements Serializable {
     private String vendedor;
     private Date fecha;
     private String estado;
+    @Column(name = "preciototal")
     private int precioTotal;
 }
