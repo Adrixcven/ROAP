@@ -22,6 +22,7 @@ public class ControladorAddDevolucion {
 
     @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosDAO al controlador
     private DevolucionDAO DevolucionDAO;
+    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosDAO al controlador
     private ProductoDAO ProductoDAO;
 
     @GetMapping("/addDevolucion")
