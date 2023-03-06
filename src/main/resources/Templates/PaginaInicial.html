@@ -22,7 +22,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             </div>
             <p>Nombre</p>
         </div>
-        <button><a href="/Pedidos">
+        <button><a th:href="@{/pedidos}">
             <img th:src="@{'/imatges/pedidos.png'}" width='50' height='50'/>
             <span>Pedidos</span>
          
@@ -31,7 +31,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <img th:src="@{'/imatges/inventario.png'}" width='50' height='50'/>
             <span>Inventario</span>
         </button>
-        <button><a href="/encargos">
+        <button><a th:href="@{/encargos}">
             <img th:src="@{'/imatges/encargos.png'}" width='50' height='50'/>
             <span>Encargos</span>
         </button>

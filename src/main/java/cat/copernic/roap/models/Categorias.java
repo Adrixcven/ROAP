@@ -26,5 +26,5 @@ public class Categorias implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int ID;
     
-    private String Nombre;
+    private String nombre;
 }

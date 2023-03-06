@@ -18,17 +18,14 @@ import lombok.Data;
  */
 @Data
 @Entity
-@Table(name = "Cliente")
-public class Cliente  implements Serializable {
+@Table(name = "Rol")
+public class Rol  implements Serializable {
     //Identificació de la classe per poder deserialitzar de manera correcta
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private String DNI;
+    private int ID;
+    private String Nombre;
     
-    private String nombre;
-    private int edat;
-    private String email;
-    private int telefono;
-    private int dpostal;
 }

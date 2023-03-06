@@ -30,8 +30,8 @@ public class Pedidos implements Serializable {
     private int ID;
     
     private String cliente;
-    private Date Fecha;
-    private String Estado;
-    private int Cantidad;
-    private int PrecioTotal;
+    private String vendedor;
+    private Date fecha;
+    private String estado;
+    private int precioTotal;
 }

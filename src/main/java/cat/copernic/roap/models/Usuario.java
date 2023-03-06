@@ -28,10 +28,10 @@ public class Usuario implements Serializable {
     private String DNI;
     
     
-    private String Nombre;
-    private int Edat;
-    private String Email;
-    private int Telefono;
-    private String DPostal;
-    private String Rol;
+    private String nombre;
+    private int edat;
+    private String email;
+    private int telefono;
+    private String dpostal;
+    private int rol;
 }

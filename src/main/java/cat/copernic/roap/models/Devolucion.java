@@ -28,8 +28,8 @@ public class Devolucion implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int ID;
     
-    private String Cliente;
-    private int Cantidad;
-    private Date Fecha;
-    private String Estado;
+    private String cliente;
+    private int cantidad;
+    private Date fecha;
+    private String estado;
 }

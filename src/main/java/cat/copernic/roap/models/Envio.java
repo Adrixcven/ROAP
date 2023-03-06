@@ -30,12 +30,12 @@ public class Envio implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int ID;
     
-    private String IDPedido;
-    private Date Fecha;
-    private Time Hora;
+    private String idpedido;
+    private Date fecha;
+    private Time hora;
     
     @Column(name = "direccionenvio")
-    private String DireccionEnvio;
+    private String direccionenvio;
     
-    private String Estado;
+    private String estado;
 }

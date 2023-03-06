@@ -30,17 +30,19 @@ public class Producto implements Serializable {
     private int ID;
     
     @Column(name = "nombre")
-    private String Nombre;
+    private String nombre;
     @Column(name = "unidades")
-    private int Unidades;
+    private int unidades;
     @Column(name = "precio")
-    private float Precio;
+    private float precio;
     @Column(name = "prendaropa")
-    private String PrendaRopa;
+    private String prendaropa;
     @Column(name = "estadoproducto")
-    private String EstadoProducto;
+    private String estadoproducto;
     @Column(name = "talla")
-    private int Talla;
+    private int talla;
     @Column(name = "color")
-    private String Color;
+    private String color;
+    @Column(name = "categoria")
+    private int categoria;
 }
