@@ -4,11 +4,13 @@
  */
 package cat.copernic.roap.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.io.Serializable;
 import lombok.Data;
 
 /**
@@ -18,7 +20,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "Prenda")
-public class Prenda {
+public class Prenda implements Serializable {
     
     
     private static final long serialVersionUID = 1L;
@@ -34,5 +36,6 @@ public class Prenda {
     private String estado;
     private int talla;
     private String color;
+    @Column(name = "categoria")
     private int categoria;
 }
