@@ -50,6 +50,6 @@ public class ControladorGestionarPrendas {
         
         prendaService.eliminarPrenda(prenda);
         
-        return "redirect:/encargosProveedor"; //Retornem a la pàgina inicial dels gossos mitjançant redirect
+        return "redirect:/gestionarPrendas"; //Retornem a la pàgina inicial dels gossos mitjançant redirect
     }
 }
