@@ -5,7 +5,7 @@
 package cat.copernic.roap.Encargos.controladores;
 
 import cat.copernic.roap.DAO.PrendaDAO;
-import cat.copernic.roap.Encargos.controladores.serveis.PrendaService;
+import cat.copernic.roap.Encargos.serveis.PrendaService;
 import cat.copernic.roap.Pedidos.controladores.*;
 import cat.copernic.roap.models.Pedidos;
 import cat.copernic.roap.models.Prenda;
