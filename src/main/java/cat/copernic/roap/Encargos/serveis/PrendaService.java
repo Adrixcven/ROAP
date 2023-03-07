@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 public class PrendaService  implements PrendaServiceInterface{   
 
     
-    /*Atribut que defineix un gosDAO. Mitjançant aquest atribut el control ja no 
+    /*Atribut que defineix un prendaDAO. Mitjançant aquest atribut el control ja no 
      *accedirà directament a la capa de dades, si no que accedirà mitjançant la capa de servei.
     */
     @Autowired
@@ -32,7 +32,7 @@ public class PrendaService  implements PrendaServiceInterface{
      *Això permet que no hi hagi problemes si estem fent més d'una transacció al mateix temps.
     */
 
-    /*LListar gossos de la taula gos de la BBDD veterinari*/
+    /*LListar prendas de la taula prenda de la BBDD*/
     @Override
     /*La notació @Transactional fa referència a la classe Transactional de Spring Framework.
      *En aquest cas no hi haurà ni COMMITS, ni ROLLBACKS, ja que no modifiquem la informació
@@ -42,13 +42,13 @@ public class PrendaService  implements PrendaServiceInterface{
     @Transactional(readOnly=true) 
     public List<Prenda> listarPrenda() {
         
-        /*Cridem al mètode findAll() de CrudRepository perquè ens retorni el llistat de gosos de la BBDD.
-         *findAll() retorna un objecte, per tant hem de fer un cast perquè l'objecte sigui un List de gossos
+        /*Cridem al mètode findAll() de CrudRepository perquè ens retorni el llistat de prendas de la BBDD.
+         *findAll() retorna un objecte, per tant hem de fer un cast perquè l'objecte sigui un List de prendas
         */
         return (List<Prenda>) prenda.findAll(); 
     }
 
-    /*Afegir el gos passat per paràmetre a la taula gos de la BBDD veterinari*/
+    /*Afegir la prenda passada per paràmetre a la taula prenda de la BBDD*/
     @Override
     /*En aquest cas hi haurà COMMITS i ROLLBACKS, ja que modifiquem la informació de la BBDD, per tant,
      *utilitzarem aquesta notació sense passar-li cap paràmetre perquè es puguin fer els COMMITS 
@@ -57,34 +57,34 @@ public class PrendaService  implements PrendaServiceInterface{
     @Transactional
     public void anadirPrenda(Prenda prenda) {
         
-        /*Cridem al mètode save() de CrudRepository perquè afegeixi el gos passat com a paràmetre,
-         *a la taula gos de la BBDD veterinari.
+        /*Cridem al mètode save() de CrudRepository perquè afegeixi la prenda passada com a paràmetre,
+         *a la taula prendas de la BBDD.
         */
         this.prenda.save(prenda); 
     }
 
-    /*Eliminar el gos passat per paràmetre de la taula gos de la BBDD veterinari*/
+    /*Eliminar la prenda passada per paràmetre de la taula prenda de la BBDD*/
     @Override
-    @Transactional //Igual que en el mètode afegirGos, modifiquem la informació de la BBDD
+    @Transactional //Igual que en el mètode anadirPrenda, modifiquem la informació de la BBDD
     public void eliminarPrenda(Prenda prenda) {
         
-        /*Cridem al mètode delete() de CrudRepository perquè elimini el gos passat com a paràmetre,
-         *de la taula gos de la BBDD veterinari.
+        /*Cridem al mètode delete() de CrudRepository perquè elimini la prenda passada com a paràmetre,
+         *de la taula prenda de la BBDD.
         */
         this.prenda.delete(prenda);
         
     }
 
-    /*Cercar el gos passat per paràmetre en la taula gos de la BBDD veterinari*/
+    /*Cercar la prenda passada per paràmetre en la taula prenda de la BBDD*/
     @Override
-    @Transactional(readOnly=true) //Igual que en el mètode llistarGossos, no modifiquem la informació de la BBDD
+    @Transactional(readOnly=true) //Igual que en el mètode listarPrenda, no modifiquem la informació de la BBDD
     public Prenda buscarPrenda(Prenda prenda) {
         
-        /*Cridem al mètode findById() de CrudRepository perquè ens retorni el gos passat com a paràmetre.
+        /*Cridem al mètode findById() de CrudRepository perquè ens retorni la prenda passada com a paràmetre.
          *El paràmetre que li passem a aquest mètode, ha de ser la clau primària de l'entitat, en el nostre 
-         *cas el gos.
+         *cas la prenda.
          *
-         *Si el gos no existei retornarà null (orElse(null)).
+         *Si la prenda no existei retornarà null (orElse(null)).
         */ 
 
         return this.prenda.findById(prenda.getId()).orElse(null);

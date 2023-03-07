@@ -6,7 +6,6 @@ package cat.copernic.roap.DAO;
 
 import cat.copernic.roap.models.Prenda;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 
 /**
  *
