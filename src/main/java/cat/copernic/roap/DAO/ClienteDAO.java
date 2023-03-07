@@ -5,12 +5,13 @@
 package cat.copernic.roap.DAO;
 
 import cat.copernic.roap.models.Cliente;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author Adrix
  */
-public interface ClienteDAO  extends CrudRepository<Cliente,Integer>{
+public interface ClienteDAO  extends JpaRepository<Cliente,String>{
     
 }

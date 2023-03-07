@@ -42,15 +42,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <td th:text="${envios.fecha}"></td>
                     <td th:text="${envios.hora}"></td>
                     <td th:text="${envios.direccionenvio}"></td> 
+                    <td><a th:href="@{/editarenvio/}+${envios.ID}">Editar</a></td>
                 </tr>
             </tbody>
         </table>
         <div >
             <input type="text" name="search" placeholder="Buscar...">
             <button type="submit">Buscar</button>
-        </div>
-        <div>
-            <button><a th:href="@{/modificarenvio}">Modificar</a></button>
         </div>
     </body>
 </html>

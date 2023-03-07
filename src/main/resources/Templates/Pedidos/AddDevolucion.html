@@ -19,7 +19,7 @@
             <p>Nombre</p>
         </div>
         <h2>Añadir Devolución</h2>
-        <form method="post" action="">
+        <form th:action="@{/guardarDevolucion}" method="post" th:object="${devolucion}">
             <label for="producto">Producto:</label>
             <select id="selector" name="selector">
                 <option th:each="productos : ${productos}" th:value="${productos.ID}" th:text="${productos.nombre}"></option>

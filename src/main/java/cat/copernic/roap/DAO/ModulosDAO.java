@@ -6,11 +6,12 @@ package cat.copernic.roap.DAO;
 
 import cat.copernic.roap.models.Modulos;
 import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author Adrix
  */
-public interface ModulosDAO  extends CrudRepository<Modulos,Integer>{
+public interface ModulosDAO  extends JpaRepository<Modulos,Integer>{
 }
