@@ -23,16 +23,9 @@ public class ControladorAñadirPrenda {
     @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
     private PrendaService prendaService;
     @GetMapping("/añadirPrenda")
-    public String inici(Model model){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
-       
-        //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
-        return "Encargos/AñadirPrenda"; //Retorn de la pàgina Login.html.
-    }
-    
-    @GetMapping("/formularioPrenda") //URL a la pàgina amb el formulari de les dades del gos
     public String crearFormularioPrenda(Prenda prenda) {
 
-        return "formularioPrenda"; //Retorna la pàgina on es mostrarà el formulari de les dades dels gos
+        return "Encargos/AñadirPrenda"; //Retorna la pàgina on es mostrarà el formulari de les dades dels gos
     }
     
     /*Definim el mètode per assignar els valors introduïts en el formulari a l'objecte gos
@@ -43,10 +36,10 @@ public class ControladorAñadirPrenda {
      *identifica el mètode al qual ha d'enviar les dades introduïdes mitjançant el formulari.
     */   
     @PostMapping("/guardarPrenda") //action=guardarGos
-    public String guardarGos(Prenda prenda) {
+    public String guardarPrenda(Prenda prenda) {
 
         prendaService.anadirPrenda(prenda); //Afegim el gos passat per paràmetre a la base de dades
 
-        return "redirect:/gossos"; //Retornem a la pàgina inicial dels gossos mitjançant redirect
+        return "redirect:/encargos"; //Retornem a la pàgina inicial dels gossos mitjançant redirect
     }
 }
