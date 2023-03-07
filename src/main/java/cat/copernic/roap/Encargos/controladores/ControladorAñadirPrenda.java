@@ -40,6 +40,6 @@ public class ControladorAñadirPrenda {
 
         prendaService.anadirPrenda(prenda); //Afegim el gos passat per paràmetre a la base de dades
 
-        return "redirect:/encargos"; //Retornem a la pàgina inicial dels gossos mitjançant redirect
+        return "redirect:/encargosProveedor"; //Retornem a la pàgina inicial dels gossos mitjançant redirect
     }
 }
