@@ -42,16 +42,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <td th:text="${pedidos.cliente}"></td>
                     <td th:text="${pedidos.estado}"></td> 
                     <td th:text="${pedidos.precioTotal}"></td> 
+                    <td><a th:href="@{/editarpedidos/}+${pedidos.ID}">Editar</a></td>
+                    <td><a th:href="@{/eliminarpedidos/}+${pedidos.ID}">Dar de baja</a></td>
                 </tr>
             </tbody>
         </table>
         <div >
             <input type="text" name="search" placeholder="Buscar...">
             <button type="submit"><a>Buscar</a></button>
-        </div>
-        <div>
-            <button><a th:href="@{/modificarpedidos}">Modificar</a></button>
-            <button><a>Dar de baja</a></button>
         </div>
     </body>
 </html>

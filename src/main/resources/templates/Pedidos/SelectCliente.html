@@ -38,12 +38,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             </thead>
             <tbody>
                 <tr th:each="clientes : ${clientes}"> 
-                    <td th:text="${clientes.ID}"></td>
-                    <td th:text="${clientes.Nombre}"></td>
-                    <td th:text="${clientes.Edat}"></td>
-                    <td th:text="${clientes.Email}"></td>
-                    <td th:text="${clientes.Telefono}"></td>
-                    <td th:text="${clientes.DPostal}"></td>
+                    <td th:text="${clientes.DNI}"></td>
+                    <td th:text="${clientes.nombre}"></td>
+                    <td th:text="${clientes.edat}"></td>
+                    <td th:text="${clientes.email}"></td>
+                    <td th:text="${clientes.telefono}"></td>
+                    <td th:text="${clientes.dpostal}"></td>
                 </tr>
             </tbody>
         </table>
@@ -54,7 +54,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         
         <div>
             <a></a>
-            <button><a th:href="@{/addcliente}">>Seleccionar</a></button>
+            <button><a th:href="@{/addcliente}">Seleccionar</a></button>
         </div>
     </body>
 </html>

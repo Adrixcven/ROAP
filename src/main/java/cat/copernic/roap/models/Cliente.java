@@ -23,7 +23,6 @@ public class Cliente  implements Serializable {
     //Identificació de la classe per poder deserialitzar de manera correcta
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private String DNI;
     
     private String nombre;

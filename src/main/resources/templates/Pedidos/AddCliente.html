@@ -20,24 +20,24 @@
             <p>Nombre</p>
         </div>
         <h2>Añadir Cliente</h2>
-        <form method="post" action="">
+        <form th:action="@{/guardarCliente}" method="post" th:object="${cliente}">
             <label for="dni">DNI:</label>
-            <input type="text" id="dni" name="dni" required><br>
+            <input type="text" id="dni" name="dni" th:field="*{DNI}" required/><br>
 
             <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required><br>
+            <input type="text" id="nombre" name="nombre" th:field="*{nombre}" required/><br>
 
             <label for="edad">Edad:</label>
-            <input type="number" id="edad" name="edad" required><br>
+            <input type="number" id="edad" name="edad" th:field="*{edat}" required/><br>
 
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br>
+            <input type="email" id="email" name="email" th:field="*{email}" required/><br>
 
             <label for="telefono">Teléfono:</label>
-            <input type="tel" id="telefono" name="telefono" required><br>
+            <input type="tel" id="telefono" name="telefono" th:field="*{telefono}" required/><br>
 
             <label for="direccion">Dirección Postal:</label>
-            <input type="text" id="direccion" name="direccion" required><br>
+            <input type="text" id="direccion" name="direccion" th:field="*{dpostal}" required/><br>
 
             <input type="submit" value="Guardar">
         </form>

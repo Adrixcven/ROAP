@@ -5,12 +5,13 @@
 package cat.copernic.roap.DAO;
 
 import cat.copernic.roap.models.ProductAdded;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author Adrix
  */
-public interface ProductAddedDAO extends CrudRepository<ProductAdded,Integer>{
+public interface ProductAddedDAO extends JpaRepository<ProductAdded,Integer>{
     
 }

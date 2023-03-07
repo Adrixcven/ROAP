@@ -17,18 +17,22 @@
                 <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
             </div>
             <p>Nombre</p>
-            
+
         </div>
         <h2>Modificar Envio</h2>
-        <form method="post" action="">
-            <label for="radio">Estado del envio: </label><br>
-            <input type="radio" id="Completado" name="Completado" value="Completado">
-            <label for="radio1">Completado</label><br>
-            <input type="radio" id="envio" name="envio" value="envio">
-            <label for="radio2">En envio</label><br>
-            <input type="radio" id="cancelado" name="cancelado" value="cancelado">
-            <label for="radio3">Cancelado</label><br><br>
-
+        <form th:action="@{/guardarEnvio}" method="post" th:object="${envio}">
+            <fieldset>
+                <legend>Estado del envio:</legend>
+                <label>
+                    <input type="radio" name="Completado" value="Completado"> Completado
+                </label>
+                <label>
+                    <input type="radio" id="envio" name="envio" value="envio"> En envio
+                </label>
+                <label>
+                    <input type="radio" id="cancelado" name="cancelado" value="cancelado"> Cancelado
+                </label>
+            </fieldset>
             <label for="fecha">Fecha:</label><br>
             <input type="date" id="fecha" name="fecha" value=""><br><br>
 

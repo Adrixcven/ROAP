@@ -19,25 +19,23 @@
             <p>Nombre</p>
         </div>
         <h2>Añadir Pedido</h2>
-        <form method="post" action="">
+        <form th:action="@{/guardarPedido}" method="post" th:object="${pedido}">
             <label for="producto">Producto:</label>
             <select id="selector" name="selector">
-                <option value="opcion1">Pantalon kjj</option>
-                <option value="opcion2">Camisa black face</option>
-                <option value="opcion3">Calcetines cool</option>
+                <option th:each="productos : ${productos}" th:value="${productos.ID}" th:text="${productos.nombre}"></option>
             </select>
 
             <label for="cantidad">Cantidad</label>
-            <input type="number" id="cantidad" name="cantidad" required><br>
-            
+            <input type="number" id="cantidad" name="cantidad" th:value="${productos.ID}"required><br>
+
             <label for="direccion">Dirección de envio</label>
-            <input type="text" id="direccion" name="direccion" required><br>
+            <input type="text" id="direccion" name="direccion"th:value="${productos.ID}" required><br>
 
             <label for="cliente">Cliente:</label>
             <label for="nombrecliente">Cliente</label>
             <button><a  th:href="@{/selectcliente}">Cliente existente"</a></button>
-            <button><a  th:href="@{/adcliente}">Nuevo Cliente</a></button>
-            
+            <button><a  th:href="@{/addcliente}">Nuevo Cliente</a></button>
+
             <input type="submit" value="Guardar">
         </form>
 
