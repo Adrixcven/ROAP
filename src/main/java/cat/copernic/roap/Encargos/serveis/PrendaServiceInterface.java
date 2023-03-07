@@ -12,11 +12,11 @@ import cat.copernic.roap.models.Prenda;
  * @author mfg20
  */
 public interface PrendaServiceInterface {
-    public List<Prenda> listarPrenda(); //Mètode que implementarem per llistar gossos
+    public List<Prenda> listarPrenda(); //Mètode que implementarem per llistar prendas
 
-    public void anadirPrenda(Prenda prenda); //Mètode que implementarem per afegir un gos
+    public void anadirPrenda(Prenda prenda); //Mètode que implementarem per afegir una prenda
 
-    public void eliminarPrenda(Prenda prenda); //Mètode que implementarem per eliminar un gos
+    public void eliminarPrenda(Prenda prenda); //Mètode que implementarem per eliminar una prenda
 
-    public Prenda buscarPrenda(Prenda prenda); //Mètode que implementarem per cercar un gos
+    public Prenda buscarPrenda(Prenda prenda); //Mètode que implementarem per cercar una prenda
 }

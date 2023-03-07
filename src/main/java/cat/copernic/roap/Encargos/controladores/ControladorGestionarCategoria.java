@@ -5,7 +5,6 @@
 package cat.copernic.roap.Encargos.controladores;
 
 import cat.copernic.roap.DAO.CategoriasDAO;
-import cat.copernic.roap.Pedidos.controladores.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  *
- * @author Adrix
+ * @author mfg20
  */
 @Controller
 public class ControladorGestionarCategoria {

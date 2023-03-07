@@ -31,6 +31,8 @@
                         <td><label for="estado">Estado de la prenda</label></td>
                         <td><label for="talla">Talla</label></td>
                         <td><label for="color">Color</label></td>
+                        <td><label for="talla">Editar</label></td>
+                        <td><label for="color">Eliminar</label></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,16 +44,11 @@
                         <td th:text="${prenda.estado}"></td>
                         <td th:text="${prenda.talla}"></td> 
                         <td th:text="${prenda.color}"></td> 
+                        <td><a th:href="@{/editar/}+${prenda.id}" th:text="Editar"/></td>
                         <td><a th:href="@{/eliminar/}+${prenda.id}" th:text="Eliminar"/></td>
                     </tr>
                 </tbody>
             </table>
-
-            <input type="submit" value="Buscar">
-
-            <input type="submit" value="Modificar">
-
-            <input type="submit" value="Eliminar">
         </form>
 
     </body>
