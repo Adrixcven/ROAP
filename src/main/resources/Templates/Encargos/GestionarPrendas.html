@@ -42,6 +42,7 @@
                         <td th:text="${prenda.estado}"></td>
                         <td th:text="${prenda.talla}"></td> 
                         <td th:text="${prenda.color}"></td> 
+                        <td><a th:href="@{/eliminar/}+${prenda.id}" th:text="Eliminar"/></td>
                     </tr>
                 </tbody>
             </table>
