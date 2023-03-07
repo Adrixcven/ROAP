@@ -52,4 +52,14 @@ public class ControladorGestionarPrendas {
         
         return "redirect:/gestionarPrendas"; //Retornem a la pàgina inicial dels gossos mitjançant redirect
     }
+    
+    @GetMapping("/editar/{id}")
+    public String editar(Prenda prenda, Model model) {
+
+        /*Cerquem el gos passat per paràmetre, al qual li correspón l'idgos de @GetMapping mitjançant 
+         *el mètode cercarGos de la capa de servei.*/
+        model.addAttribute("prenda", prendaService.buscarPrenda(prenda));
+
+        return "Encargos/AñadirPrenda"; //Retorna la pàgina amb el formulari de les dades del gos
+    }
 }
