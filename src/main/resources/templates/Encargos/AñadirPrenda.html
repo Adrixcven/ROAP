@@ -20,35 +20,43 @@
             <p>Nombre</p>
         </div>
         <h2>Añadir Prenda</h2>
-        <div>
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre">
-        </div>
-        <div>
-            <label for="unidades">Unidades:</label>
-            <input type="text" id="unidades" name="unidades">
-        </div>
-        <div>
-            <label for="precio">Precio:</label>
-            <input type="text" id="precio" name="precio">
-        </div>
-        <div>
-            <label for="tipo">Tipo de prenda:</label>
-            <input type="text" id="tipo" name="tipo">
-        </div>
-        <div>
-            <label for="estado">Estado de la prenda:</label>
-            <input type="text" id="estado" name="estado">
-        </div>
-        <div>
-            <label for="talla">Talla:</label>
-            <input type="text" id="talla" name="talla">
-        </div>
-
-        <label for="categoriaPrenda">Categorias</label>
-        <button><a th:href="@{/seleccionarCategoria}"Seleccionar</a></button>
-
-        <input type="submit" value="Guardar">
-
+        <p>
+        <form th:action="@{/guardarPrenda}" method="post" th:object="${prenda}">
+            <input type="hidden" name="id" th:field="*{id}"/>
+            <p>
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" th:field="*{nombre}"/>
+            </p>
+            <p>
+                <label for="unidades">Unidades:</label>
+                <input type="number" name="unidades" th:field="*{unidades}"/>
+            </p>
+            <p>
+                <label for="precio">Precio:</label>
+                <input type="number" name="precio" step="0.01" th:field="*{precio}"/>
+            </p>
+            <p>
+                <label for="tipo">Tipo:</label>
+                <input type="text" name="tipo" th:field="*{tipo}"/>
+            </p>
+            <p>
+                <label for="estado">Estado:</label>
+                <input type="text" name="estado" th:field="*{estado}"/>
+            </p>
+            <p>
+                <label for="talla">Talla:</label>
+                <input type="number" name="talla" th:field="*{talla}"/>
+            </p>
+            <p>
+                <label for="color">Color:</label>
+                <input type="text" name="color" th:field="*{color}"/>
+            </p>
+            <p>
+                <label for="categoria">Categoria:</label>
+                <input type="number" name="categoria" th:field="*{categoria}"/>
+            </p>
+            <input type="submit" name="enviar" value="Enviar Datos"/>        
+        </form>
+    </p>
 </body>
 </html>
