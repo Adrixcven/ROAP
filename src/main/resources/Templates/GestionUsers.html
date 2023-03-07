@@ -37,7 +37,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <td th:text="${usuarios.Nombre}"></td>
                     <td th:text="${usuarios.Rol}"></td> 
                     <td><input type="checkbox"></td>
-                    <button><a th:href="@{/editaruser/}+${usuarios.DNI}">Modificar Usuario</a></button>
+                    <td><a th:href="@{/editaruser/}+${usuarios.DNI}">Modificar Usuario</a></td>
                 </tr>
             </tbody>
         </table>
