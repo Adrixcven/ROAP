@@ -6,11 +6,16 @@ package cat.copernic.roap.Pedidos.controladores;
 
 import cat.copernic.roap.DAO.EnvioDAO;
 import cat.copernic.roap.DAO.PedidosDAO;
+import cat.copernic.roap.DAO.ProductAddedDAO;
 import cat.copernic.roap.Pedidos.servicios.EnvioService;
 import cat.copernic.roap.Pedidos.servicios.PedidosService;
+import cat.copernic.roap.Pedidos.servicios.ProductAddService;
+import cat.copernic.roap.Pedidos.servicios.ProductosService;
 import cat.copernic.roap.models.Envio;
 import cat.copernic.roap.models.Pedidos;
+import cat.copernic.roap.models.ProductAdded;
 import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +34,13 @@ public class ControladorGestionPedidos {
     private EnvioDAO EnvioDAO;
     @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
     private EnvioService envioService;
+    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    private ProductAddedDAO productAddedDAO;
+    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    private ProductAddService productAddService;
+    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    private ProductosService ProductosService;
+    
 
     @GetMapping("/gestionpedidos")
     public String inici(Model model) { //Aquest és el mètode que generarà la resposta (recurs a retornar)
@@ -55,7 +67,8 @@ public class ControladorGestionPedidos {
 
         /*Cerquem el gos passat per paràmetre, al qual li correspón l'idgos de @GetMapping mitjançant 
          *el mètode cercarGos de la capa de servei.*/
-        model.addAttribute("pedidoss", pedidosService.buscarPedidos(pedidos));
+        model.addAttribute("productos", ProductosService.listarProducto());
+        model.addAttribute("pedidos", pedidosService.buscarPedidos(pedidos));
         
 
         return "Pedidos/ModificarPedidos"; //Retorna la pàgina amb el formulari de les dades del gos

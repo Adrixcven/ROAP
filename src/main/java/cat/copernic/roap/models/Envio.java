@@ -14,6 +14,7 @@ import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -31,6 +32,8 @@ public class Envio implements Serializable {
     private int ID;
     
     private String idpedido;
+    
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fecha;
     private Time hora;
     

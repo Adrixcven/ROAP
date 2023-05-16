@@ -19,19 +19,34 @@
             <p>Nombre</p>
         </div>
         <h2>Modificar Pedido</h2>
-        <form method="post" action="">
+        <form th:action="@{/modificadopedido}" method="post" th:object="${pedidos}">
             <label for="producto">Producto:</label>
             <select id="selector" name="selector">
-                <option th:each="productos : ${productos}" 
-                        th:value="${productos.ID}" 
-                        th:text="${productos.Nombre}"></option>
+                <option th:each="productos : ${productos}" th:value="${productos.ID}" th:text="${productos.nombre}"></option>
             </select>
 
-            <label for="cantidad">Cantidad</label>
-            <input type="number" id="cantidad" name="cantidad" value="" required><br>
-            
-            <label for="direccion">Dirección de envio</label>
-            <input type="text" id="direccion" name="direccion" value="" required><br>
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" id="cantidad" name="cantidad" min="1" max="100" required>
+            <label for="precio_total">Precio Total:</label>
+            <input type="number" id="precio_total" name="precio_total" th:field="*{precioTotal}" readonly>
+            <br>
+
+            <fieldset>
+                <legend>Estado:</legend>
+                <label>
+                    <input type="radio" id="completado" name="radio" value="Completado" th:field="*{estado}"> Completado
+                </label>
+                <label>
+                    <input type="radio" id="envio" name="radio" value="envio" th:field="*{estado}"> En proceso
+                </label>
+                <label>
+                    <input type="radio" id="cancelado" name="radio" value="cancelado" th:field="*{estado}"> Cancelado
+                </label>
+            </fieldset>
+            <input type="hidden" th:field="*{fecha}"/>
+            <input type="hidden" th:field="*{cliente}"/>
+            <input type="hidden" th:field="*{vendedor}"/>
+            <input type="hidden" th:field="*{ID}"/>
 
             <input type="submit" value="Guardar Pedido">
         </form>

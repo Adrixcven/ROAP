@@ -39,7 +39,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <tr th:each="envios : ${envios}"> 
                     <td th:text="${envios.ID}"></td>
                     <td th:text="${envios.estado}"></td>
-                    <td th:text="${envios.fecha}"></td>
+                    <td th:text="${#dates.format(envios.fecha, 'dd/MM/yyyy')}"></td>
                     <td th:text="${envios.hora}"></td>
                     <td th:text="${envios.direccionenvio}"></td> 
                     <td><a th:href="@{/editarenvio/}+${envios.ID}">Editar</a></td>

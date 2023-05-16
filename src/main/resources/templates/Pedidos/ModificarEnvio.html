@@ -24,20 +24,23 @@
             <fieldset>
                 <legend>Estado del envio:</legend>
                 <label>
-                    <input type="radio" name="Completado" value="Completado"> Completado
+                    <input type="radio" id="completado" name="radio" value="Completado" th:field="*{estado}"> Completado
                 </label>
                 <label>
-                    <input type="radio" id="envio" name="envio" value="envio"> En envio
+                    <input type="radio" id="envio" name="radio" value="envio" th:field="*{estado}"> En envio
                 </label>
                 <label>
-                    <input type="radio" id="cancelado" name="cancelado" value="cancelado"> Cancelado
+                    <input type="radio" id="cancelado" name="radio" value="cancelado" th:field="*{estado}"> Cancelado
                 </label>
             </fieldset>
             <label for="fecha">Fecha:</label><br>
-            <input type="date" id="fecha" name="fecha" value=""><br><br>
+            <input type="date" id="fecha" name="fecha" th:field="*{fecha}"><br><br>
 
             <label for="texto">Hora:</label><br>
-            <input type="time" id="hora" name="hora" value=""><br><br>
+            <input type="time" id="hora" name="hora" value="" th:field="*{hora}"><br><br>
+            <input type="hidden" th:field="*{idpedido}"/>xº
+            <input type="hidden" th:field="*{direccionenvio}"/>
+            <input type="hidden" th:field="*{ID}"/>
 
             <input type="submit" value="Guardar">
         </form>

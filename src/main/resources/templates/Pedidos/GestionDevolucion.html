@@ -39,6 +39,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <td th:text="${devoluciones.Fecha}"></td>
                     <td th:text="${devoluciones.Cliente}"></td> 
                     <td th:text="${devoluciones.Estado}"></td> 
+                    <td><a th:href="@{/editardevolucion/}+${devoluciones.ID}">Editar</a></td>
+                    <td><a th:href="@{/eliminardevolucion/}+${devoluciones.ID}">Dar de baja</a></td>
                 </tr>
             </tbody>
         </table>
@@ -46,9 +48,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <input type="text" name="search" placeholder="Buscar...">
             <button type="submit"><a>Buscar</a></button>
         </div>
-        <div>
-            <button><a th:href="@{/modificardevolucion}">Modificar</a></button>
-            <button><a>Dar de baja</a></button>
-        </div>
+
     </body>
 </html>

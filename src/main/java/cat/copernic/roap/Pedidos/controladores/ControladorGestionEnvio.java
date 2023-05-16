@@ -12,7 +12,9 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 /**
@@ -50,8 +52,9 @@ public class ControladorGestionEnvio {
         return "Pedidos/ModificarEnvio"; //Retorna la pàgina amb el formulari de les dades del gos
     }
     @PostMapping("/guardarEnvio") 
-    public String guardarEnvio(Envio envio) {
+    public String guardarEnvio(@ModelAttribute("envio") Envio envio, BindingResult result) {
 
+        
         envioService.addEnvio(envio); //Afegim el gos passat per paràmetre a la base de dades
 
         return "redirect:/pedidos"; //Retornem a la pàgina inicial dels gossos mitjançant redirect
