@@ -5,12 +5,12 @@
     </head>
     <body>
         <div>
-            <button><a  th:href="@{/pedidos}">Atras</a></button>
+            <button><a th:href="@{/pedidos}">Atras</a></button>
         </div>
         <div>
             <button><a>Inventario</a></button>
             <button><a>Compras</a></button>
-            <button><a  th:href="@{/pedidos}">Pedidos</a></button>
+            <button><a th:href="@{/pedidos}">Pedidos</a></button>
         </div>
         <div style="display:flex; align-items:center; margin-top:20px;">
             <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
@@ -25,16 +25,24 @@
                 <option th:each="productos : ${productos}" th:value="${productos.ID}" th:text="${productos.nombre}"></option>
             </select>
 
-            <label for="cantidad">Cantidad</label>
-            <input type="number" id="cantidad" name="cantidad" th:value="${productos.ID}"required><br>
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" id="cantidad" name="cantidad" min="1" max="100" required>
 
             <label for="direccion">Dirección de envio</label>
-            <input type="text" id="direccion" name="direccion"th:value="${productos.ID}" required><br>
+            <input type="text" id="direccion" name="direccion"><br>
+            
+            <label for="fecha">Fecha</label>
+            <input type="date" id="fecha" name="fecha" ><br><br>
+            
+            <label for="texto">Hora:</label><br>
+            <input type="time" id="hora" name="hora" value="" ><br><br>
 
             <label for="cliente">Cliente:</label>
             <label for="nombrecliente">Cliente</label>
-            <button><a  th:href="@{/selectcliente}">Cliente existente"</a></button>
-            <button><a  th:href="@{/addcliente}">Nuevo Cliente</a></button>
+            <select name="cliente">
+                <option th:each="cliente : ${cliente}" th:value="${cliente.DNI}" th:text="${cliente.nombre}"></option>
+            </select>
+            <button><a th:href="@{/addclient}">Nuevo Cliente</a></button>
 
             <input type="submit" value="Guardar">
         </form>

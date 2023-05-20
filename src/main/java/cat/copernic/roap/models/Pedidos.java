@@ -13,6 +13,7 @@ import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -32,6 +33,7 @@ public class Pedidos implements Serializable {
     
     private String cliente;
     private String vendedor;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fecha;
     private String estado;
     @Column(name = "preciototal")
