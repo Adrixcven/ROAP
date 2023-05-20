@@ -5,7 +5,9 @@
 package cat.copernic.roap.Pedidos.controladores;
 
 import cat.copernic.roap.DAO.DevolucionDAO;
+import cat.copernic.roap.Pedidos.servicios.ClienteService;
 import cat.copernic.roap.Pedidos.servicios.DevolucionService;
+import cat.copernic.roap.Pedidos.servicios.ProductosService;
 import cat.copernic.roap.models.Devolucion;
 import cat.copernic.roap.models.Envio;
 import cat.copernic.roap.models.Pedidos;
@@ -26,11 +28,17 @@ public class ControladorGestionDevolucion {
     private DevolucionDAO DevolucionDAO; //Atribut per poder utilitzar les funcions CRUD de la interfície GosDAO
     @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
     private DevolucionService devolucionService;
+    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    private ClienteService ClienteService;
+    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosDAO al controlador
+    private ProductosService productoService;
 
     @GetMapping("/gestiondevolucion")
     public String inici(Model model) { //Aquest és el mètode que generarà la resposta (recurs a retornar)
 
+        
         model.addAttribute("devoluciones", devolucionService.listarDevolucion());
+        
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
         return "Pedidos/GestionDevolucion"; //Retorn de la pàgina Login.html.
     }
@@ -45,13 +53,16 @@ public class ControladorGestionDevolucion {
         return "redirect:/gestiondevolucion"; //Retornem a la pàgina inicial dels gossos mitjançant redirect
     }
 
-    @GetMapping("/editardevolucion{ID}")
+    @GetMapping("/editardevolucion/{ID}")
     public String editarDevolucion(Devolucion devolucion, Model model) {
-
+        
         /*Cerquem el gos passat per paràmetre, al qual li correspón l'idgos de @GetMapping mitjançant 
          *el mètode cercarGos de la capa de servei.*/
+        model.addAttribute("quantity", devolucion.getCantidad());
+        model.addAttribute("cliente", ClienteService.listarCliente());
+        model.addAttribute("productos", productoService.listarProducto());
         model.addAttribute("devolucion", devolucionService.buscarDevolucion(devolucion));
 
-        return "Pedidos/ModificarPedidos"; //Retorna la pàgina amb el formulari de les dades del gos
+        return "Pedidos/modificardevolucion"; //Retorna la pàgina amb el formulari de les dades del gos
     }
 }

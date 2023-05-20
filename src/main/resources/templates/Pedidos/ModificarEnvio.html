@@ -34,10 +34,13 @@
                 </label>
             </fieldset>
             <label for="fecha">Fecha:</label><br>
-            <input type="date" id="fecha" name="fecha" value=""><br><br>
+            <input type="date" id="fecha" name="fecha" th:field="*{fecha}"><br><br>
 
             <label for="texto">Hora:</label><br>
-            <input type="time" id="hora" name="hora" value=""><br><br>
+            <input type="time" id="hora" name="hora" value="" th:field="*{hora}"><br><br>
+            <input type="hidden" th:field="*{idpedido}"/>xº
+            <input type="hidden" th:field="*{direccionenvio}"/>
+            <input type="hidden" th:field="*{ID}"/>
 
             <input type="submit" value="Guardar">
         </form>

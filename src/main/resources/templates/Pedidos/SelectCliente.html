@@ -44,6 +44,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <td th:text="${clientes.email}"></td>
                     <td th:text="${clientes.telefono}"></td>
                     <td th:text="${clientes.dpostal}"></td>
+                    <td><a th:href="@{/addcliente}">Seleccionar</a></td>
                 </tr>
             </tbody>
         </table>
@@ -52,9 +53,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <button type="submit"><a>Buscar</a></button>
         </div>
         
-        <div>
-            <a></a>
-            <button><a th:href="@{/addcliente}">Seleccionar</a></button>
-        </div>
+
     </body>
 </html>
