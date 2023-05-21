@@ -22,4 +22,5 @@ public interface PrendaServiceInterface {
     public void eliminarPrenda(Prenda prenda); //Mètode que implementarem per eliminar una prenda
 
     public Prenda buscarPrenda(Prenda prenda); //Mètode que implementarem per cercar una prenda
+    
 }

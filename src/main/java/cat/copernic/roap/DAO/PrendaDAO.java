@@ -6,11 +6,20 @@ package cat.copernic.roap.DAO;
 
 import cat.copernic.roap.models.Prenda;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author mfg20
  */
-public interface PrendaDAO  extends JpaRepository<Prenda,Integer>{
-    
+@Repository
+public interface PrendaDAO extends JpaRepository<Prenda, Integer> {
+
+    // ...
+
+    @Query("SELECT COUNT(p) > 0 FROM Prenda p WHERE p.categoria = :idCategoria")
+    boolean existenPrendasPorCategoria(@Param("idCategoria") int idCategoria);
 }
+

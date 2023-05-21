@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -21,37 +23,33 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ControladorGestionarCategoria {
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de PrendaDAO al controlador
-    private CategoriasDAO CategoriasDAO;
-    
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de PrendaService al controlador    
+
+    @Autowired
     private CategoriaService categoriaService;
 
     @GetMapping("/gestionarCategoria")
-    public String inici(Model model) { //Aquest és el mètode que generarà la resposta (recurs a retornar)
-        model.addAttribute("categorias", categoriaService.listarCategoria());    
-        //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
-        return "Encargos/GestionarCategoria"; //Retorn de la pàgina GestionarPrendas.html
+    public String inici(Model model) {
+        model.addAttribute("categorias", categoriaService.listarCategoria());
+        return "Encargos/GestionarCategoria";
     }
-    
-    @GetMapping("/eliminarcat/{id}") 
-    public String eliminarCategoria(Categorias categorias) {
 
-        /*Eliminem la prenda passat per paràmetre, al qual li correspón l'id de @GetMapping mitjançant 
-         *el mètode eliminar de la capa de servei.*/
-        
-        categoriaService.eliminarCategoria(categorias);
-        
-        return "redirect:/gestionarCategoria"; //Retornem a la pàgina inicial de gestionar prendas mitjançant redirect
+    @GetMapping("/eliminarcat/{id}")
+    public String eliminarCategoria(@PathVariable("id") int idCategoria, RedirectAttributes redirectAttributes) {
+        try {
+            Categorias categoria = new Categorias();
+            categoria.setId(idCategoria);
+            categoriaService.eliminarCategoria(categoria);
+        } catch (IllegalStateException e) {
+            redirectAttributes.addFlashAttribute("error", "La categoría no puede ser eliminada debido a que una prenda está sujeta a ella.");
+        }
+        return "redirect:/gestionarCategoria";
     }
-    
+
     @GetMapping("/editarcat/{id}")
-    public String editarCategoria(Categorias categorias, Model model) {
-
-        /*Cerquem la prenda passat per paràmetre, al qual li correspón l'id de @GetMapping mitjançant 
-         *el mètode buscarPrenda de la capa de servei.*/
-        model.addAttribute("categorias", categoriaService.buscarCategoria(categorias));
-
-        return "Encargos/añadirCategoria"; //Retorna la pàgina amb el formulari de les dades de la prenda
+    public String editarCategoria(@PathVariable("id") int idCategoria, Model model) {
+        Categorias categoria = new Categorias();
+        categoria.setId(idCategoria);
+        model.addAttribute("categorias", categoriaService.buscarCategoria(categoria));
+        return "Encargos/añadirCategoria";
     }
 }
