@@ -6,8 +6,10 @@ package cat.copernic.roap.Encargos.controladores;
 
 import cat.copernic.roap.Encargos.serveis.PrendaService;
 import cat.copernic.roap.models.Prenda;
+import cat.copernic.roap.models.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -20,6 +22,11 @@ public class ControladorAñadirPrenda {
     @Autowired //Anotació que injecta tots els mètodes i possibles dependències de PrendaService al controlador    
     private PrendaService prendaService;
     @GetMapping("/añadirPrenda")
+    public String inici(Model model, Prenda prenda) { //Aquest és el mètode que generarà la resposta (recurs a retornar)
+        //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
+        model.addAttribute("categorias", prendaService.listarCategorias());
+        return "Encargos/AñadirPrenda"; //Retorn de la pàgina Login.html.
+    }
     public String crearFormularioPrenda(Prenda prenda) {
 
         return "Encargos/AñadirPrenda"; //Retorna la pàgina on es mostrarà el formulari de les dades dels gos
