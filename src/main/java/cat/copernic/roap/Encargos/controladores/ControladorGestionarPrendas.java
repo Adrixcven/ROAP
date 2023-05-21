@@ -6,7 +6,9 @@ package cat.copernic.roap.Encargos.controladores;
 
 import cat.copernic.roap.DAO.PrendaDAO;
 import cat.copernic.roap.Encargos.serveis.PrendaService;
+import cat.copernic.roap.models.Categorias;
 import cat.copernic.roap.models.Prenda;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,35 +23,33 @@ public class ControladorGestionarPrendas {
 
     @Autowired //Anotació que injecta tots els mètodes i possibles dependències de PrendaDAO al controlador
     private PrendaDAO PrendaDAO;
-    
+
     @Autowired //Anotació que injecta tots els mètodes i possibles dependències de PrendaService al controlador    
     private PrendaService prendaService;
 
     @GetMapping("/gestionarPrendas")
-    public String inici(Model model) { //Aquest és el mètode que generarà la resposta (recurs a retornar)
-        model.addAttribute("prenda", prendaService.listarPrenda());    
-        //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
-        return "Encargos/GestionarPrendas"; //Retorn de la pàgina GestionarPrendas.html
+    public String inici(Model model) {
+        model.addAttribute("prenda", prendaService.listarPrenda());  
+        model.addAttribute("categoria", prendaService.listarCategorias());
+        return "Encargos/GestionarPrendas";
     }
-    
-    @GetMapping("/eliminar/{id}") 
+
+    @GetMapping("/eliminar/{id}")
     public String eliminar(Prenda prenda) {
 
         /*Eliminem la prenda passat per paràmetre, al qual li correspón l'id de @GetMapping mitjançant 
          *el mètode eliminar de la capa de servei.*/
-        
         prendaService.eliminarPrenda(prenda);
-        
+
         return "redirect:/gestionarPrendas"; //Retornem a la pàgina inicial de gestionar prendas mitjançant redirect
     }
-    
+
     @GetMapping("/editar/{id}")
     public String editar(Prenda prenda, Model model) {
-
-        /*Cerquem la prenda passat per paràmetre, al qual li correspón l'id de @GetMapping mitjançant 
-         *el mètode buscarPrenda de la capa de servei.*/
         model.addAttribute("prenda", prendaService.buscarPrenda(prenda));
-
-        return "Encargos/AñadirPrenda"; //Retorna la pàgina amb el formulari de les dades de la prenda
+        List<Categorias> categorias = prendaService.listarCategorias();
+        model.addAttribute("categorias", categorias);
+        return "Encargos/AñadirPrenda";
     }
+
 }

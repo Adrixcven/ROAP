@@ -67,6 +67,7 @@ public class PrendaService implements PrendaServiceInterface {
         this.prenda.save(prenda);
     }
 
+    @Override
     @Transactional(readOnly = true)
     public List<Categorias> listarCategorias() {
 

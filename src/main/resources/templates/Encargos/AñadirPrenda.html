@@ -53,9 +53,10 @@
             </p>
             <p>
                 <label for="categoria">Categoria:</label>
-                <select name="categorias">
-                <option th:each="categorias : ${categorias}" th:value="${categorias.ID}" th:text="${categorias.nombre}"></option>
-            </select>
+                <select name="categoria" th:field="*{categoria}">
+                    <option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nombre}"></option>
+
+                </select>
             </p>
             <input type="submit" name="enviar" value="Guardar"/>        
         </form>
