@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ControladorModificarUser {
     @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosDAO al controlador
     private UsuarioDAO UsuarioDAO;
-    @GetMapping("/modifyuser")
+    @GetMapping("/gestionusers/modifyuser")
     public String inici(Model model){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
         
         var usuarioej = UsuarioDAO.findById("12345678A");

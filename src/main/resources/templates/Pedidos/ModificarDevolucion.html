@@ -1,28 +1,16 @@
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Modificar Devolución</title>
+    <head  th:include="~{Plantillas/plantillaHeader.html :: header}">
     </head>
     <body>
         <div>
-            <button><a th:href="@{/pedidos}">Atras</a></button>
+            <button><a href="/pedidos/gestiondevolucion">Atras</a></button>
         </div>
-        <div>
-            <button><a>Inventario</a></button>
-            <button><a>Compras</a></button>
-            <button><a th:href="@{/pedidos}">Pedidos</a></button>
-        </div>
-        <div style="display:flex; align-items:center; margin-top:20px;">
-            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
-                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
-            </div>
-            <p>Nombre</p>
-        </div>
+        <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
         <h2>Modificar Devolución</h2>
         <form th:action="@{/modificardevolucion}"  method="post" th:object="${devolucion}">
-            <label for="producto">Producto:</label>
+            <label for="prenda">Producto:</label>
             <select id="selector" name="selector">
-                <option th:each="productos : ${productos}" th:value="${productos.ID}" th:text="${productos.nombre}"></option>
+                <option th:each="prenda : ${prenda}" th:value="${prenda.id}" th:text="${prenda.nombre}"></option>
             </select>
 
             <label for="cantidad">Cantidad</label>
@@ -39,6 +27,7 @@
                     <input type="radio" id="cancelado" name="radio" value="cancelado" th:field="*{estado}"> Cancelado
                 </label>
             </fieldset>
+            <span th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"/>
 
             <label for="cliente">Cliente:</label>
             <select name="cliente">

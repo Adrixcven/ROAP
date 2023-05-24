@@ -4,26 +4,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
 <html>
-    <head>
-        <title>Seleccionar Cliente</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head th:include="~{Plantillas/plantillaHeader.html :: header}">
     </head>
     <body>
         <div>
-            <button><a th:href="@{/pedidos}">Atras</a></button>
+            <button><a href="/inicial">Atras</a></button>
         </div>
-        <div>
-            <button><a>Inventario</a></button>
-            <button><a>Compras</a></button>
-            <button><a th:href="@{/pedidos}">>Pedidos</a></button>
-        </div>
-        <div style="display:flex; align-items:center; margin-top:20px;">
-            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
-                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
-            </div>
-            <p>Nombre</p>
-        </div>
+        <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
         <table>
             <thead>
                 <tr>

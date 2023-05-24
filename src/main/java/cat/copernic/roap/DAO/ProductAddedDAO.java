@@ -14,5 +14,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author Adrix
  */
 public interface ProductAddedDAO extends JpaRepository<ProductAdded,Integer>{
-    List<ProductAdded> findBypedidoid(int pedido_id);
+    ProductAdded findBypedidoid(int pedido_id);
 }

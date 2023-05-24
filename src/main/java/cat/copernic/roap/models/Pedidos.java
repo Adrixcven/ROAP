@@ -10,6 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Positive;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
@@ -31,11 +33,22 @@ public class Pedidos implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int ID;
     
+    @Column(name = "cliente")
+    @NotEmpty(message = "{NotEmpty.pedido.cliente}")
     private String cliente;
+    
+    @Column(name = "vendedor")
+    @NotEmpty(message = "{NotEmpty.pedido.vendedor}")
     private String vendedor;
+    
+    @Column(name = "fecha")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fecha;
+    
+    @Column(name = "estado")
     private String estado;
+    
     @Column(name = "preciototal")
-    private int precioTotal;
+    @Positive(message = "{Positive.pedido.precioTotal}")
+    private float precioTotal;
 }

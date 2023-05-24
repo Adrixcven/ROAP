@@ -8,6 +8,7 @@ import cat.copernic.roap.ERP.serveis.UsuariosService;
 import cat.copernic.roap.models.Devolucion;
 import cat.copernic.roap.models.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,13 +21,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class ControladorAddUsers {
     @Autowired
     private UsuariosService usuariosservice;
-    @GetMapping("/adduser")
+    @GetMapping("/gestionusers/adduser")
     public String inici(Usuario usuario){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
         return "AddUser"; //Retorn de la pàgina Login.html.
     }
     @PostMapping("/guardarUsuario") //action=guardarGos
     public String guardarUsuario(Usuario usuario) {
+        
+        
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String a = encoder.encode(usuario.getContra());
+        usuario.setContra(a);
 
         usuariosservice.addUsuario(usuario); //Afegim el gos passat per paràmetre a la base de dades
 

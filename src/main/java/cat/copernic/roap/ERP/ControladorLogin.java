@@ -4,8 +4,14 @@
  */
 package cat.copernic.roap.ERP;
 
+import cat.copernic.roap.models.Usuario;
+import java.util.Collections;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  *
@@ -13,9 +19,19 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ControladorLogin {
+    
     @GetMapping("/login")
-    public String inici(){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
+    public String login(@AuthenticationPrincipal UserDetails user){
+        if (user != null) {
+            return "redirect:/inicial";
+        }
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
         return "Login"; //Retorn de la pàgina Login.html.
+    }
+
+    @GetMapping("/logout")
+    public String logout(@AuthenticationPrincipal UserDetails user) {
+        user = null;
+        return "Login";
     }
 }

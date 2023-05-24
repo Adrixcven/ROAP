@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ControladorModificarEnvio {
     @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosDAO al controlador
     private EnvioDAO EnvioDAO; 
-    @GetMapping("/modificarenvio")
+    @GetMapping("/pedidos/modificarenvio")
     public String inici(Model model){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
         
         var envioej = EnvioDAO.findById(1);

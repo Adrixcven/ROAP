@@ -6,10 +6,15 @@ package cat.copernic.roap.ERP;
 
 import cat.copernic.roap.DAO.ModulosDAO;
 import cat.copernic.roap.ERP.serveis.ModulosService;
+import cat.copernic.roap.models.Cliente;
+import cat.copernic.roap.models.Modulos;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  *
@@ -19,11 +24,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ControladorGestionModulos {
     @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosDAO al controlador
     private ModulosService modulosService;
+    @Autowired
+    private ModulosDAO ModulosDAO;
     @GetMapping("/gestionmodulo")
     public String inici(Model model){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
         
         model.addAttribute("modulos", modulosService.listarModulos());
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
         return "GestionModulos"; //Retorn de la pàgina Login.html.
+    }
+    @PostMapping("/guardarModulo") //action=guardarGos
+    public String guardarCliente(Modulos modulo, Errors error) {
+        if(error.hasErrors()){ 
+             return "/gestionmodulo"; 
+        }
+
+        modulosService.addModulos(modulo); //Afegim el gos passat per paràmetre a la base de dades
+
+        return "redirect:/gestionmodulo"; //Retornem a la pàgina inicial dels gossos mitjançant redirect
     }
 }
