@@ -40,4 +40,3 @@ public class ControladorAñadirEncargo {
         return "Encargos/AñadirEncargo"; //Retorn de la pàgina Login.html.
     }
 }
-
