@@ -10,8 +10,10 @@ import cat.copernic.roap.models.Categorias;
 import cat.copernic.roap.models.Prenda;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
@@ -50,6 +52,14 @@ public class ControladorGestionarPrendas {
         List<Categorias> categorias = prendaService.listarCategorias();
         model.addAttribute("categorias", categorias);
         return "Encargos/AñadirPrenda";
+    }
+    
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public String handleDataIntegrityViolationException(DataIntegrityViolationException ex, Model model) {
+        model.addAttribute("error", "No se puede eliminar la prenda porque está referenciada en un encargo.");
+        model.addAttribute("prenda", prendaService.listarPrenda());
+        model.addAttribute("categoria", prendaService.listarCategorias());
+        return "Encargos/GestionarPrendas";
     }
 
 }
