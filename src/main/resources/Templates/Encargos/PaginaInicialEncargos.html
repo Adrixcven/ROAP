@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Encargos</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <button><a th:href="@{/inicial}">Atras</a></button>
+        </div>
+        <div>
+            <button>Inventario</button>
+            <button><a th:href="@{/encargos}">Encargos</a></button>
+            <button><a th:href="@{/pedidos}">Pedidos</a></button>
+        </div>
+        <div style="display:flex; align-items:center; margin-top:20px;">
+            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
+                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
+            </div>
+            <p>Nombre</p>
+        </div>
+        <div>
+            <h3>Encargos</h3>
+            <div>
+                <button><a th:href="@{/añadirEncargo}">Añadir Encargo</a></button>
+                <button><a th:href="@{/gestionarEncargos}">Modificar Encargo</a></button>             
+                <button><a th:href="@{/consultarEncargo}">Consultar Encargos</a></button>
+            </div>
+    </body>
+   
+</html>

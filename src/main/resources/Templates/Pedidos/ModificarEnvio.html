@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Modificar Envio</title>
+    </head>
+    <body>
+        <div>
+            <button><a th:href="@{/pedidos}">>Atras</a></button>
+        </div>
+        <div>
+            <button><a>Inventario</a></button>
+            <button><a>Compras</a></button>
+            <button><a th:href="@{/pedidos}">>Pedidos</a></button>
+        </div>
+        <div style="display:flex; align-items:center; margin-top:20px;">
+            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
+                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
+            </div>
+            <p>Nombre</p>
+
+        </div>
+        <h2>Modificar Envio</h2>
+        <form th:action="@{/guardarEnvio}" method="post" th:object="${envio}">
+            <fieldset>
+                <legend>Estado del envio:</legend>
+                <label>
+                    <input type="radio" id="estado" name="radio" value="Completado"> Completado
+                </label>
+                <label>
+                    <input type="radio" id="estado" name="radio" value="envio"> En envio
+                </label>
+                <label>
+                    <input type="radio" id="estado" name="radio" value="cancelado"> Cancelado
+                </label>
+            </fieldset>
+            <label for="fecha">Fecha:</label><br>
+            <input type="date" id="fecha" name="fecha" th:field="*{fecha}"><br><br>
+
+            <label for="texto">Hora:</label><br>
+            <input type="time" id="hora" name="hora" value="" th:field="*{hora}"><br><br>
+            <input type="hidden" th:field="*{idpedido}"/>xº
+            <input type="hidden" th:field="*{direccionenvio}"/>
+            <input type="hidden" th:field="*{ID}"/>
+
+            <input type="submit" value="Guardar">
+        </form>
+
+    </body>
+   
+</html>

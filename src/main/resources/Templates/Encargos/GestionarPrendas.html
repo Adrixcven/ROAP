@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Gestionar Prendas</title>
+    </head>
+   
+    <body>
+        <div>
+            <button><a th:href="@{/encargosProveedor}">Atras</a></button>
+        </div>
+        <div>
+            <button>Inventario</button>
+            <button><a th:href="@{/encargos}">Encargos</button>
+            <button><a th:href="@{/pedidos}">Pedidos</a></button>
+        </div>
+        <div style="display:flex; align-items:center; margin-top:20px;">
+            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
+                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
+            </div>
+            <p>Nombre</p>
+        </div>
+        <h2>Gestionar Prendas</h2>
+        <form method="post" action="">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <td><label for="nombre">Nombre</label></td>
+                        <td><label for="unidades">Unidades</label></td>
+                        <td><label for="precio">Precio</label></td>
+                        <td><label for="tipo">Tipo de prenda</label></td>
+                        <td><label for="estado">Estado de la prenda</label></td>
+                        <td><label for="talla">Talla</label></td>
+                        <td><label for="color">Color</label></td>
+                        <td><label for="categoria">Categoria</label></td>
+                        <td><label for="talla">Editar</label></td>
+                        <td><label for="color">Eliminar</label></td>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="prenda : ${prenda}"> 
+                        <td th:text="${prenda.nombre}"></td>
+                        <td th:text="${prenda.unidades}"></td>
+                        <td th:text="${prenda.precio}"></td>
+                        <td th:text="${prenda.tipo}"></td>
+                        <td th:text="${prenda.estado}"></td>
+                        <td th:text="${prenda.talla}"></td> 
+                        <td th:text="${prenda.color}"></td> 
+                       <td><span th:text="${prenda.categoria}"></span></td>
+                        <td><a th:href="@{/editar/}+${prenda.id}" th:text="Editar"/></td>
+                        <td><a th:href="@{/eliminar/}+${prenda.id}" th:text="Eliminar"/></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+
+    </body>
+</html>
+
