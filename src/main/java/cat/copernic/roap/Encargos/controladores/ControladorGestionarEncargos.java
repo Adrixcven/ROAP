@@ -4,36 +4,40 @@
  */
 package cat.copernic.roap.Encargos.controladores;
 
+
 import cat.copernic.roap.Encargos.serveis.EncargosService;
 import cat.copernic.roap.models.Encargos;
 import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  *
  * @author mfg20
  */
 @Controller
-public class ControladorAñadirEncargo {
+public class ControladorGestionarEncargos {
 
     @Autowired
     private EncargosService encargosService;
 
-    @GetMapping("/añadirEncargo")
+    @GetMapping("/gestionarEncargos")
     public String inici(Model model) {
-        Encargos encargo = new Encargos();
-        model.addAttribute("encargo", encargo);
-        return "Encargos/AñadirEncargo";
+        List<Encargos> encargos = encargosService.listarEncargos();
+        model.addAttribute("encargos", encargos);
+        return "Encargos/GestionarEncargos";
     }
 
-    @PostMapping("/guardarEncargo")
-    public String guardarEncargo(@ModelAttribute("encargo") Encargos encargo) {
-        encargosService.anadirEncargo(encargo);
+    @GetMapping("/eliminarEncargo/{id}")
+    public String eliminar(@PathVariable("id") int id) {
+        encargosService.eliminarEncargo(id);
         return "redirect:/gestionarEncargos";
     }
+
+    // Otros métodos del controlador para editar, añadir prendas, quitar prendas, etc.
 }
+

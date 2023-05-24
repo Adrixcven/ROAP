@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
  * @author mfg20
  */
 @Repository
-public interface EncargoDAO extends JpaRepository<Encargos, Integer> {
+public interface EncargosDAO extends JpaRepository<Encargos, Integer> {
     // ...
 }
