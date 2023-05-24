@@ -11,6 +11,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author mfg20
  */
-public interface EncargoDAO extends JpaRepository<Encargo,String>{
-    
+public interface EncargoDAO extends JpaRepository<Encargo, Integer> {
+
+    // ...
+
 }
