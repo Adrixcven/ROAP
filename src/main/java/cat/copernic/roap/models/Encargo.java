@@ -34,3 +34,6 @@ public class Encargo implements Serializable {
     private String estado;
     private String talla;
 }
+
+
+
