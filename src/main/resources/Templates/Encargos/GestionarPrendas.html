@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>Gestionar Prendas</title>
     </head>
-   
+
     <body>
         <div>
             <button><a th:href="@{/encargosProveedor}">Atras</a></button>
@@ -21,6 +21,10 @@
             <p>Nombre</p>
         </div>
         <h2>Gestionar Prendas</h2>
+
+        <div th:if="${error}" style="color: red;">
+            <p th:text="${error}"></p>
+        </div>
         <form method="post" action="">
             <table border="1">
                 <thead>
@@ -46,13 +50,14 @@
                         <td th:text="${prenda.estado}"></td>
                         <td th:text="${prenda.talla}"></td> 
                         <td th:text="${prenda.color}"></td> 
-                       <td><span th:text="${prenda.categoria}"></span></td>
+                        <td><span th:text="${prenda.categoria}"></span></td>
                         <td><a th:href="@{/editar/}+${prenda.id}" th:text="Editar"/></td>
                         <td><a th:href="@{/eliminar/}+${prenda.id}" th:text="Eliminar"/></td>
                     </tr>
                 </tbody>
             </table>
         </form>
+
     </body>
 </html>
 
