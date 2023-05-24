@@ -14,4 +14,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author Adrix
  */
 public interface ModulosDAO  extends JpaRepository<Modulos,Integer>{
+    List<Modulos> findByID(int ID);
 }

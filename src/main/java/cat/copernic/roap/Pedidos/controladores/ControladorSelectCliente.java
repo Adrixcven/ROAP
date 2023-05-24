@@ -24,7 +24,7 @@ public class ControladorSelectCliente {
     private ClienteDAO ClienteDAO; //Atribut per poder utilitzar les funcions CRUD de la interfície GosDAO
     @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
     private ClienteService clienteService;
-    @GetMapping("/seleccionarCliente")
+    @GetMapping("/pedidos/seleccionarCliente")
     public String inici(Model model){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
         model.addAttribute("clientes", clienteService.listarCliente());
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.

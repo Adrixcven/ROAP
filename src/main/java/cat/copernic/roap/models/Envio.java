@@ -10,6 +10,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
@@ -30,15 +33,23 @@ public class Envio implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int ID;
+    @Column(name = "idpedido")
+    @NotNull(message = "{NotEmpty.envio.idpedido}")
+    private int idpedido;
     
-    private String idpedido;
-    
+    @Column(name = "fecha")
+    @NotNull(message = "{NotNull.envio.fecha}")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fecha;
+    
+    @Column(name = "hora")
+    @NotNull(message = "{NotNull.envio.hora}")
     private Time hora;
     
     @Column(name = "direccionenvio")
+    @NotEmpty(message = "{NotEmpty.envio.direccionenvio}")
     private String direccionenvio;
     
+    @Column(name = "estado")
     private String estado;
 }

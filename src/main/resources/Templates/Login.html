@@ -7,11 +7,11 @@
     <body>
         <div>
             <p>
-                <img th:src="@{'/imatges/logo.png'}" width='50' height='50'/>
+                <img th:src="@{'/imatges/logo.png'}" width='50' height='50'></img>
             </p>
-            <form method="post" action="">
+            <form th:action="@{/login}" method="post" >
                 <label for="usuario" >Usuario:</label>
-                <input type="text" id="usuario" name="usuario" required><br>
+                <input type="text" id="username" name="username" required><br>
 
                 <label for="contraseña">Contraseña:</label>
                 <input type="text" id="password" name="password" required><br>
@@ -19,6 +19,7 @@
                 <input type="submit" value="Iniciar Sesión">
             </form>
             <button><a href="/remember" >Recordar contraseña</a></button>
+            <button><a href="/gestionusers/adduser" >Crear Cuenta</a></button>
         </div>
     </body>
 </html>

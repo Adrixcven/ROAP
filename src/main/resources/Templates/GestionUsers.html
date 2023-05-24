@@ -14,7 +14,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <button><a th:href="@{/inicial}">Atras</a></button>
         </div>
         <div>
-            <button><a th:href="@{/adduser}">Añadir Usuario</a></button>
+            <button><a th:href="@{/gestionusers/adduser}">Añadir Usuario</a></button>
         </div>
 
         <div style="display:flex; align-items:center; margin-top:20px;">
@@ -28,16 +28,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <tr>
                     <th>Nombre</th>
                     <th>Rol</th>
-                    <th>Estado</th>
                     <th>Modificar</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="usuarios : ${usuarios}"> 
                     <td th:text="${usuarios.Nombre}"></td>
-                    <td th:text="${usuarios.Rol}"></td> 
-                    <td><input type="checkbox"></td>
-                    <td><a th:href="@{/editaruser/}+${usuarios.DNI}">Modificar Usuario</a></td>
+                    <td th:text="${usuarios.rol}"></td> 
+                    <td><a th:href="@{/gestionusers/editaruser/}+${usuarios.DNI}">Modificar Usuario</a></td>
+                    <td><a th:href="@{/gestionusers/eliminaruser/}+${usuarios.DNI}">Eliminar Usuario</a></td>
                 </tr>
             </tbody>
         </table>

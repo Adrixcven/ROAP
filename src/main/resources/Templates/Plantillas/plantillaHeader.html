@@ -3,24 +3,23 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
-<html>
-    <head>
-        <title>TODO supply a title</title>
+<html xmlns:th="http://www.thymeleaf.org" >
+    <head th:fragment="header">
+        <title>Roap</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body>
+    <body th:fragment="cuerp">
         <div>
-            <button>Atras</button>
-        </div>
-        <div>
-            <button>Inventario</button>
-            <button>Compras</button>
-            <button>Pedidos</button>
+            <button><a>Inventario</a></button>
+            <button><a th:href="@{/encargos}">Encargos</a></button>
+            <button><a th:href="@{/pedidos}">Pedidos</a></button>
         </div>
         <div style="display:flex; align-items:center; margin-top:20px;">
             <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
                 <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
             </div>
-            <p>Nombre</p>
+            <span><h3>[[${username}]]</h3></span>
         </div>
     </body>
 </html>

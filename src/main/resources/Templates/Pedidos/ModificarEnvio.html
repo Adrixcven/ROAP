@@ -1,24 +1,11 @@
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Modificar Envio</title>
+    <head th:include="~{Plantillas/plantillaHeader.html :: header}">
     </head>
     <body>
         <div>
-            <button><a th:href="@{/pedidos}">>Atras</a></button>
+            <button><a href="/pedidos/gestionenvio">Atras</a></button>
         </div>
-        <div>
-            <button><a>Inventario</a></button>
-            <button><a>Compras</a></button>
-            <button><a th:href="@{/pedidos}">>Pedidos</a></button>
-        </div>
-        <div style="display:flex; align-items:center; margin-top:20px;">
-            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
-                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
-            </div>
-            <p>Nombre</p>
-
-        </div>
+        <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
         <h2>Modificar Envio</h2>
         <form th:action="@{/guardarEnvio}" method="post" th:object="${envio}">
             <fieldset>
@@ -27,20 +14,35 @@
                     <input type="radio" id="estado" name="radio" value="Completado"> Completado
                 </label>
                 <label>
-                    <input type="radio" id="estado" name="radio" value="envio"> En envio
+                    <input type="radio" id="envio" name="radio" value="En envio" th:field="*{estado}"> En envio
                 </label>
                 <label>
-                    <input type="radio" id="estado" name="radio" value="cancelado"> Cancelado
+                    <input type="radio" id="cancelado" name="radio" value="Cancelado" th:field="*{estado}"> Cancelado
                 </label>
             </fieldset>
+            <span th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"/>
+            <p>
             <label for="fecha">Fecha:</label><br>
             <input type="date" id="fecha" name="fecha" th:field="*{fecha}"><br><br>
-
+            <span th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"/>
+            </p>
+            <p>
             <label for="texto">Hora:</label><br>
             <input type="time" id="hora" name="hora" value="" th:field="*{hora}"><br><br>
-            <input type="hidden" th:field="*{idpedido}"/>xº
+            <span th:if="${#fields.hasErrors('hora')}" th:errors="*{hora}"/>
+            </p>
+            <p>
+            <input type="hidden" th:field="*{idpedido}"/>
+            <span th:if="${#fields.hasErrors('idpedido')}" th:errors="*{idpedido}"/>
+            </p>
+            <p>
             <input type="hidden" th:field="*{direccionenvio}"/>
+            <span th:if="${#fields.hasErrors('direccionenvio')}" th:errors="*{direccionenvio}"/>
+            </p>
+            <p>
             <input type="hidden" th:field="*{ID}"/>
+            <span th:if="${#fields.hasErrors('ID')}" th:errors="*{ID}"/>
+            </p>
 
             <input type="submit" value="Guardar">
         </form>

@@ -10,6 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.PositiveOrZero;
 import java.io.Serializable;
 import lombok.Data;
 
@@ -28,13 +30,25 @@ public class Producto implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int ID;
-    
+    @Column(name = "nombre")
+    @NotEmpty(message = "{NotEmpty.producto.nombre}")
     private String nombre;
+    @Column(name = "unidades")
+    @PositiveOrZero(message = "{PositiveOrZero.producto.unidades}")
     private int unidades;
+    @Column(name = "precio")
+    @PositiveOrZero(message = "{PositiveOrZero.producto.precio}")
     private float precio;
+    @Column(name = "prendaropa")
     private String prendaropa;
+    @Column(name = "estadoproducto")
     private String estadoproducto;
+    @Column(name = "talla")
     private int talla;
+    @Column(name = "color")
+    @NotEmpty(message = "{NotEmpty.producto.color}")
     private String color;
+    @Column(name = "categoria")
+    @PositiveOrZero(message = "{PositiveOrZero.producto.categoria}")
     private int categoria;
 }

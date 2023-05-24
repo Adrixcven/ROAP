@@ -13,5 +13,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author Adrix
  */
 public interface UsuarioDAO extends JpaRepository<Usuario,String>{
-    
+    Usuario findByDNI(String DNI);
 }

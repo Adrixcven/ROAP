@@ -3,7 +3,8 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags">
     <head>
         <title>Pagina Inicial</title>
         <meta charset="UTF-8">
@@ -11,32 +12,44 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <div>
-            <button>Gestionar Usuarios</button>
+            <button th:if="${rolUsuario == '1'} "><a th:href="@{/gestionusers}">Gestionar Usuarios</a></button>
         </div>
+
         <div>
-            <button>Gestionar módulos</button>
+            <button th:if="${rolUsuario == '1'}"><a th:href="@{/gestionmodulo}">Gestionar módulos</a></button>
         </div>
         <div style="display:flex; align-items:center; margin-top:20px;">
             <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
                 <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
             </div>
-            <p>Nombre</p>
+            <p>[[${username}]]</p>
         </div>
-        <button><a th:href="@{/pedidos}">
-            <img th:src="@{'/imatges/pedidos.png'}" width='50' height='50'/>
-            <span>Pedidos</span>
-         
-            </a></button>
-        <button>
-            <img th:src="@{'/imatges/inventario.png'}" width='50' height='50'/>
-            <span>Inventario</span>
-        </button>
-        <button><a th:href="@{/encargos}">
-            <img th:src="@{'/imatges/encargos.png'}" width='50' height='50'/>
-            <span>Encargos</span>
-        </button>
+        <div th:if="${rolUsuario == '1'}">
+            <div th:each="modulos : ${modulos}">
+                <button><a th:href="@{'/' + ${modulos.nombre.toLowerCase()}}">
+                        <img th:src="@{'/imatges/' + ${modulos.nombre.toLowerCase()} + '.png'}" width='50' height='50'/>
+                        <p th:text="${modulos.nombre}"></p>
+                    </a></button>
+            </div>
+        </div>
+        <div th:if="${rolUsuario == '2'}">
+            <div th:each="modulos : ${modulos}">
+                <button th:if="${modulos.vendedor}"><a th:href="@{'/' + ${modulos.nombre.toLowerCase()}}">
+                        <img th:src="@{'/imatges/' + ${modulos.nombre.toLowerCase()} + '.png'}" width='50' height='50'/>
+                        <p th:text="${modulos.nombre}"></p>
+                    </a></button>
+            </div>
+        </div>
+        <div th:if="${rolUsuario == '3'}">
+            <div th:each="modulos : ${modulos}">
+                <button th:if="${modulos.proveedor}"><a th:href="@{'/' + ${modulos.nombre.toLowerCase()}}">
+                        <img th:src="@{'/imatges/' + ${modulos.nombre.toLowerCase()} + '.png'}" width='50' height='50'/>
+                        <p th:text="${modulos.nombre}"></p>
+                    </a></button>
+            </div>
+        </div>
         <div>
-            <button>Cerrar Sesión</button>
+            <button><a th:href="@{/logout}">Cerrar Sesión</a></button>
         </div>
     </body>
 </html>

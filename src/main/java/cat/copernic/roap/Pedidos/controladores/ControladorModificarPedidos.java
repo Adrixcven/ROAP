@@ -6,12 +6,15 @@ package cat.copernic.roap.Pedidos.controladores;
 
 import cat.copernic.roap.DAO.EnvioDAO;
 import cat.copernic.roap.DAO.PedidosDAO;
+import cat.copernic.roap.DAO.PrendaDAO;
 import cat.copernic.roap.DAO.ProductAddedDAO;
 import cat.copernic.roap.DAO.ProductoDAO;
+import cat.copernic.roap.Encargos.serveis.PrendaService;
 import cat.copernic.roap.Pedidos.servicios.PedidosService;
 import cat.copernic.roap.Pedidos.servicios.ProductAddService;
 import cat.copernic.roap.Pedidos.servicios.ProductosService;
 import cat.copernic.roap.models.Pedidos;
+import cat.copernic.roap.models.Prenda;
 import cat.copernic.roap.models.ProductAdded;
 import cat.copernic.roap.models.Producto;
 import java.util.Optional;
@@ -32,7 +35,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ControladorModificarPedidos {
     @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
     private ProductoDAO productodao;
+    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    private PrendaDAO prendadao;
 
+    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosDAO al controlador
+    private PrendaService prendaService;
     @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
     private ProductosService ProductosService;
     @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
@@ -40,25 +47,26 @@ public class ControladorModificarPedidos {
     @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
     private PedidosService PedidosService;
     
+    
 
     @PostMapping("/modificadopedido")
     public String guardarPedido(@ModelAttribute("pedidos") Pedidos pedidos,
             @RequestParam("selector") int productoId,
             @RequestParam("cantidad") int cantidad, BindingResult result) {
         // Obtener el producto seleccionado de la tabla productos
-        Producto producto = productodao.findById(productoId).orElseThrow();
-        int unidadesDisponibles = producto.getUnidades() - cantidad;
-        producto.setUnidades(unidadesDisponibles);
-        ProductosService.addProducto(producto);
-        float preciototal = producto.getPrecio() * cantidad;
+        Prenda prenda = prendadao.findByid(productoId);
+        int unidadesDisponibles = prenda.getUnidades() - cantidad;
+        prenda.setUnidades(unidadesDisponibles);
+        prendaService.anadirPrenda(prenda);
+        float preciototal = prenda.getPrecio() * cantidad;
         int preciototali = (int) preciototal;
         pedidos.setPrecioTotal(preciototali);
         PedidosService.addPedidos(pedidos);
         // Actualizar las unidades disponibles del producto
         ProductAdded productoAnadido = new ProductAdded();
         productoAnadido.setAddproductid(pedidos.getID());
-        productoAnadido.setProductoid(pedidos.getID());
-        productoAnadido.setPedidoid(productoId);
+        productoAnadido.setPrendaid(productoId);
+        productoAnadido.setPedidoid(pedidos.getID());
         productoAnadido.setCantidad(cantidad);
         ProductAddService.addProductAdd(productoAnadido);
         

@@ -8,11 +8,13 @@ import cat.copernic.roap.DAO.EnvioDAO;
 import cat.copernic.roap.Pedidos.servicios.EnvioService;
 import cat.copernic.roap.models.Envio;
 import cat.copernic.roap.models.Pedidos;
+import jakarta.validation.Valid;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,13 +29,13 @@ public class ControladorGestionEnvio {
     private EnvioDAO EnvioDAO;
     @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
     private EnvioService envioService;
-    @GetMapping("/gestionenvio")
+    @GetMapping("/pedidos/gestionenvio")
     public String inici(Model model){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
         model.addAttribute("envios", envioService.listarEnvio());
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
         return "Pedidos/GestionEnvio"; //Retorn de la pàgina Login.html.
     }
-    @GetMapping("/eliminarenvio/{ID}")
+    @GetMapping("/pedidos/eliminarenvio/{ID}")
     public String eliminarEnvio(Envio envio) {
 
         /*Eliminem el gos passat per paràmetre, al qual li correspón l'idgos de @GetMapping mitjançant 
@@ -42,7 +44,7 @@ public class ControladorGestionEnvio {
 
         return "redirect:/gestionenvio"; //Retornem a la pàgina inicial dels gossos mitjançant redirect
     }
-    @GetMapping("/editarenvio/{ID}")
+    @GetMapping("/pedidos/editarenvio/{ID}")
     public String editarEnvio(Envio envio, Model model) {
 
         /*Cerquem el gos passat per paràmetre, al qual li correspón l'idgos de @GetMapping mitjançant 
@@ -52,7 +54,10 @@ public class ControladorGestionEnvio {
         return "Pedidos/ModificarEnvio"; //Retorna la pàgina amb el formulari de les dades del gos
     }
     @PostMapping("/guardarEnvio") 
-    public String guardarEnvio(@ModelAttribute("envio") Envio envio, BindingResult result) {
+    public String guardarEnvio(@Valid @ModelAttribute("envio") Envio envio, BindingResult result, Errors error) {
+        if(error.hasErrors()){ 
+             return "Pedidos/ModificarEnvio"; 
+        }
 
         
         envioService.addEnvio(envio); //Afegim el gos passat per paràmetre a la base de dades

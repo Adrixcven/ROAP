@@ -13,5 +13,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author Adrix
  */
 public interface EnvioDAO  extends JpaRepository<Envio,Integer>{
-    
+    Envio findByIdpedido(int idpedido);
 }
