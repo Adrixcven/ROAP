@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Seleccionar Cliente</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <button><a th:href="@{/pedidos}">Atras</a></button>
+        </div>
+        <div>
+            <button><a>Inventario</a></button>
+            <button><a>Compras</a></button>
+            <button><a th:href="@{/pedidos}">>Pedidos</a></button>
+        </div>
+        <div style="display:flex; align-items:center; margin-top:20px;">
+            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
+                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
+            </div>
+            <p>Nombre</p>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>DNI</th>
+                    <th>Nombre y Apellido</th>
+                    <th>Edad</th>
+                    <th>Email</th>
+                    <th>Telefono</th>
+                    <th>Dirección postal</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="clientes : ${clientes}"> 
+                    <td th:text="${clientes.DNI}"></td>
+                    <td th:text="${clientes.nombre}"></td>
+                    <td th:text="${clientes.edat}"></td>
+                    <td th:text="${clientes.email}"></td>
+                    <td th:text="${clientes.telefono}"></td>
+                    <td th:text="${clientes.dpostal}"></td>
+                    <td><a th:href="@{/addcliente}">Seleccionar</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <div >
+            <input type="text" name="search" placeholder="Buscar...">
+            <button type="submit"><a>Buscar</a></button>
+        </div>
+        
+
+    </body>
+</html>
