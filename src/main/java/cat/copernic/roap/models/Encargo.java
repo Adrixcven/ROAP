@@ -4,16 +4,12 @@
  */
 package cat.copernic.roap.models;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
-import java.util.List;
 import lombok.Data;
 
 /**
@@ -22,22 +18,22 @@ import lombok.Data;
  */
 @Data
 @Entity
-@Table(name = "Encargos")
-public class Encargos implements Serializable {
-
+@Table(name = "Encargo")
+public class Encargo implements Serializable {
+    
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private String nombre;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "encargo_id")
-    private List<Prenda> prendas;
-
-    // Constructor, getters y setters
+    
+    
+    private int unidades;
+    private int precio;
+    private String tipo;
+    private String estado;
+    private String talla;
 }
+
 
 
