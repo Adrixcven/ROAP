@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Añadir Encargo</title>
+    </head>
+    <body>
+        <div>
+            <button><a th:href="@{/encargos}">Atras</a></button>
+        </div>
+        <div>
+            <button>Inventario</button>
+            <button><a th:href="@{/encargos}">Encargos</a></button>
+            <button><a th:href="@{/pedidos}">Pedidos</a></button>
+        </div>
+        <div style="display:flex; align-items:center; margin-top:20px;">
+            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
+                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
+            </div>
+            <p>Nombre</p>
+        </div>
+        <h2>Añadir Encargo</h2>
+        <form th:action="@{/guardarEncargo}" method="post" th:object="${encargo}">
+            <input type="hidden" name="id" th:field="*{id}"/>
+            <p>
+                <label for="unidades">Unidades:</label>
+                <input type="number" name="unidades" th:field="*{unidades}"/>
+            </p>
+            <p>
+                <label for="precio">Precio:</label>
+                <input type="number" name="precio" th:field="*{precio}"/>
+            </p>
+            <p>
+                <label for="tipo">Tipo:</label>
+                <input type="text" name="tipo" th:field="*{tipo}"/>
+            </p>
+            <p>
+                <label for="estado">Estado:</label>
+                <input type="text" name="estado" th:field="*{estado}"/>
+            </p>
+            <p>
+                <label for="talla">Talla:</label>
+                <input type="text" name="talla" th:field="*{talla}"/>
+            </p>
+            <p>
+                <label for="prenda">Prenda:</label>
+                <select name="prenda.id" th:field="*{prenda.id}">
+                    <option th:each="prenda : ${prendasDisponibles}" th:value="${prenda.id}" th:text="${prenda.nombre}"></option>
+                </select>
+            </p>
+            <input type="submit" name="enviar" value="Guardar"/>        
+        </form>
+       
+    </body>
+   
+</html>

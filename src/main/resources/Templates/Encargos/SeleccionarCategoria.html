@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Seleccionar Categoria</title>
+    </head>
+    <body>
+        <div>
+            <button><a th:href="@{/añadirPrenda}">Atras</a></button>
+        </div>
+        <div>
+            <button>Inventario</button>
+            <button><a th:href="@{/encargos}">Encargos</a></button>
+            <button><a th:href="@{/pedidos}">Pedidos</a></button>
+        </div>
+       
+        <div style="display:flex; align-items:center; margin-top:20px;">
+            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
+                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
+            </div>
+            <p>Nombre</p>
+        </div>
+        <h2>Seleccionar Categoria</h2>
+    </head>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Camisa</td>
+        </tr>
+        <tr>
+            <td>54</td>
+            <td>Pantalón</td>
+        </tr>
+    </table>
+    <button type="button">Buscar</button>
+    <button type="button">Seleccionar</button>
+</body>
+
+</html>
