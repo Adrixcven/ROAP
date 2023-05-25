@@ -42,7 +42,7 @@ public class ControladorAñadirEncargo {
     @PostMapping("/guardarEncargo")
     public String guardarEncargo(@ModelAttribute("encargo") Encargo encargo) {
         encargoService.anadirEncargo(encargo);
-        return "redirect:/consultarEncargo";
+        return "redirect:/gestionarEncargos";
     }
 
 }
