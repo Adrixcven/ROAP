@@ -5,6 +5,7 @@
 package cat.copernic.roap.Pedidos.controladores;
 
 import cat.copernic.roap.DAO.PrendaDAO;
+import cat.copernic.roap.DAO.ProductAddedDAO;
 import cat.copernic.roap.DAO.ProductoDAO;
 import cat.copernic.roap.Encargos.serveis.PrendaService;
 import cat.copernic.roap.Pedidos.servicios.ClienteService;
@@ -45,6 +46,8 @@ public class ControladorAddPedidos {
     @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
     private ProductoDAO productodao;
     @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    private ProductAddedDAO productaddeddao;
+    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
     private PrendaDAO prendadao;
     @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
     private PedidosService pedidosService;
@@ -59,14 +62,41 @@ public class ControladorAddPedidos {
     @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
     private EnvioService EnvioService;
 
+    /**
+     * Método que se ejecuta al acceder a la ruta "/pedidos/addpedido" mediante
+     * una solicitud GET. Genera una respuesta al agregar atributos al modelo y
+     * devuelve la página "Pedidos/AddPedidos".
+     *
+     * @param model el modelo utilizado para pasar atributos a la vista
+     * @return la cadena de texto que representa la página "Pedidos/AddPedidos"
+     */
     @GetMapping("/pedidos/addpedido")
     public String inici(Model model) { //Aquest és el mètode que generarà la resposta (recurs a retornar)
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        model.addAttribute("username", username);
         model.addAttribute("cliente", ClienteService.listarCliente());
         model.addAttribute("productos", prendaService.listarPrenda());
         return "Pedidos/AddPedidos"; //Retorn de la pàgina Login.html.
     }
 
+    /**
+     * Método que se ejecuta al acceder a la ruta "/guardarPedido" mediante una
+     * solicitud POST. Guarda un pedido utilizando los parámetros recibidos y
+     * modifica prendas y genera productAdd y envio.
+     *
+     * @param pedidos el objeto Pedidos a guardar
+     * @param prendaId el ID de la prenda seleccionada por el usuario
+     * @param cantidad la cantidad de unidades del producto seleccionado
+     * @param fecha la fecha del pedido
+     * @param horaStr la cadena de texto que representa la hora del pedido (en
+     * formato "HH:mm")
+     * @param direccion la dirección de envío del pedido
+     * @param error objeto Errors para manejar errores de validación
+     * @return la cadena de texto de redirección a la ruta "/pedidos"
+     * @throws IllegalArgumentException si el valor de "horaStr" no es válido
+     */
     @PostMapping("/guardarPedido")
     public String guardarPedido(@Valid @ModelAttribute("pedidos") Pedidos pedidos,
             @RequestParam("selector") int prendaId,
@@ -75,7 +105,7 @@ public class ControladorAddPedidos {
             @RequestParam(value = "hora") String horaStr,
             @RequestParam("direccion") String direccion,
             Errors error) {
-        
+
         Time hora = null;
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
@@ -97,15 +127,15 @@ public class ControladorAddPedidos {
         String username = authentication.getName();
         pedidos.setVendedor("46376901T");
         pedidos.setEstado("En proceso");
-        if(error.hasErrors()){ 
-             return "Pedidos/AddPedidos"; 
+        if (error.hasErrors()) {
+            return "Pedidos/AddPedidos";
         }
         pedidosService.addPedidos(pedidos);
-//        ProductAdded productoadd = new ProductAdded();
-//        productoadd.setAddproductid(pedidos.getID());
-//        productoadd.setCantidad(cantidad);
-//        productoadd.setPedidoid(pedidos.getID());
-//        productoadd.setPrendaid(prendaId);
+        ProductAdded productoadd = new ProductAdded();
+        productoadd.setAddproductid(pedidos.getID());
+        productoadd.setCantidad(cantidad);
+        productoadd.setPedidoid(pedidos.getID());
+        productoadd.setPrendaid(prendaId);
 //        ProductAddService.addProductAdd(productoadd);
         Envio envio = new Envio();
         envio.setDireccionenvio(direccion);
@@ -117,7 +147,6 @@ public class ControladorAddPedidos {
         envio.setEstado("En Envio");
         EnvioService.addEnvio(envio);
 
-
-        return "redirect:/pedidos"; //Retornem a la pàgina inicial dels gossos mitjançant redirect
+        return "redirect:/pedidos";
     }
 }

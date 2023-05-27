@@ -17,6 +17,8 @@ import cat.copernic.roap.models.Prenda;
 import cat.copernic.roap.models.Producto;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,30 +33,49 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ControladorAddDevolucion {
 
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    @Autowired 
     private ProductoDAO productodao;
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    @Autowired 
     private PrendaDAO prendadao;
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosDAO al controlador
+    @Autowired 
     private DevolucionDAO DevolucionDAO;
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosDAO al controlador
+    @Autowired 
     private ProductosService productoService;
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosDAO al controlador
+    @Autowired 
     private PrendaService prendaService;
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    @Autowired 
     private DevolucionService devolucionService;
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    @Autowired    
     private ClienteService ClienteService;
 
+    /**
+     * Maneja la solicitud GET para agregar una devolución.
+     * 
+     * @param model el modelo para la vista
+     * @param devolucion la devolución a agregar
+     * @return el nombre de la página de la vista
+     */
     @GetMapping("/pedidos/addDevolucion")
     public String inici(Model model, Devolucion devolucion) { //Aquest és el mètode que generarà la resposta (recurs a retornar)
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        model.addAttribute("username", username);
         
         model.addAttribute("cliente", ClienteService.listarCliente());
         model.addAttribute("prendas", prendaService.listarPrenda());
-        return "Pedidos/AddDevolucion"; //Retorn de la pàgina Login.html.
+        return "Pedidos/AddDevolucion"; 
     }
-    @PostMapping("/guardarDevolucion") //action=guardarGos
+    
+    /**
+     * Maneja la solicitud POST para guardar una devolución.
+     * 
+     * @param devolucion la devolución a guardar
+     * @param prendasId el ID de la prenda relacionada con la devolución
+     * @param cantidad la cantidad de unidades a devolver
+     * @return el nombre de la página de redireccionamiento
+     */
+    @PostMapping("/guardarDevolucion") 
     public String guardarDevolucion(@ModelAttribute("devolucion") Devolucion devolucion,
             @RequestParam("selector") int prendasId,
             @RequestParam("cantidad") int cantidad) {
@@ -65,6 +86,6 @@ public class ControladorAddDevolucion {
         devolucion.setEstado("En Devolución");
         devolucionService.addDevolucion(devolucion); //Afegim el gos passat per paràmetre a la base de dades
 
-        return "redirect:/pedidos"; //Retornem a la pàgina inicial dels gossos mitjançant redirect
+        return "redirect:/pedidos"; 
     }
 }

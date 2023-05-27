@@ -7,11 +7,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <head  th:include="~{Plantillas/plantillaHeader.html :: header}">
     </head>
     <body>
-        <div>
-            <button><a href="/pedidos">Atras</a></button>
-        </div>
+        <a href="/pedidos"><button class="arrow_box">Atras</button></a>
         <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
-        <table>
+        <table class="tablas">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -19,7 +17,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <th>Cliente</th>
                     <th>Estado del pedido</th>
                     <th>Precio total</th>
-                    
+
                 </tr>
             </thead>
             <tbody>
@@ -34,7 +32,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </tr>
             </tbody>
         </table>
-        <div >
+        <div class="busqueda">
             <input type="text" name="search" placeholder="Buscar...">
             <button type="submit"><a>Buscar</a></button>
         </div>

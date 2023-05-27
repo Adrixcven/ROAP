@@ -14,6 +14,8 @@ import cat.copernic.roap.models.Envio;
 import cat.copernic.roap.models.Pedidos;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,17 +27,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ControladorGestionDevolucion {
 
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosDAO al controlador
-    private DevolucionDAO DevolucionDAO; //Atribut per poder utilitzar les funcions CRUD de la interfície GosDAO
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    @Autowired 
+    private DevolucionDAO DevolucionDAO; 
+    @Autowired 
     private DevolucionService devolucionService;
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    @Autowired  
     private ClienteService ClienteService;
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosDAO al controlador
+    @Autowired 
     private PrendaService prendaService;
 
+    /**
+     * Método que genera la respuesta para la ruta "/pedidos/gestiondevolucion".
+     *
+     * @param model el modelo utilizado para enviar datos a la vista
+     * @return la vista "Pedidos/GestionDevolucion"
+     */
     @GetMapping("/pedidos/gestiondevolucion")
     public String inici(Model model) { //Aquest és el mètode que generarà la resposta (recurs a retornar)
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        model.addAttribute("username", username);
 
         
         model.addAttribute("devoluciones", devolucionService.listarDevolucion());
@@ -43,7 +54,12 @@ public class ControladorGestionDevolucion {
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
         return "Pedidos/GestionDevolucion"; //Retorn de la pàgina Login.html.
     }
-
+    /**
+     * Método para eliminar una devolución de pedido.
+     *
+     * @param devolucion la devolución a eliminar
+     * @return la redirección a la página "/pedidos/gestiondevolucion"
+     */
     @GetMapping("/pedidos/eliminardevolucion/{ID}")
     public String eliminarDevolucion(Devolucion devolucion) {
 
@@ -53,7 +69,13 @@ public class ControladorGestionDevolucion {
 
         return "redirect:/pedidos/gestiondevolucion"; //Retornem a la pàgina inicial dels gossos mitjançant redirect
     }
-
+    /**
+     * Método para editar una devolución de pedido.
+     *
+     * @param devolucion la devolución a editar
+     * @param model      el modelo utilizado para enviar datos a la vista
+     * @return la vista "Pedidos/modificardevolucion" con el formulario de edición
+     */
     @GetMapping("/pedidos/editardevolucion/{ID}")
     public String editarDevolucion(Devolucion devolucion, Model model) {
         

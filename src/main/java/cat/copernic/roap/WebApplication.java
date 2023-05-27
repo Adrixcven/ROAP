@@ -31,17 +31,17 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebApplication {
 
     @Autowired
-    private UsuarioAuth UserDetailsService; //Objecte per recuperar l'usuari
+    private UsuarioAuth UserDetailsService; 
 
-    /*AUTENTICACIÓ*/
-     /*Injectem mitjançant @Autowired, els mètodes de la classe AuthenticationManagerBuilder. Mitjançant
-     *aquesta classe cridarem al mètode userDetailsService de la classe AuthenticationManagerBuilder què és el mètode que
-     *realitzarà l'autenticació. Per parm̀etre el sistema li passa l'usuari introduit en el formulari d'autenticació.
-     *Aquest usuari ens el retorna el mètode loadUserByUsername implementat en UsuariService.
-     *
-     *Cridem al mètode passwordEncoder passant-li com a paràmetre un objecte de tipus BCryptPasswordEncoder()
-     *per encriptar el password introduït per l'usuari en el moment d'autenticar-se i comparar-lo
-     *amb l'encriptació del password guardat a la BBDD corresponent a l'username introduït també en l'autenticació.
+    /**
+     * Configura la autenticación del sistema.
+     * Inyecta los métodos de la clase AuthenticationManagerBuilder y utiliza el método userDetailsService para realizar la autenticación.
+     * El usuario introducido en el formulario de autenticación es pasado como parámetro al método loadUserByUsername implementado en UsuariService.
+     * El método passwordEncoder se llama con un objeto de tipo BCryptPasswordEncoder() para encriptar la contraseña introducida por el usuario durante la autenticación
+     * y compararla con la contraseña encriptada almacenada en la base de datos correspondiente al nombre de usuario introducido durante la autenticación.
+     * 
+     * @param auth AuthenticationManagerBuilder utilizado para configurar la autenticación.
+     * @throws Exception si ocurre algún error durante la configuración de la autenticación.
      */
     @Autowired
     public void autenticacio(AuthenticationManagerBuilder auth) throws Exception {
@@ -49,36 +49,35 @@ public class WebApplication {
     }
 
 
-    /*AUTORITZACIÓ*/
-    /*Utilitzem el mètode filterChain per configurar l'accés dels nostre usuaris a l'aplicació, segons
-     *els seus rols, el que s'anomena autoritzar.
-     *Passem com a paràmetre un objecte de la classe HttpSecurity de Spring Security que
-     *és el que ens permetrà cridar als mètodes per configurar les restriccions d'accés a la nostra aplicació.
-    */
-
-   
-    @Bean //L'indica al sistema que el mètode és un Bean, en aquest cas perquè crea un objecte de la classe HttpSecurity
+    /**
+     * Configura la autorización del sistema.
+     * Utiliza el método filterChain para configurar el acceso de los usuarios a la aplicación según sus roles, lo que se conoce como autorización.
+     * Se pasa un objeto de la clase HttpSecurity de Spring Security como parámetro, lo que permite llamar a los métodos para configurar las restricciones de acceso a la aplicación.
+     * 
+     * @param http HttpSecurity utilizado para configurar la autorización.
+     * @return SecurityFilterChain configurado con las restricciones de acceso.
+     * @throws Exception si ocurre algún error durante la configuración de la autorización.
+     */
+    @Bean 
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         return http.csrf().disable().authorizeHttpRequests((requests) -> requests
-        	 //En el nostre cas el mètode hasAnyAuthority fa el mateix que HasAnyRoles, o hasAuthority el mateix que hasRol, però en aquesta nova versió per autoritzar els usuaris, els mètodes
-        	 //dels rols, normalment donen problemes, els Authority, no.
                 .requestMatchers("/pedidos", "/pedidos/**").hasAnyAuthority("1", "2")
                 .requestMatchers("/encargos", "/gestionusers", "/gestionmodulo").hasAuthority("1")
                 .requestMatchers("/encargosProveedor").hasAuthority("3")
-                .requestMatchers("/remember", "/gestionusers/adduser", "/guardarUsuario").permitAll() //URL iniciGossos on pot accedir el rol de veterinari o pacient
-                .anyRequest().authenticated() //Qualsevol altre sol.licitud que no coincideixi amb les regles anteriors cal autenticació
+                .requestMatchers("/remember", "/gestionusers/adduser", "/guardarUsuario", "/**").permitAll()
+                .anyRequest().authenticated() 
                 )
-                .formLogin((form) -> form //Objecte que representa el formulari de login personalitzat que utilitzarem
-                .loginPage("/login")  //Pàgina on es troba el formulari per fer login personalitzat
-                .permitAll() //Permet acceddir a tothom
+                .formLogin((form) -> form 
+                .loginPage("/login")  
+                .permitAll() 
                 .defaultSuccessUrl("/inicial")
                 )
                 .httpBasic()
                 .and()
                 .logout()
                 .and()
-                .exceptionHandling((exception) -> exception //Quan es produeix una excepcció 403, accés denegat, mostrem el nostre missatge
+                .exceptionHandling((exception) -> exception 
                 .accessDeniedPage("/errors/error403"))
                 .build();
     }

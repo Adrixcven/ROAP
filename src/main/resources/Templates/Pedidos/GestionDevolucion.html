@@ -5,13 +5,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 <html>
     <head th:include="~{Plantillas/plantillaHeader.html :: header}">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#searchBtn').click(function () {
+                    var inputID = $('#searchInput').val(); // Obtener el valor del campo de búsqueda
+                    $('tbody tr').hide(); // Ocultar todas las filas de la tabla
+
+                    // Mostrar solo las filas que coincidan con la ID buscada
+                    $('tbody tr').filter(function () {
+                        return $(this).find('td:first').text() === inputID;
+                    }).show();
+                });
+            });
+        </script>
     </head>
     <body>
         <div>
-            <button><a href="/pedidos">Atras</a></button>
+            <a href="/pedidos"><button class="arrow_box">Atras</button></a>
         </div>
         <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
-        <table>
+        <table class="tablas">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -31,9 +45,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </tr>
             </tbody>
         </table>
-        <div >
-            <input type="text" name="search" placeholder="Buscar...">
-            <button type="submit"><a>Buscar</a></button>
+        <div class="busqueda">
+            <input type="text" name="search" id="searchInput" placeholder="Buscar...">
+            <button id="searchBtn" type="submit"><a>Buscar</a></button>
         </div>
 
     </body>

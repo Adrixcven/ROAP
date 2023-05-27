@@ -19,6 +19,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ControladorPaginaPrincipalPedidos {
 
+    /**
+     * Retorna la vista principal de la página de pedidos.
+     *
+     * @param model el objeto Model que se utiliza para pasar datos a la vista.
+     * @return la cadena que representa la vista "Pedidos/PaginaPrincipalPedidos".
+     */
     @GetMapping("/pedidos")
     public String inici(Model model) { //Aquest és el mètode que generarà la resposta (recurs a retornar)
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.

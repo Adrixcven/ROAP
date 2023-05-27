@@ -3,42 +3,50 @@
     </head>
     <body>
         <div>
-            <button><a href="/pedidos/gestiondevolucion">Atras</a></button>
+            <a href="/pedidos/gestiondevolucion"><button class="arrow_box">Atras</button></a>
         </div>
         <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
-        <h2>Modificar Devolución</h2>
-        <form th:action="@{/modificardevolucion}"  method="post" th:object="${devolucion}">
-            <label for="prenda">Producto:</label>
-            <select id="selector" name="selector">
-                <option th:each="prenda : ${prenda}" th:value="${prenda.id}" th:text="${prenda.nombre}"></option>
-            </select>
+        <div class="vertical-div">
+            <h2>Modificar Devolución</h2>
+            <form th:action="@{/modificardevolucion}"  method="post" th:object="${devolucion}" class="form">
+                <p>
+                <label for="prenda">Producto:</label>
+                <select id="selector" name="selector">
+                    <option th:each="prenda : ${prenda}" th:value="${prenda.id}" th:text="${prenda.nombre}"></option>
+                </select>
+                </p>
+                <p>
+                <label for="cantidad">Cantidad</label>
+                <input type="number" id="cantidad" name="cantidad"  th:field="*{cantidad}" required><br>
+                <span th:if="${#fields.hasErrors('cantidad')}" th:errors="*{cantidad}" class="red-text"/>
+                </p>
+                <p>
+                <fieldset>
+                    <legend>Estado:</legend>
+                    <label>
+                        <input type="radio" id="completado" name="radio" value="Completado" th:field="*{estado}"> Completado
+                    </label>
+                    <label>
+                        <input type="radio" id="envio" name="radio" value="En Envio" th:field="*{estado}"> En Envio
+                    </label>
+                    <label>
+                        <input type="radio" id="cancelado" name="radio" value="Cancelado" th:field="*{estado}"> Cancelado
+                    </label>
+                </fieldset>
+                <span th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}" class="red-text"/>
+                </p>
+                <p>
+                <label for="cliente">Cliente:</label>
+                <select name="cliente">
+                    <option th:each="cliente : ${cliente}" th:value="${cliente.DNI}" th:text="${cliente.nombre}"></option>
+                </select>
+                </p>
+                <input type="hidden" id="quantity" th:field="${quantity}"/>
+                <input type="hidden" th:field="*{fecha}"/>
+                <input type="hidden" th:field="*{ID}"/>
 
-            <label for="cantidad">Cantidad</label>
-            <input type="number" id="cantidad" name="cantidad"  th:field="*{cantidad}" required><br>
-            <fieldset>
-                <legend>Estado:</legend>
-                <label>
-                    <input type="radio" id="completado" name="radio" value="Completado" th:field="*{estado}"> Completado
-                </label>
-                <label>
-                    <input type="radio" id="envio" name="radio" value="envio" th:field="*{estado}"> En Envio
-                </label>
-                <label>
-                    <input type="radio" id="cancelado" name="radio" value="cancelado" th:field="*{estado}"> Cancelado
-                </label>
-            </fieldset>
-            <span th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"/>
-
-            <label for="cliente">Cliente:</label>
-            <select name="cliente">
-                <option th:each="cliente : ${cliente}" th:value="${cliente.DNI}" th:text="${cliente.nombre}"></option>
-            </select>
-            <input type="hidden" id="quantity" th:field="${quantity}"/>
-            <input type="hidden" th:field="*{fecha}"/>
-            <input type="hidden" th:field="*{ID}"/>
-
-            <input type="submit" value="Guardar">
-        </form>
-
+                <input type="submit" value="Guardar">
+            </form>
+        </div>
     </body>
 </html>

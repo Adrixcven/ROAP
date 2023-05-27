@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html>
-    <head>
+    <head th:include="~{Plantillas/plantillaHeader.html :: header}">
         <meta charset="UTF-8">
         <title>Modificar Usuario</title>
     </head>
     <body>
         <div>
-            <button><a th:href="@{/gestionusers}">Atras</a></button>
+            <a th:href="@{/gestionusers}"><button class="arrow_box">Atras</button></a>
         </div>
-        <div style="display:flex; align-items:center; margin-top:20px;">
-            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
-                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
-            </div>
-            <p>Nombre</p>
+        <div class="user">
+            <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50' class="imgusuario"/>
+            <p>[[${username}]]</p>
         </div>
-        <form th:action="@{/guardarUsuario}" method="post" th:object="${usuarios}">
-            <label for="dni">DNI:</label>
-            <input type="text" id="dni" name="dni" th:field="*{DNI}" required><br>
+        <div class="vertical-div">
+            <h2>Modificar Usuario</h2>
+            <form th:action="@{/guardarUsuario}" method="post" th:object="${usuarios}" class="form">
+                <label for="dni">DNI:</label>
+                <input type="text" id="dni" name="dni" th:field="*{DNI}" required><br>
 
-            <label for="nombre" >Nombre:</label>
-            <input type="text" id="nombre" name="nombre" th:field="*{nombre}" required><br>
+                <label for="nombre" >Nombre:</label>
+                <input type="text" id="nombre" name="nombre" th:field="*{nombre}" required><br>
 
-            <label for="edad">Edad:</label>
-            <input type="number" id="edad" name="edad" th:field="*{edat}" required><br>
+                <label for="edad">Edad:</label>
+                <input type="number" id="edad" name="edad" th:field="*{edat}" required><br>
 
-            <label for="email" >Email:</label>
-            <input type="email" id="email" name="email" th:field="*{email}" required><br>
+                <label for="email" >Email:</label>
+                <input type="email" id="email" name="email" th:field="*{email}" required><br>
 
-            <label for="telefono">Teléfono:</label>
-            <input type="tel" id="telefono" name="telefono" th:field="*{telefono}" required><br>
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" th:field="*{telefono}" required><br>
 
-            <label for="direccion">Dirección Postal:</label>
-            <input type="text" id="direccion" name="direccion" th:field="*{dpostal}" required><br>
+                <label for="direccion">Dirección Postal:</label>
+                <input type="text" id="direccion" name="direccion" th:field="*{dpostal}" required><br>
 
-            <label for="selector">Selector:</label>
-            <select id="selector" name="selector" th:field="*{rol}" >
-                <option value=1 >Administrador</option>
-                <option value=2 >Proveedor</option>
-                <option value=3 >Vendedor</option>
-            </select>
+                <label for="selector">Selector:</label>
+                <select id="selector" name="selector" th:field="*{rol}" >
+                    <option value=1 >Administrador</option>
+                    <option value=2 >Proveedor</option>
+                    <option value=3 >Vendedor</option>
+                </select>
 
-            <input type="submit" value="Guardar">
-        </form>
+                <input type="submit" value="Guardar">
+            </form>
+        </div>
+
 
     </body>
 </html>

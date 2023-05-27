@@ -53,31 +53,23 @@ public class ControladorModificarPedidos {
     public String guardarPedido(@ModelAttribute("pedidos") Pedidos pedidos,
             @RequestParam("selector") int productoId,
             @RequestParam("cantidad") int cantidad, BindingResult result) {
-        // Obtener el producto seleccionado de la tabla productos
+        // Actualizar las unidades disponibles del producto
         Prenda prenda = prendadao.findByid(productoId);
         int unidadesDisponibles = prenda.getUnidades() - cantidad;
         prenda.setUnidades(unidadesDisponibles);
         prendaService.anadirPrenda(prenda);
+        //Crear un nuevo pedido en la tabla pedidos
         float preciototal = prenda.getPrecio() * cantidad;
         int preciototali = (int) preciototal;
         pedidos.setPrecioTotal(preciototali);
         PedidosService.addPedidos(pedidos);
-        // Actualizar las unidades disponibles del producto
-        ProductAdded productoAnadido = new ProductAdded();
-        productoAnadido.setAddproductid(pedidos.getID());
-        productoAnadido.setPrendaid(productoId);
-        productoAnadido.setPedidoid(pedidos.getID());
-        productoAnadido.setCantidad(cantidad);
-        ProductAddService.addProductAdd(productoAnadido);
-        
-        
-
-        // Crear un nuevo pedido en la tabla pedidos
-        
-
         // Crear un nuevo registro en la tabla productosañadidos
-        
-
+        ProductAdded productoadd = new ProductAdded();
+        productoadd.setAddproductid(pedidos.getID());
+        productoadd.setPrendaid(productoId);
+        productoadd.setPedidoid(pedidos.getID());
+        productoadd.setCantidad(cantidad);
+//        ProductAddService.addProductAdd(productoadd);  
         // Redirigir al usuario a una página de confirmación
         return "redirect:/pedidos";
     }

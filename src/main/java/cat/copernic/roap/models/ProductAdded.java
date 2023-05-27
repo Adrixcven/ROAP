@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import java.io.Serializable;
 import java.util.Date;
@@ -22,21 +23,22 @@ import lombok.Data;
  */
 @Data
 @Entity
-@Table(name = "Productoanadido")
+@Table(name = "Product_add")
 public class ProductAdded  implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
     @Id
+    @Column(name = "addproductid")
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int addproductid;
     
     @Column(name = "prendaid")
-    @NotEmpty(message = "{NotEmpty.Productoañadido.productoid}")
+    @NotNull(message = "{NotEmpty.Productoañadido.productoid}")
     private int prendaid;
 
     @Column(name = "pedidoid")
-    @NotEmpty(message = "{NotEmpty.Productoañadido.pedidoid}")
+    @NotNull(message = "{NotEmpty.Productoañadido.pedidoid}")
     private int pedidoid;
     
     @Column(name = "cantidad")

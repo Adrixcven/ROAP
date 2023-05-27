@@ -29,29 +29,39 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 public class ControladorModificarDevolucion {
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+
+    @Autowired 
     private PrendaDAO prendadao;
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosDAO al controlador
+    @Autowired 
     private PrendaService prendaService;
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    @Autowired 
     private DevolucionService devolucionService;
-    
+
+    /**
+     * Modifica una devolución y realiza las operaciones correspondientes.
+     *
+     * @param devolucion La devolución a modificar.
+     * @param productoId El ID del producto asociado a la devolución.
+     * @param cantidad La cantidad a añadir al stock del producto.
+     * @param error Los errores de validación, si los hay.
+     * @return La página de gestión de devoluciones en caso de éxito, o la
+     * página de agregar cliente si hay errores de validación.
+     */
     @PostMapping("/modificardevolucion")
     public String modificardevolucio(@Valid @ModelAttribute("devolucion") Devolucion devolucion,
             @RequestParam("selector") int productoId,
             @RequestParam("cantidad") int cantidad,
-            Errors error){
-        //Aquest és el mètode que generarà la resposta (recurs a retornar)
-        if(error.hasErrors()){ 
-             return "Pedidos/AddCliente"; 
+            Errors error) {
+        if (error.hasErrors()) {
+            return "Pedidos/AddCliente";
         }
         Prenda prenda = prendadao.findByid(productoId);
         int unidadesDisponibles = prenda.getUnidades() + cantidad;
         prenda.setUnidades(unidadesDisponibles);
         prendaService.anadirPrenda(prenda);
         devolucionService.addDevolucion(devolucion);
-        
+
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
-        return "redirect:/pedidos/gestiondevolucion"; //Retorn de la pàgina Login.html.
+        return "redirect:/pedidos/gestiondevolucion"; 
     }
 }

@@ -3,47 +3,62 @@
     </head>
     <body>
         <div>
-            <button><a href="/pedidos/gestionpedidos">Atras</a></button>
+            <a href="/pedidos/gestionpedidos"><button class="arrow_box">Atras</button></a>
         </div>
         <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
-        <h2>Modificar Pedido</h2>
-        <form th:action="@{/modificadopedido}" method="post" th:object="${pedidos}">
-            <label for="prendas">Producto:</label>
-            <select id="selector" name="selector">
-                <option th:each="prendas : ${prendas}" th:value="${prendas.id}" th:text="${prendas.nombre}"></option>
-            </select>
+        <div class="vertical-div">
+            <h2>Modificar Pedido</h2>
+            <form th:action="@{/modificadopedido}" method="post" th:object="${pedidos}" class="form">
+                <p>
+                <label for="prendas">Producto:</label>
+                <select id="selector" name="selector">
+                    <option th:each="prendas : ${prendas}" th:value="${prendas.id}" th:text="${prendas.nombre}"></option>
+                </select>
+                </p>
+                <p>
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" name="cantidad" min="1" max="100" required>
+                </p>
+                <p>
+                <label for="precio_total">Precio Total:</label>
+                <input type="number" id="precio_total" name="precio_total" th:field="*{precioTotal}" readonly>
+                <span th:if="${#fields.hasErrors('estado')}" th:errors="*{precioTotal}" class="red-text"/>
+                </p>
+                <p>
+                <fieldset>
+                    <legend>Estado:</legend>
+                    <label>
+                        <input type="radio" id="completado" name="radio" value="Completado" th:field="*{estado}"> Completado
+                    </label>
+                    <label>
+                        <input type="radio" id="envio" name="radio" value="envio" th:field="*{estado}"> En proceso
+                    </label>
+                    <label>
+                        <input type="radio" id="cancelado" name="radio" value="cancelado" th:field="*{estado}"> Cancelado
+                    </label>
+                </fieldset>
+                <span th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}" class="red-text"/>
+                </p>
+                <p>
+                <input type="hidden" th:field="*{fecha}"/>
+                <span th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}" class="red-text"/>
+                </p>
+                <p>
+                <input type="hidden" th:field="*{cliente}"/>
+                <span th:if="${#fields.hasErrors('cliente')}" th:errors="*{cliente}" class="red-text"/>
+                </p>
+                <p>
+                <input type="hidden" th:field="*{vendedor}"/>
+                <span th:if="${#fields.hasErrors('vendedor')}" th:errors="*{vendedor}" class="red-text"/>
+                </p>
+                <p>
+                <input type="hidden" th:field="*{ID}"/>
+                <span th:if="${#fields.hasErrors('ID')}" th:errors="*{ID}" class="red-text"/>
+                </p>
+                <input type="submit" value="Guardar Pedido">
+            </form>
+        </div>
 
-            <label for="cantidad">Cantidad:</label>
-            <input type="number" id="cantidad" name="cantidad" min="1" max="100" required>
-            <label for="precio_total">Precio Total:</label>
-            <input type="number" id="precio_total" name="precio_total" th:field="*{precioTotal}" readonly>
-            <span th:if="${#fields.hasErrors('estado')}" th:errors="*{precioTotal}"/>
-            <br>
-
-            <fieldset>
-                <legend>Estado:</legend>
-                <label>
-                    <input type="radio" id="completado" name="radio" value="Completado" th:field="*{estado}"> Completado
-                </label>
-                <label>
-                    <input type="radio" id="envio" name="radio" value="envio" th:field="*{estado}"> En proceso
-                </label>
-                <label>
-                    <input type="radio" id="cancelado" name="radio" value="cancelado" th:field="*{estado}"> Cancelado
-                </label>
-            </fieldset>
-            <span th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"/>
-            <input type="hidden" th:field="*{fecha}"/>
-            <span th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"/>
-            <input type="hidden" th:field="*{cliente}"/>
-            <span th:if="${#fields.hasErrors('cliente')}" th:errors="*{cliente}"/>
-            <input type="hidden" th:field="*{vendedor}"/>
-            <span th:if="${#fields.hasErrors('vendedor')}" th:errors="*{vendedor}"/>
-            <input type="hidden" th:field="*{ID}"/>
-            <span th:if="${#fields.hasErrors('ID')}" th:errors="*{ID}"/>
-
-            <input type="submit" value="Guardar Pedido">
-        </form>
 
     </body>
 </html>

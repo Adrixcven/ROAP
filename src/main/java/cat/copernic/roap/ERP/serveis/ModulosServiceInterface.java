@@ -17,11 +17,32 @@ import java.util.List;
 
 public interface ModulosServiceInterface {
     
+    /**
+     * Retorna una lista de todos los módulos existentes.
+     *
+     * @return Una lista de objetos Modulos que representa los módulos existentes.
+     */
     public List<Modulos> listarModulos(); 
     
+    /**
+     * Agrega un nuevo módulo.
+     *
+     * @param modulo El objeto Modulos que se desea agregar.
+     */
     public void addModulos(Modulos usuario); 
     
+    /**
+     * Elimina un módulo existente.
+     *
+     * @param modulo El objeto Modulos que se desea eliminar.
+     */
     public void eliminarModulos(Modulos usuario); 
     
+    /**
+     * Busca un módulo en base a sus propiedades.
+     *
+     * @param modulo El objeto Modulos que contiene las propiedades de búsqueda.
+     * @return El objeto Modulos que coincide con los criterios de búsqueda, o null si no se encuentra.
+     */
     public Modulos buscarModulos(Modulos usuario); 
 }

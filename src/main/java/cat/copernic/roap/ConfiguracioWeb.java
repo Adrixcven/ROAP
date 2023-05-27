@@ -15,14 +15,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration //Indica al sistema que és una classe de configuració
 public class ConfiguracioWeb implements WebMvcConfigurer {
 
-    /*En aquest mètode definirem les pàgines que mostrarem a l'usuari quan es produeixi un esdeveniment,
-     *sense passar per un controlador.
-    */
+    /**
+     * En este método se definen las páginas que se mostrarán al usuario cuando
+     * ocurra un evento, sin pasar por un controlador.
+     */
     @Override
     public void addViewControllers(ViewControllerRegistry registre) {
-        registre.addViewController("/inicial").setViewName("index"); //Mostrem la pàgina incial que reanomenen com a index, quan encara no ens hem autenticat
-        registre.addViewController("/login"); //Mostrem la pàgina login quan l'usuari no ha pogut autenticar-se
-        registre.addViewController("/errors/error403").setViewName("/errors/error403"); //Mostrem la pàgina error403 quan l'usuari no pot accedir a una pàgina determinada.
+        registre.addViewController("/inicial").setViewName("index"); // Muestra la página inicial, que se renombra como "index", cuando el usuario no se ha autenticado aún.
+        registre.addViewController("/login"); // Muestra la página de inicio de sesión cuando el usuario no ha podido autenticarse.
+        registre.addViewController("/errors/error403").setViewName("/errors/error403"); // Muestra la página de error403 cuando el usuario no puede acceder a una página específica.
     }
 
 }

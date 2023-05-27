@@ -15,12 +15,32 @@ import java.util.List;
 
 //Interface on definirem els mètodes CRUD personalitzats per la nostra aplicació
 public interface UsuariosServiceInterface {
-    
-    public List<Usuario> listarUsuario(); 
-    
-    public void addUsuario(Usuario usuario); 
-    
-    public void eliminarUsuario(Usuario usuario); 
-    
-    public Usuario buscarUsuario(Usuario usuario); 
+     /**
+     * Obtiene una lista de todos los usuarios.
+     *
+     * @return Una lista de objetos Usuario que representa a todos los usuarios.
+     */
+    public List<Usuario> listarUsuario();
+
+    /**
+     * Agrega un nuevo usuario.
+     *
+     * @param usuario El objeto Usuario que se va a agregar.
+     */
+    public void addUsuario(Usuario usuario);
+
+    /**
+     * Elimina un usuario existente.
+     *
+     * @param usuario El objeto Usuario que se va a eliminar.
+     */
+    public void eliminarUsuario(Usuario usuario);
+
+    /**
+     * Busca un usuario basado en el objeto Usuario proporcionado.
+     *
+     * @param usuario El objeto Usuario utilizado para buscar.
+     * @return El objeto Usuario encontrado o null si no se encuentra.
+     */
+    public Usuario buscarUsuario(Usuario usuario);
 }

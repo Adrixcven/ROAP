@@ -12,6 +12,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  */
 public class EncriptadorContrasenya {
 
+    /**
+     * Punto de entrada del programa.
+     *
+     * @param args los argumentos de la línea de comandos
+     */
     public static void main(String[] args) {
 
         var password = "123";
@@ -19,6 +24,12 @@ public class EncriptadorContrasenya {
         System.out.println("Contrasenya encriptada:" + encriptarContrasenya(password));
     }
 
+    /**
+     * Encripta una contraseña utilizando BCryptPasswordEncoder.
+     *
+     * @param password la contraseña a encriptar
+     * @return la contraseña encriptada
+     */
     public static String encriptarContrasenya(String password) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         return encoder.encode(password);

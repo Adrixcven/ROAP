@@ -18,6 +18,8 @@ import cat.copernic.roap.models.ProductAdded;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,38 +30,52 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ControladorGestionPedidos {
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    @Autowired 
     private EnvioDAO EnvioDAO;
 
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    @Autowired  
     private PedidosService pedidosService;
     
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    @Autowired   
     private EnvioService envioService;
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    @Autowired   
     private ProductAddedDAO productAddedDAO;
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    @Autowired 
     private ProductAddService productAddService;
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    @Autowired 
     private PrendaService PrendaService;
     
-
+    /**
+     * Método que genera la respuesta para la ruta "/pedidos/gestionpedidos".
+     *
+     * @param model el modelo utilizado para pasar datos a la vista
+     * @return la vista "Pedidos/GestionPedidos"
+     */
     @GetMapping("/pedidos/gestionpedidos")
     public String inici(Model model) { //Aquest és el mètode que generarà la resposta (recurs a retornar)
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        model.addAttribute("username", username);
         model.addAttribute("pedidos", pedidosService.listarPedidos());
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
         return "Pedidos/GestionPedidos"; //Retorn de la pàgina Login.html.
     }
-
+    /**
+     * Método para eliminar un pedido.
+     *
+     * @param pedidos el pedido a eliminar
+     * @return redirige a la ruta "/pedidos/gestionpedidos"
+     */
     @GetMapping("/pedidos/eliminarpedidos/{ID}")
     public String eliminarPedido(Pedidos pedidos) {
 
         /*Eliminem el gos passat per paràmetre, al qual li correspón l'idgos de @GetMapping mitjançant 
          *el mètode eliminarGos de la capa de servei.*/
-        int a = pedidos.getID();
-//        ProductAdded productoadded = productAddedDAO.findBypedidoid(a);
+        
+        int idpedidos = pedidos.getID();
+//        ProductAdded productoadded = productAddedDAO.findBypedidoid(idpedidos);
 //        productAddService.eliminarProductAdd(productoadded);
-        Envio envio = EnvioDAO.findByIdpedido(a);
+        Envio envio = EnvioDAO.findByIdpedido(idpedidos);
         envioService.eliminarEnvio(envio);
         pedidosService.eliminarPedidos(pedidos);
         
@@ -67,6 +83,13 @@ public class ControladorGestionPedidos {
 
         return "redirect:/pedidos/gestionpedidos"; //Retornem a la pàgina inicial dels gossos mitjançant redirect
     }
+    /**
+     * Método para editar un pedido.
+     *
+     * @param pedidos el pedido a editar
+     * @param model   el modelo utilizado para pasar datos a la vista
+     * @return la vista "Pedidos/ModificarPedidos"
+     */
     @GetMapping("/pedidos/editarpedidos/{ID}")
     public String editarPedido(Pedidos pedidos, Model model) {
 

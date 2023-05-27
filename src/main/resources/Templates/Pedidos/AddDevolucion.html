@@ -1,31 +1,39 @@
 <html>
     <head th:include="~{Plantillas/plantillaHeader.html :: header}">
     </head>
-    <body>
+    <body class="d-flex flex-column h-100">
         <div>
-            <button><a href="/pedidos">Atras</a></button>
+            <a th:href="@{/pedidos}"><button class="arrow_box">Atras</button></a>
+        </div>
+
+        <div>
+            <h2>Añadir Devolución</h2>
+            <form th:action="@{/guardarDevolucion}" method="post" th:object="${devolucion}" class="form">
+                <p>
+                    <label for="producto">Producto:</label>
+                    <select id="selector" name="selector">
+                        <option th:each="prendas : ${prendas}" th:value="${prendas.id}" th:text="${prendas.nombre}"></option>
+                    </select>
+                </p>
+                <p>
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" name="fecha" th:field="*{fecha}" required>
+                </p>
+                <p>
+                    <label for="cantidad">Cantidad:</label>
+                    <input type="number" id="cantidad" name="cantidad" required>
+                </p>
+                <p>
+                    <label for="cliente">Cliente:</label>
+                    <select name="cliente">
+                        <option th:each="cliente : ${cliente}" th:value="${cliente.DNI}" th:text="${cliente.nombre}"></option>
+                    </select>
+                </p>
+                <input type="submit" value="Guardar">
+            </form>
         </div>
         <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
-        <h2>Añadir Devolución</h2>
-        <form th:action="@{/guardarDevolucion}" method="post" th:object="${devolucion}">
-            <label for="producto">Producto:</label>
-            <select id="selector" name="selector">
-                <option th:each="prendas : ${prendas}" th:value="${prendas.id}" th:text="${prendas.nombre}"></option>
-            </select>
-            
-            <label for="fecha">Fecha:</label><br>
-            <input type="date" id="fecha" name="fecha" th:field="*{fecha}"><br>
 
-            <label for="cantidad">Cantidad</label>
-            <input type="number" id="cantidad" name="cantidad" required><br>
-
-            <label for="cliente">Cliente:</label>
-            <select name="cliente">
-                <option th:each="cliente : ${cliente}" th:value="${cliente.DNI}" th:text="${cliente.nombre}"></option>
-            </select>
-
-            <input type="submit" value="Guardar">
-        </form>
 
     </body>
 </html>

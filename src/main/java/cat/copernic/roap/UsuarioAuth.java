@@ -32,18 +32,26 @@ public class UsuarioAuth implements UserDetailsService {
     @Autowired
     private UsuarioDAO usuarioDAO;
 
+    /**
+     * Carga los detalles de un usuario por su nombre de usuario.
+     *
+     * @param username el nombre de usuario del usuario a cargar
+     * @return los detalles del usuario como un objeto UserDetails
+     * @throws UsernameNotFoundException si no se encuentra ningún usuario con el nombre de usuario proporcionado
+     */
     @Override 
    @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
+        // Busca el usuario por su DNI en el UsuarioDAO
         Usuario usuari = usuarioDAO.findByDNI(username);
 
+        // Si no se encuentra ningún usuario, lanza una excepción
         if (usuari == null) {
-
             throw new UsernameNotFoundException(username);
-
         }
         
-        return new User(usuari.getNombre(), usuari.getContra(), Collections.singletonList(new SimpleGrantedAuthority(String.valueOf(usuari.getRol()))));
+        // Crea y devuelve un objeto User que implementa UserDetails, utilizando los detalles del usuario encontrado
+        return new User(usuari.getNombre(), usuari.getContra(), Collections.singletonList(new SimpleGrantedAuthority(String.valueOf(usuari.getRol()))));// lista de roles del usuario
     }
 }

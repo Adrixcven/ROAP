@@ -17,9 +17,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface PrendaDAO extends JpaRepository<Prenda, Integer> {
-
-    // ...
-
+    Prenda findByid(int id);
     @Query("SELECT COUNT(p) > 0 FROM Prenda p WHERE p.categoria = :idCategoria")
     boolean existenPrendasPorCategoria(@Param("idCategoria") int idCategoria);
 }

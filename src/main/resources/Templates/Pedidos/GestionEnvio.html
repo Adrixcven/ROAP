@@ -8,10 +8,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <div>
-            <button><a href="/pedidos">Atras</a></button>
+            <a href="/pedidos"><button class="arrow_box">Atras</button></a>
         </div>
         <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
-        <table>
+        <table class="tablas">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -33,7 +33,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </tr>
             </tbody>
         </table>
-        <div >
+        <div class="busqueda">
             <input type="text" name="search" placeholder="Buscar...">
             <button type="submit">Buscar</button>
         </div>

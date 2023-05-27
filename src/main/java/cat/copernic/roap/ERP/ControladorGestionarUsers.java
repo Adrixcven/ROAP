@@ -12,6 +12,8 @@ import cat.copernic.roap.models.Pedidos;
 import cat.copernic.roap.models.Usuario;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,30 +27,52 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class ControladorGestionarUsers {
     @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosDAO al controlador
     private UsuarioDAO UsuarioDAO;
+    
     @Autowired
     private UsuariosService usuariosservice;
+    
+    /**
+     * Método para iniciar la gestión de usuarios.
+     *
+     * @param model el modelo utilizado para la vista
+     * @return el nombre de la página de gestión de usuarios
+     */
     @GetMapping("/gestionusers")
     public String inici(Model model){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        model.addAttribute("username", username);
         model.addAttribute("usuarios", usuariosservice.listarUsuario());
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
         return "GestionUsers"; //Retorn de la pàgina Login.html.
     }
+    
+    /**
+     * Método para editar un usuario.
+     *
+     * @param usuario el usuario a editar
+     * @param model el modelo utilizado para la vista
+     * @return el nombre de la página de modificación de usuario
+     */
     @GetMapping("/gestionusers/editaruser/{DNI}")
     public String editar(Usuario usuario, Model model) {
-
-        /*Cerquem la prenda passat per paràmetre, al qual li correspón l'id de @GetMapping mitjançant 
-         *el mètode buscarPrenda de la capa de servei.*/
+        
         model.addAttribute("usuarios", usuariosservice.buscarUsuario(usuario));
 
-        return "ModificarUser"; //Retorna la pàgina amb el formulari de les dades de la prenda
+        return "ModificarUser"; 
     }
+    
+    /**
+     * Método para eliminar un usuario.
+     *
+     * @param usuario el usuario a eliminar
+     * @return el nombre de la página de redirección a la gestión de usuarios
+     */
     @GetMapping("/gestionusers/eliminaruser/{DNI}")
     public String eliminarUser(Usuario usuario) {
 
-        /*Eliminem el gos passat per paràmetre, al qual li correspón l'idgos de @GetMapping mitjançant 
-         *el mètode eliminarGos de la capa de servei.*/
         usuariosservice.eliminarUsuario(usuario);
 
-        return "redirect:/gestionusers"; //Retornem a la pàgina inicial dels gossos mitjançant redirect
+        return "redirect:/gestionusers";
     }
 }

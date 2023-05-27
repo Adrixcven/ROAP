@@ -1,14 +1,12 @@
 <html>
-    <head>
+    <head th:include="~{Plantillas/plantillaHeader.html :: header}">
         <title>Login</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>
-            <p>
-                <img th:src="@{'/imatges/logo.png'}" width='50' height='50'></img>
-            </p>
+        <div class="campologin">
+            <img th:src="@{'/imatges/logo.png'}" width='50' height='50'></img>
             <form th:action="@{/login}" method="post" >
                 <label for="usuario" >Usuario:</label>
                 <input type="text" id="username" name="username" required><br>
@@ -18,8 +16,8 @@
 
                 <input type="submit" value="Iniciar Sesión">
             </form>
-            <button><a href="/remember" >Recordar contraseña</a></button>
-            <button><a href="/gestionusers/adduser" >Crear Cuenta</a></button>
+            <a href="/remember"><button class="botoneslogin">Recordar contraseña</button></a>
+            <a href="/gestionusers/adduser"><button class="botoneslogin">Crear Cuenta</button></a>
         </div>
     </body>
 </html>
