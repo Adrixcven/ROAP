@@ -4,11 +4,11 @@
  */
 package cat.copernic.roap.Encargos.controladores;
 
+import cat.copernic.roap.Encargos.serveis.CategoriaService;
 import cat.copernic.roap.Encargos.serveis.PrendaService;
 import cat.copernic.roap.models.Categorias;
 import cat.copernic.roap.models.Prenda;
 import cat.copernic.roap.models.Producto;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,34 +20,32 @@ import org.springframework.web.bind.annotation.PostMapping;
  * @author mfg20
  */
 @Controller
-public class ControladorAñadirPrenda {
-
+public class ControladorAñadirCategoria {
     @Autowired //Anotació que injecta tots els mètodes i possibles dependències de PrendaService al controlador    
-    private PrendaService prendaService;
-
-    @GetMapping("/añadirPrenda")
-    public String inici(Model model, Prenda prenda) {
-        List<Categorias> categorias = prendaService.listarCategorias();
-        model.addAttribute("categorias", categorias);
-        return "Encargos/AñadirPrenda";
+    private CategoriaService categoriaService;
+    @GetMapping("/añadirCategoria")
+    public String inici(Model model, Categorias categorias) { //Aquest és el mètode que generarà la resposta (recurs a retornar)
+        //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
+        //model.addAttribute("categorias", categoriaService.listarCategorias());
+        return "Encargos/añadirCategoria"; //Retorn de la pàgina Login.html.
     }
+    public String crearFormularioCategoria(Categorias categorias) {
 
-    public String crearFormularioPrenda(Prenda prenda) {
-
-        return "Encargos/AñadirPrenda"; //Retorna la pàgina on es mostrarà el formulari de les dades dels gos
+        return "Encargos/añadirCategoria"; //Retorna la pàgina on es mostrarà el formulari de les dades dels gos
     }
-
+    
     /*Definim el mètode per assignar els valors introduïts en el formulari a l'objecte prenda
      *passat com a paràmetre.
      *
      *L'anotació @PostMapping, indica al sistema que el mètode que fem servir per enviar les dades és
      *post. Com a paràmetre hem de passar el valor de l'action del formulari, d'aquesta manera el sistema 
      *identifica el mètode al qual ha d'enviar les dades introduïdes mitjançant el formulari.
-     */
-    @PostMapping("/guardarPrenda")
-    public String guardarPrenda(Prenda prenda) {
-        prendaService.anadirPrenda(prenda);
-        return "redirect:/gestionarPrendas";
-    }
+    */   
+    @PostMapping("/guardarCategoria") //action=guardarPrenda
+    public String guardarCategoria(Categorias categorias) {
 
+        categoriaService.anadirCategoria(categorias); //Afegim la prenda passat per paràmetre a la base de dades
+
+        return "redirect:/gestionarCategoria"; //Retornem a la pàgina inicial de encargosProveedor mitjançant redirect
+    }
 }

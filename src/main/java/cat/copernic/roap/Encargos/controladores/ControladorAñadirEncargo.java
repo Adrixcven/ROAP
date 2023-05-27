@@ -4,10 +4,17 @@
  */
 package cat.copernic.roap.Encargos.controladores;
 
+import cat.copernic.roap.Encargos.serveis.EncargoService;
 import cat.copernic.roap.models.Encargo;
+import cat.copernic.roap.models.Prenda;
 import java.util.ArrayList;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  *
@@ -15,28 +22,27 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ControladorAñadirEncargo {
-    @GetMapping("/añadirEncargos")
-    public String inici(){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
-        var encargo = new Encargo();
-        encargo.setUnidades(1);
-        encargo.setPrecio(4);
-        encargo.setTipo("Camiseta");
-        encargo.setEstado("OK");
-        encargo.setTalla("L");
-        
-        var encargo1 = new Encargo();
-        encargo.setUnidades(4);
-        encargo.setPrecio(15);
-        encargo.setTipo("Pantalón");
-        encargo.setEstado("OK");
-        encargo.setTalla("S");
-        
-        var encargos = new ArrayList<Encargo>();
-        encargos.add(encargo);
-        encargos.add(encargo1);
-        //Enviem l'ArrayList de gossos
 
-        //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
-        return "Encargos/AñadirEncargo"; //Retorn de la pàgina Login.html.
+    @Autowired
+    private EncargoService encargoService;
+
+    @GetMapping("/añadirEncargo")
+    public String iniciar(Model model) {
+        // Crear una instancia de Encargo y agregarla al modelo
+        Encargo encargo = new Encargo();
+        model.addAttribute("encargo", encargo);
+
+        // Obtener prendas disponibles para mostrar en la vista
+        List<Prenda> prendasDisponibles = encargoService.listarPrenda();
+        model.addAttribute("prendasDisponibles", prendasDisponibles);
+
+        return "Encargos/AñadirEncargo";
     }
+
+    @PostMapping("/guardarEncargo")
+    public String guardarEncargo(@ModelAttribute("encargo") Encargo encargo) {
+        encargoService.anadirEncargo(encargo);
+        return "redirect:/consultarEncargo";
+    }
+
 }

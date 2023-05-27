@@ -5,10 +5,17 @@
 package cat.copernic.roap.Encargos.controladores;
 
 import cat.copernic.roap.DAO.CategoriasDAO;
+import cat.copernic.roap.DAO.PrendaDAO;
+import cat.copernic.roap.Encargos.serveis.CategoriaService;
+import cat.copernic.roap.Encargos.serveis.PrendaService;
+import cat.copernic.roap.models.Categorias;
+import cat.copernic.roap.models.Prenda;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -16,12 +23,33 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ControladorGestionarCategoria {
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosDAO al controlador
-    private CategoriasDAO CategoriasDAO;
+
+    @Autowired
+    private CategoriaService categoriaService;
+
     @GetMapping("/gestionarCategoria")
-    public String inici(Model model) { //Aquest és el mètode que generarà la resposta (recurs a retornar)
-        model.addAttribute("Categorias", CategoriasDAO.findAll());
-        //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
-        return "Encargos/GestionarCategoria"; //Retorn de la pàgina Login.html.
+    public String inici(Model model) {
+        model.addAttribute("categorias", categoriaService.listarCategoria());
+        return "Encargos/GestionarCategoria";
+    }
+
+    @GetMapping("/eliminarcat/{id}")
+    public String eliminarCategoria(@PathVariable("id") int idCategoria, RedirectAttributes redirectAttributes) {
+        try {
+            Categorias categoria = new Categorias();
+            categoria.setId(idCategoria);
+            categoriaService.eliminarCategoria(categoria);
+        } catch (IllegalStateException e) {
+            redirectAttributes.addFlashAttribute("error", "La categoría no puede ser eliminada debido a que una prenda está sujeta a ella.");
+        }
+        return "redirect:/gestionarCategoria";
+    }
+
+    @GetMapping("/editarcat/{id}")
+    public String editarCategoria(@PathVariable("id") int idCategoria, Model model) {
+        Categorias categoria = new Categorias();
+        categoria.setId(idCategoria);
+        model.addAttribute("categorias", categoriaService.buscarCategoria(categoria));
+        return "Encargos/añadirCategoria";
     }
 }

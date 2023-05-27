@@ -5,6 +5,9 @@
 package cat.copernic.roap.Encargos.controladores;
 
 import cat.copernic.roap.DAO.EncargoDAO;
+import cat.copernic.roap.Encargos.serveis.EncargoService;
+import cat.copernic.roap.models.Encargo;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,12 +20,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ControladorConsultarEncargo {
 
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosDAO al controlador
-    private EncargoDAO EncargoDAO;
+    @Autowired
+    private EncargoService encargoService;
+
     @GetMapping("/consultarEncargo")
-    public String inici(Model model) { //Aquest és el mètode que generarà la resposta (recurs a retornar)
-        model.addAttribute("encargo", EncargoDAO.findAll());
-        //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
-        return "Encargos/ConsultarEncargo"; //Retorn de la pàgina Login.html.
+    public String iniciar(Model model) {
+        List<Encargo> encargos = encargoService.listarEncargo();
+        model.addAttribute("encargos", encargos);
+        return "Encargos/consultarEncargo";
     }
 }
