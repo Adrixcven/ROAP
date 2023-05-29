@@ -30,6 +30,9 @@ public class TestClienteJUnit {
     
     private Cliente Cliente;
     
+    /**
+     * Configuración inicial antes de cada prueba.
+     */
     @BeforeEach
     void setup() {
         Cliente = new Cliente();
@@ -41,7 +44,9 @@ public class TestClienteJUnit {
         Cliente.setDpostal(8003);
     }
     
-    
+    /**
+     * Prueba para buscar un cliente utilizando JUnit.
+     */
     @DisplayName("Buscar Cliente con JUnit")
     @Test
     void testBuscarClienteJUnit() {

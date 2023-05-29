@@ -34,16 +34,18 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 public class TestPedidosMockito {
 
-    //Indicamos que creamos un simulacro del alumnoDAO.
+
     @Mock
     private PedidosDAO PedidosDAO;
 
-    //Inyectamos el DAO en el servicio.
     @InjectMocks
     private PedidosService PedidosService;
     
     private Pedidos pedidos;
     
+    /**
+     * Configuración inicial antes de cada prueba.
+     */
     @BeforeEach
     void setup() {
         ZoneId defaultZoneId = ZoneId.systemDefault();
@@ -56,6 +58,9 @@ public class TestPedidosMockito {
         pedidos.setPrecioTotal(50);
     }
 
+    /**
+     * Prueba para crear y buscar un Pedido utilizando Mockito.
+     */
     @DisplayName("Crear un Pedido y buscarlo con Mockito")
     @Test
     void testBuscarAlumnoMockito() {

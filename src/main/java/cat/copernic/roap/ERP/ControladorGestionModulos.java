@@ -54,7 +54,7 @@ public class ControladorGestionModulos {
      * @return la página "/gestionmodulo" si hay errores, o redirecciona a "/gestionmodulo" si se guarda correctamente
      */
     @PostMapping("/guardarModulo") //action=guardarGos
-    public String guardarCliente(Modulos modulo, Errors error) {
+    public String guardarModulo(Modulos modulo, Errors error) {
         if(error.hasErrors()){ 
              return "/gestionmodulo"; 
         }
