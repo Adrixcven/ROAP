@@ -93,8 +93,12 @@ public class ControladorGestionPedidos {
     @GetMapping("/pedidos/editarpedidos/{ID}")
     public String editarPedido(Pedidos pedidos, Model model) {
 
+        
         /*Cerquem el gos passat per paràmetre, al qual li correspón l'idgos de @GetMapping mitjançant 
          *el mètode cercarGos de la capa de servei.*/
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        model.addAttribute("username", username);
         model.addAttribute("prendas", PrendaService.listarPrenda());
         model.addAttribute("pedidos", pedidosService.buscarPedidos(pedidos));
         

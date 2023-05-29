@@ -81,6 +81,9 @@ public class ControladorGestionDevolucion {
         
         /*Cerquem el gos passat per paràmetre, al qual li correspón l'idgos de @GetMapping mitjançant 
          *el mètode cercarGos de la capa de servei.*/
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        model.addAttribute("username", username);
         model.addAttribute("quantity", devolucion.getCantidad());
         model.addAttribute("cliente", ClienteService.listarCliente());
         model.addAttribute("prenda", prendaService.listarPrenda());

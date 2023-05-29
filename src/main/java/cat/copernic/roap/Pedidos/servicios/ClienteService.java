@@ -25,6 +25,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Service 
 public class ClienteService implements ClienteServiceInterface{   
 
+    public ClienteService() {
+    }
+    
+    public ClienteService(ClienteDAO clienteDAO) {
+        this.clienteDAO = clienteDAO;
+    }
+
+    public void setClienteDAO(ClienteDAO clienteDAO) {
+        this.clienteDAO = clienteDAO;
+    }
 
     @Autowired
     private ClienteDAO clienteDAO;
@@ -75,7 +85,6 @@ public class ClienteService implements ClienteServiceInterface{
     @Override
     @Transactional(readOnly=true) 
     public Cliente buscarCliente(Cliente cliente) {
-
         return this.clienteDAO.findById(cliente.getDNI()).orElse(null);
         
     }

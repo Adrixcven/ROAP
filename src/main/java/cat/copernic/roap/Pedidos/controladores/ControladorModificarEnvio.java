@@ -8,6 +8,8 @@ import cat.copernic.roap.DAO.EnvioDAO;
 import cat.copernic.roap.Pedidos.servicios.EnvioService;
 import cat.copernic.roap.models.Envio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +36,9 @@ public class ControladorModificarEnvio {
 
         /*Cerquem el gos passat per paràmetre, al qual li correspón l'idgos de @GetMapping mitjançant 
          *el mètode cercarGos de la capa de servei.*/
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        model.addAttribute("username", username);
         model.addAttribute("envio", envioService.buscarEnvio(envio));
 
         return "Pedidos/ModificarEnvio"; //Retorna la pàgina amb el formulari de les dades del gos

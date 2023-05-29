@@ -43,23 +43,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ControladorAddPedidos {
 
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    @Autowired 
     private ProductoDAO productodao;
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    @Autowired 
     private ProductAddedDAO productaddeddao;
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    @Autowired 
     private PrendaDAO prendadao;
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    @Autowired 
     private PedidosService pedidosService;
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    @Autowired 
     private PrendaService prendaService;
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosDAO al controlador
+    @Autowired 
     private ProductosService productoService;
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    @Autowired 
     private ClienteService ClienteService;
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    @Autowired 
     private ProductAddService ProductAddService;
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    @Autowired 
     private EnvioService EnvioService;
 
     /**

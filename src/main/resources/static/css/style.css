@@ -51,7 +51,7 @@ body {
 }
 .button {
     display: inline-block;
-    width: 300px;
+    width: 270px;
     height: 80px;
     text-align: center;
     border: none;
@@ -64,7 +64,7 @@ body {
     border-radius: 10px;
 }
 .navegacionsuperior button{
-    width: 250px;
+    width: 230px;
     font-size: 22px;
     padding: 10px 20px;
     margin-right: 10px;
@@ -87,7 +87,7 @@ body {
     margin-bottom: 20px;
 }
 .separar-derecha {
-    margin-left: 150px;
+    margin-left: 120px;
 }
 
 .center-top {
@@ -250,7 +250,7 @@ body {
 }
 /* Establecer el ancho máximo de la tabla */
 table {
-    min-height: 400px;
+    max-height: 600px;
     width: 800px; /* Tamaño de la tabla */
     border-collapse: collapse;
     
@@ -268,11 +268,11 @@ th {
 
 /* Estilos para el cuerpo de la tabla */
 tbody {
-
     background-color: #ffffff;
-    height: 200px; /* Tamaño máximo del cuerpo de la tabla */
+    max-height: 200px; /* Tamaño máximo del cuerpo de la tabla */
     overflow-y: auto; /* Barra de desplazamiento vertical si se excede el tamaño */
 }
+
 
 /* Estilos para los enlaces */
 a {
@@ -395,7 +395,7 @@ h2 {
     margin-left: 160px;
 }
 .tablas{
-    margin-left: 0px;
+    margin-top: -200px;
     width: 100%;
     border-collapse: collapse;
 }

@@ -5,6 +5,8 @@
 package cat.copernic.roap.ERP;
 
 import cat.copernic.roap.models.Usuario;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.Collections;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -42,8 +44,8 @@ public class ControladorLogin {
      * @return Devuelve la página "Login" después de asignar el valor nulo a la variable de usuario.
      */
     @GetMapping("/logout")
-    public String logout(@AuthenticationPrincipal UserDetails user) {
-        user = null;
-        return "Login";
+    public String logout(HttpServletRequest request) throws ServletException {
+        request.logout();
+        return "redirect:/login";
     }
 }

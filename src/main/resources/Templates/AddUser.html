@@ -3,6 +3,18 @@
     <head th:include="~{Plantillas/plantillaHeader.html :: header}">
         <meta charset="UTF-8">
         <title>Añadir usuario"</title>
+        <script>
+            function mostrarInput() {
+                var seleccionado = document.getElementById("opciones").value;
+                var inputAdicional = document.getElementById("inputAdicional");
+
+                if (seleccionado === "opcion1") {
+                    inputAdicional.style.display = "block";
+                } else {
+                    inputAdicional.style.display = "none";
+                }
+            }
+        </script>
     </head>
     <body>
         <div>
@@ -55,6 +67,21 @@
                         <option value=3 >Vendedor</option>
                     </select>
                 </p>
+                <p>
+
+                </p>
+                <div id="passwordsecreta" style="display: none;">
+                    <label for="passwordsecreta">Password Secreta:</label>
+                    <input type="text" id="passwordsecreta" name="passwordsecreta">
+                </div>
+                <div id="nombreempresa" style="display: none;">
+                    <label for="nombreempresa">Nombre empresa:</label>
+                    <input type="text" id="nombreempresa" name="nombreempresa">
+                </div>
+                <div id="periodopago" style="display: none;">
+                    <label for="periodopago">Periodo Pago:</label>
+                    <input type="text" id="periodopago" name="periodopago">
+                </div>
                 <input type="submit" value="Guardar">
             </form>
         </div>
