@@ -1,0 +1,54 @@
+<html>
+    <head th:include="~{Plantillas/plantillaHeader.html :: header}">
+    </head>
+    <body>
+        <div>
+            <a th:href="@{/pedidos}"><button class="arrow_box">Atras</button></a>
+        </div>
+        <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
+        <div>
+            <h2>Añadir Pedido</h2>
+            <form th:action="@{/guardarPedido}" method="post" th:object="${pedido}" class="form">
+                <p>
+                    <label for="producto">Producto:</label>
+                    <select id="selector" name="selector">
+                        <option th:each="productos : ${productos}" th:value="${productos.id}" th:text="${productos.nombre}"></option>
+                    </select>
+                </p>
+                <p>
+                    <label for="cantidad">Cantidad:</label>
+                    <input type="number" id="cantidad" name="cantidad" min="1" max="1000" required>
+                </p>
+                <p>
+                    <label for="direccion">Dirección de envio:</label>
+                    <input type="text" id="direccion" name="direccion" required>
+                </p>
+                <p>
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" name="fecha" required>
+                </p>
+                <p>
+                    <label for="texto">Hora:</label>
+                    <input type="time" id="hora" name="hora" value="" required>
+                </p>
+                <p>
+                    <label class="derecha" for="cliente">Cliente:</label>
+                    <select name="cliente">
+                        <option th:each="cliente : ${cliente}" th:value="${cliente.DNI}" th:text="${cliente.nombre}"></option>
+                    </select>
+                    <button class="buttonsmall"><a th:href="@{/pedidos/addclient}">Nuevo Cliente</a></button>
+                </p>
+                <p>
+                    <input type="hidden" name="precioTotal" value="1">
+                </p>
+                <p>
+                    <input type="hidden" name="vendedor" value="Ejemplo"> 
+                </p>
+
+                <input type="submit" value="Guardar">
+            </form>
+        </div>
+
+
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head th:include="~{Plantillas/plantillaHeader.html :: header}">
+    </head>
+    <body>
+        <div>
+            <button><a href="/inicial">Atras</a></button>
+        </div>
+        <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
+        <table>
+            <thead>
+                <tr>
+                    <th>DNI</th>
+                    <th>Nombre y Apellido</th>
+                    <th>Edad</th>
+                    <th>Email</th>
+                    <th>Telefono</th>
+                    <th>Dirección postal</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="clientes : ${clientes}"> 
+                    <td th:text="${clientes.DNI}"></td>
+                    <td th:text="${clientes.nombre}"></td>
+                    <td th:text="${clientes.edat}"></td>
+                    <td th:text="${clientes.email}"></td>
+                    <td th:text="${clientes.telefono}"></td>
+                    <td th:text="${clientes.dpostal}"></td>
+                    <td><a th:href="@{/addcliente}">Seleccionar</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <div >
+            <input type="text" name="search" placeholder="Buscar...">
+            <button type="submit"><a>Buscar</a></button>
+        </div>
+        
+
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head th:include="~{Plantillas/plantillaHeader.html :: header}">
+    </head>
+    <body>
+        <div>
+            <a th:href="@{/pedidos}"><button class="arrow_box">Atras</button></a>
+        </div>
+        <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
+
+        <div class="vertical-div">
+            <h2>Añadir Cliente</h2>
+            <form th:action="@{/guardarCliente}" method="post" th:object="${cliente}" class="form">
+                <p>
+                    <label for="dni">DNI:</label>
+                    <input type="text" id="dni" name="dni" th:field="*{DNI}" required/><br>
+                    <span th:if="${#fields.hasErrors('DNI')}" th:errors="*{DNI}" class="red-text"/>
+                </p>
+                <p>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" th:field="*{nombre}" required/><br>
+                    <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="red-text"/>
+                </p>
+                <p>
+                    <label for="edad">Edad:</label>
+                    <input type="number" id="edad" name="edad" th:field="*{edat}" required/><br>
+                    <span th:if="${#fields.hasErrors('edat')}" th:errors="*{edat}" class="red-text"/>
+                </p>
+                <p>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" th:field="*{email}" required/><br>
+                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="red-text"/>
+                </p>
+                <p>
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" th:field="*{telefono}" required/><br>
+                    <span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}" class="red-text"/>
+                </p>
+                <p>
+                    <label for="direccion">Dirección Postal:</label>
+                    <input type="text" id="direccion" name="direccion" th:field="*{dpostal}" required/><br>
+                    <span th:if="${#fields.hasErrors('dpostal')}" th:errors="*{dpostal}" class="red-text"/>
+                </p>
+                <input type="submit" value="Guardar">
+            </form>
+        </div>
+
+
+    </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head th:include="~{Plantillas/plantillaHeader.html :: header}">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#searchBtn').click(function () {
+                    var inputID = $('#searchInput').val(); // Obtener el valor del campo de búsqueda
+                    $('tbody tr').hide(); // Ocultar todas las filas de la tabla
+
+                    // Mostrar solo las filas que coincidan con la ID buscada
+                    $('tbody tr').filter(function () {
+                        return $(this).find('td:first').text() === inputID;
+                    }).show();
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div>
+            <a href="/pedidos"><button class="arrow_box">Atras</button></a>
+        </div>
+        <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
+        <table class="tablas">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Fecha de devolución</th>
+                    <th>Cliente</th>
+                    <th>Estado de la devolución</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="devoluciones : ${devoluciones}"> 
+                    <td th:text="${devoluciones.ID}"></td>
+                    <td th:text="${#dates.format(devoluciones.Fecha, 'dd/MM/yyyy')}"></td>
+                    <td th:text="${devoluciones.Cliente}"></td> 
+                    <td th:text="${devoluciones.Estado}"></td> 
+                    <td><a th:href="@{/pedidos/editardevolucion/}+${devoluciones.ID}">Editar</a></td>
+                    <td><a th:href="@{/pedidos/eliminardevolucion/}+${devoluciones.ID}">Dar de baja</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="busqueda">
+            <input type="text" name="search" id="searchInput" placeholder="Buscar...">
+            <button id="searchBtn" type="submit"><a>Buscar</a></button>
+        </div>
+
+    </body>
+</html>

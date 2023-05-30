@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="~{Plantillas/plantillaHeader.html :: header}">
+    <meta charset="UTF-8">
+    <title>Seleccionar Categoria</title>
+</head>
+<body>
+    <div>
+        <a th:href="@{/añadirPrenda}"><button class="arrow_box">Atras</button></a>
+    </div>
+    <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
+    <h2>Seleccionar Categoria</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+        </tr>
+        <tr th:each="categoria : ${categorias}">
+            <td th:text="${categoria.id}"></td>
+            <td th:text="${categoria.nombre}"></td>
+        </tr>
+    </table>
+    <button type="button">Buscar</button>
+    <button type="button">Seleccionar</button>
+</body>
+
+</html>

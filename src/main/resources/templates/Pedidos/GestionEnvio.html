@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head th:include="~{Plantillas/plantillaHeader.html :: header}">
+    </head>
+    <body>
+        <div>
+            <a href="/pedidos"><button class="arrow_box">Atras</button></a>
+        </div>
+        <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
+        <table class="tablas">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Estado del envío</th>
+                    <th>Fecha del envío</th>
+                    <th>Hora del envío</th>
+                    <th>Dirección del envio</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="envios : ${envios}"> 
+                    <td th:text="${envios.ID}"></td>
+                    <td th:text="${envios.estado}"></td>
+                    <td th:text="${#dates.format(envios.fecha, 'dd/MM/yyyy')}"></td>
+                    <td th:text="${envios.hora}"></td>
+                    <td th:text="${envios.direccionenvio}"></td> 
+                    <td><a th:href="@{/pedidos/editarenvio/}+${envios.ID}">Editar</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="busqueda">
+            <input type="text" name="search" placeholder="Buscar...">
+            <button type="submit">Buscar</button>
+        </div>
+    </body>
+</html>

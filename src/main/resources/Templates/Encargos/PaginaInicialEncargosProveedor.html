@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:include="~{Plantillas/plantillaHeader.html :: header}">
+    </head>
+    <body>
+        <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
+        <div>
+            <a th:href="@{/inicial}"><button class="arrow_box">Atras</button></a>
+        </div>
+
+        <div>
+            <h3>Encargos</h3>
+            <div>
+                <h4>Prenda</h4>
+                <a th:href="@{/añadirPrenda}"><button class="btn button">Añadir Prenda</button></a>
+                <a th:href="@{/gestionarPrendas}"><button class="btn button">Gestionar Prendas</button></a>
+                <a th:href="@{/consultarEncargo}"><button class="btn button">Consultar Encargos</button></a>
+                <h3>&nbsp;</h3> <!-- Espacio entre los botones y el texto de categorías -->
+                <h4>Categorías</h4>
+                <a th:href="@{/añadirCategoria}"><button class="btn button">Añadir Categorías</button></a>
+                <a th:href="@{/gestionarCategoria}"><button class="btn button">Gestionar Categorías</button></a>
+            </div>
+        </div>
+    </body>
+</html>

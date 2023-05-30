@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:include="~{Plantillas/plantillaHeader.html :: header}">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div>
+            <a th:href="@{/encargosproveedor}"><button class="arrow_box">Atras</button></a>
+        </div>
+        <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
+        <div class="vertical-div">
+            <div class="title-div">
+                <h2>Gestionar Categoria</h2>
+            </div>
+            <div th:if="${error}" style="color: red;">
+                <p th:text="${error}"></p>
+            </div>
+            <table class="tablas">
+                <thead>
+                    <tr>
+                        <th><label for="Nombre">Nombre</label></th>
+                        <th><label for="Editar">Editar</label></th>
+                        <th><label for="Eliminar">Eliminar</label></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="categoria : ${categorias}">
+                        <td th:text="${categoria.nombre}"></td>
+                        <td><a th:href="@{/editarcat/{id}(id=${categoria.id})}" th:text="Editar"/></td>
+                        <td><a th:href="@{/eliminarcat/{id}(id=${categoria.id})}" th:text="Eliminar"/></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
+

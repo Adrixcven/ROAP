@@ -1,0 +1,54 @@
+<html>
+    <head th:include="~{Plantillas/plantillaHeader.html :: header}">
+    </head>
+    <body>
+        <div>
+            <a href="/pedidos/gestionenvio"><button class="arrow_box">Atras</button></a>
+        </div>
+        <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
+        <div class="vertical-div">
+            <h2>Modificar Envio</h2>
+            <form th:action="@{/guardarEnvio}" method="post" th:object="${envio}" class="form">
+                <p>
+                <fieldset>
+                    <legend>Estado del envio:</legend><br>
+                    <label>
+                        <input type="radio" id="estado" name="radio" value="Completado"th:field="*{estado}"> Completado
+                    </label>
+                    <label>
+                        <input type="radio" id="envio" name="radio" value="En envio" th:field="*{estado}"> En envio
+                    </label>
+                    <label>
+                        <input type="radio" id="cancelado" name="radio" value="Cancelado" th:field="*{estado}"> Cancelado
+                    </label>
+                </fieldset><br>
+                <span th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"/>
+                </p>
+                <p>
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" name="fecha" th:field="*{fecha}"><br>
+                    <span th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"/>
+                </p>
+                <p>
+                    <label for="texto">Hora:</label>
+                    <input type="time" id="hora" name="hora" value="" th:field="*{hora}"><br>
+                    <span th:if="${#fields.hasErrors('hora')}" th:errors="*{hora}"/>
+                </p>
+                <p>
+                    <input type="hidden" th:field="*{idpedido}"/><br>
+                    <span th:if="${#fields.hasErrors('idpedido')}" th:errors="*{idpedido}"/>
+                </p>
+                <p>
+                    <input type="hidden" th:field="*{direccionenvio}"/><br>
+                    <span th:if="${#fields.hasErrors('direccionenvio')}" th:errors="*{direccionenvio}"/>
+                </p>
+                <p>
+                    <input type="hidden" th:field="*{ID}"/><br>
+                    <span th:if="${#fields.hasErrors('ID')}" th:errors="*{ID}"/>
+                </p>
+
+                <input type="submit" value="Guardar">
+            </form>
+        </div>
+    </body>
+</html>
