@@ -27,7 +27,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     </button></a>
             </div>
         </div>
-        <div th:if="${rolUsuario == '2'}" class="contenedor">
+        <div th:if="${rolUsuario == '3'}" class="contenedor">
             <div th:each="modulos : ${modulos}" >
                 <a th:href="@{'/' + ${modulos.nombre.toLowerCase()}}"><button th:if="${modulos.vendedor}" class="btn buttonmodulos">
                         <img th:src="@{'/imatges/' + ${modulos.nombre.toLowerCase()} + '.png'}" width='50' height='50'/>
@@ -35,7 +35,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     </button></a>
             </div>
         </div>
-        <div th:if="${rolUsuario == '3'}" class="contenedor">
+        <div th:if="${rolUsuario == '2'}" class="contenedor">
             <div th:each="modulos : ${modulos}" class="itemmodulos">
                 <a th:href="@{'/' + ${modulos.nombre.toLowerCase()}}"><button th:if="${modulos.proveedor}" class="btn buttonmodulos">
                         <img th:src="@{'/imatges/' + ${modulos.nombre.toLowerCase()} + '.png'}" width='50' height='50'/>

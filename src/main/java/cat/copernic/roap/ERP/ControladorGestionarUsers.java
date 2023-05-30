@@ -38,7 +38,7 @@ public class ControladorGestionarUsers {
      * @return el nombre de la página de gestión de usuarios
      */
     @GetMapping("/gestionusers")
-    public String inici(Model model){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
+    public String ConsultarUsers(Model model){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         model.addAttribute("username", username);
@@ -55,7 +55,7 @@ public class ControladorGestionarUsers {
      * @return el nombre de la página de modificación de usuario
      */
     @GetMapping("/gestionusers/editaruser/{DNI}")
-    public String editar(Usuario usuario, Model model) {
+    public String editarUser(Usuario usuario, Model model) {
         
         model.addAttribute("usuarios", usuariosservice.buscarUsuario(usuario));
 

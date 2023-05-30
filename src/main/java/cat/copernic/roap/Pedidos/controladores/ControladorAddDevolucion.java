@@ -59,9 +59,10 @@ public class ControladorAddDevolucion {
     public String inici(Model model, Devolucion devolucion) { //Aquest és el mètode que generarà la resposta (recurs a retornar)
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
         String username = authentication.getName();
         model.addAttribute("username", username);
-        
+        model.addAttribute("rolUsuario", rolUsuario);
         model.addAttribute("cliente", ClienteService.listarCliente());
         model.addAttribute("prendas", prendaService.listarPrenda());
         return "Pedidos/AddDevolucion"; 

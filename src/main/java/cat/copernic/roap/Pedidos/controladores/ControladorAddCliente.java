@@ -38,8 +38,10 @@ public class ControladorAddCliente {
     @GetMapping("/pedidos/addclient")
     public String inici(Cliente cliente, Model model){ 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
         String username = authentication.getName();
         model.addAttribute("username", username);
+        model.addAttribute("rolUsuario", rolUsuario);
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
         return "Pedidos/AddCliente"; 
     }

@@ -22,9 +22,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <body th:fragment="cuerp">
         <div class="center-top">
             <div class="navegacionsuperior">
-                <a><button class="btn">Inventario</button></a>
-                <a th:href="@{/encargos}"><button class="btn">Encargos</button></a>
-                <a th:href="@{/pedidos}"><button class="btn">Pedidos</button></a>
+                <a th:if="${rolUsuario == '1' or rolUsuario == '3'}" ><button class="btn">Inventario</button></a>
+                <a th:if="${rolUsuario == '1'}" th:href="@{/encargos}"><button class="btn">Encargos</button></a>
+                <a th:if="${rolUsuario == '2'}" th:href="@{/encargosproveedor}"><button class="btn">Encargosprov</button></a>
+                <a th:if="${rolUsuario == '1' or rolUsuario == '3'}" th:href="@{/pedidos}"><button class="btn">Pedidos</button></a>
             </div>
         </div>
         <div class="user">
