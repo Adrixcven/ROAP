@@ -11,6 +11,8 @@ import jakarta.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -30,6 +32,9 @@ public class ControladorAñadirEncargo {
 
     @GetMapping("/añadirEncargo")
     public String iniciar(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
+        String username = authentication.getName();
         // Crear una instancia de Encargo y agregarla al modelo
         Encargo encargo = new Encargo();
         model.addAttribute("encargo", encargo);

@@ -11,6 +11,8 @@ import cat.copernic.roap.models.Prenda;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -31,6 +33,9 @@ public class ControladorGestionarPrendas {
 
     @GetMapping("/gestionarPrendas")
     public String inici(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
+        String username = authentication.getName();
         model.addAttribute("prenda", prendaService.listarPrenda());  
         model.addAttribute("categoria", prendaService.listarCategorias());
         return "Encargos/GestionarPrendas";
