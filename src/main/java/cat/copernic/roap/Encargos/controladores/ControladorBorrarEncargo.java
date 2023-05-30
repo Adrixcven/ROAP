@@ -6,6 +6,8 @@ package cat.copernic.roap.Encargos.controladores;
 
 import cat.copernic.roap.DAO.EncargoDAO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +24,9 @@ public class ControladorBorrarEncargo {
 
     @GetMapping("/borrarEncargo")
     public String inici(Model model) { //Aquest és el mètode que generarà la resposta (recurs a retornar)
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
+        String username = authentication.getName();
         model.addAttribute("encargo", EncargoDAO.findAll());
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
         return "Encargos/BorrarEncargo"; //Retorn de la pàgina Login.html.

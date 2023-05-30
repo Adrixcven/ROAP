@@ -11,6 +11,8 @@ import cat.copernic.roap.Encargos.serveis.PrendaService;
 import cat.copernic.roap.models.Categorias;
 import cat.copernic.roap.models.Prenda;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +31,9 @@ public class ControladorGestionarCategoria {
 
     @GetMapping("/gestionarCategoria")
     public String inici(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
+        String username = authentication.getName();
         model.addAttribute("categorias", categoriaService.listarCategoria());
         return "Encargos/GestionarCategoria";
     }
