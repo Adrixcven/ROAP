@@ -27,6 +27,8 @@ public class ControladorBorrarEncargo {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
         String username = authentication.getName();
+        model.addAttribute("username", username);
+        model.addAttribute("rolUsuario", rolUsuario);
         model.addAttribute("encargo", EncargoDAO.findAll());
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
         return "Encargos/BorrarEncargo"; //Retorn de la pàgina Login.html.

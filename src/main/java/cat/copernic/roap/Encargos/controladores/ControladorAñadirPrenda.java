@@ -34,6 +34,8 @@ public class ControladorAñadirPrenda {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
         String username = authentication.getName();
+        model.addAttribute("username", username);
+        model.addAttribute("rolUsuario", rolUsuario);
         List<Categorias> categorias = prendaService.listarCategorias();
         model.addAttribute("categorias", categorias);
         return "Encargos/AñadirPrenda";
@@ -54,6 +56,11 @@ public class ControladorAñadirPrenda {
     @PostMapping("/guardarPrenda")
     public String guardarPrenda(@Valid Prenda prenda, Errors error, Model model) {
         if (error.hasErrors()) {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
+            String username = authentication.getName();
+            model.addAttribute("username", username);
+            model.addAttribute("rolUsuario", rolUsuario);
             List<Categorias> categorias = prendaService.listarCategorias();
             model.addAttribute("categorias", categorias);
             return "Encargos/AñadirPrenda";

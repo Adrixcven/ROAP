@@ -34,6 +34,8 @@ public class ControladorGestionarCategoria {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
         String username = authentication.getName();
+        model.addAttribute("username", username);
+        model.addAttribute("rolUsuario", rolUsuario);
         model.addAttribute("categorias", categoriaService.listarCategoria());
         return "Encargos/GestionarCategoria";
     }
@@ -52,6 +54,11 @@ public class ControladorGestionarCategoria {
 
     @GetMapping("/editarcat/{id}")
     public String editarCategoria(@PathVariable("id") int idCategoria, Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
+        String username = authentication.getName();
+        model.addAttribute("username", username);
+        model.addAttribute("rolUsuario", rolUsuario);
         Categorias categoria = new Categorias();
         categoria.setId(idCategoria);
         model.addAttribute("categorias", categoriaService.buscarCategoria(categoria));

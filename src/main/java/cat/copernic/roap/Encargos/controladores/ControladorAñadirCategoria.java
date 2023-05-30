@@ -39,6 +39,8 @@ public class ControladorAñadirCategoria {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
         String username = authentication.getName();
+        model.addAttribute("username", username);
+        model.addAttribute("rolUsuario", rolUsuario);
         return "Encargos/añadirCategoria"; //Retorn de la pàgina Login.html.
     }
 
@@ -55,8 +57,13 @@ public class ControladorAñadirCategoria {
      *identifica el mètode al qual ha d'enviar les dades introduïdes mitjançant el formulari.
      */
     @PostMapping("/guardarCategoria")
-    public String guardarCategoria(@Valid Categorias categorias, Errors errors) {
+    public String guardarCategoria(@Valid Categorias categorias, Errors errors, Model model) {
         if (errors.hasErrors()) {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
+            String username = authentication.getName();
+            model.addAttribute("username", username);
+            model.addAttribute("rolUsuario", rolUsuario);
             return "Encargos/añadirCategoria";
         }
 
