@@ -5,21 +5,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:include="~{Plantillas/plantillaHeader.html :: header}">
-        <title>Encargos</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
         <div>
             <a th:href="@{/inicial}"><button class="arrow_box">Atras</button></a>
         </div>
-        <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
+
         <div>
             <h3>Encargos</h3>
             <div>
-                <button><a th:href="@{/añadirEncargo}">Añadir Encargo</a></button>
-                <button><a th:href="@{/gestionarEncargos}">Modificar Encargo</a></button> 
+                <a th:href="@{/añadirEncargo}"><button class="btn button">Añadir Encargo</button></a>
+                <a th:href="@{/gestionarEncargos}"><button class="btn button">Modificar Encargo</button></a>
             </div>
-    </body>   
+        </div>
+    </body>
 </html>
 

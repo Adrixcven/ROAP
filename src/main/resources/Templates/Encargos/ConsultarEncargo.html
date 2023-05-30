@@ -13,16 +13,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </div>
         <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
         <div class="vertical-div">
-            <h2>Consultar Encargos</h2>
-            <table border="1">
+            <div class="title-div">
+                <h2>Consultar Encargos</h2>
+            </div>
+            <table class="tablas">
                 <thead>
                     <tr>
-                        <td><label for="unidades">Unidades</label></td>
-                        <td><label for="precio">Precio</label></td>
-                        <td><label for="tipo">Tipo de prenda</label></td>
-                        <td><label for="estado">Estado de la prenda</label></td>
-                        <td><label for="talla">Talla</label></td>
-                        <td><label for="nombre">Nombre</label></td>
+                        <th><label for="unidades">Unidades</label></th>
+                        <th><label for="precio">Precio</label></th>
+                        <th><label for="tipo">Tipo de prenda</label></th>
+                        <th><label for="estado">Estado de la prenda</label></th>
+                        <th><label for="talla">Talla</label></th>
+                        <th><label for="nombre">Nombre</label></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,3 +41,4 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </div>
     </body>
 </html>
+

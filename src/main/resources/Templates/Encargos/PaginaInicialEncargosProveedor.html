@@ -5,26 +5,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:include="~{Plantillas/plantillaHeader.html :: header}">
-        <title>Encargos</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
         <div>
             <a th:href="@{/inicial}"><button class="arrow_box">Atras</button></a>
         </div>
-        <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
+
         <div>
             <h3>Encargos</h3>
             <div>
                 <h4>Prenda</h4>
-                <button><a th:href="@{/añadirPrenda}">Añadir Prenda</a></button>
-                <button><a th:href="@{/gestionarPrendas}">Gestionar Prendas</a></button>
-                <button><a th:href="@{/consultarEncargo}">Consultar Encargos</a></button>
-                <h4>Categorias</h4>
-                <button><a th:href="@{/añadirCategoria}">Añadir Categorias</a></button>
-                <button><a th:href="@{/gestionarCategoria}">Gestionar Categorias</a></button>
+                <a th:href="@{/añadirPrenda}"><button class="btn button">Añadir Prenda</button></a>
+                <a th:href="@{/gestionarPrendas}"><button class="btn button">Gestionar Prendas</button></a>
+                <a th:href="@{/consultarEncargo}"><button class="btn button">Consultar Encargos</button></a>
+                <h3>&nbsp;</h3> <!-- Espacio entre los botones y el texto de categorías -->
+                <h4>Categorías</h4>
+                <a th:href="@{/añadirCategoria}"><button class="btn button">Añadir Categorías</button></a>
+                <a th:href="@{/gestionarCategoria}"><button class="btn button">Gestionar Categorías</button></a>
             </div>
+        </div>
     </body>
-    
 </html>

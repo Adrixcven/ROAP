@@ -14,19 +14,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
         <div class="vertical-div">
             <h2>Añadir Categoria</h2>
-            <p>
-            <form action="/guardarCategoria" method="post" th:object="${categorias}">
+            <form action="/guardarCategoria" method="post" th:object="${categorias}" class="form">
                 <input type="hidden" name="id" th:field="*{id}" />
                 <p>
                     <label for="nombre">Nombre:</label>
-                    <input type="text" name="nombre" th:field="*{nombre}" required/>
+                    <input type="text" name="nombre" th:field="*{nombre}" required class="form-input"/>
                     <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="red-text"/>
                 </p>
-                <input type="submit" name="enviar" value="Guardar" />
+                <input type="submit" name="enviar" value="Guardar" class="form-button"/>
             </form>
-        </p>
-    </div>
-</body>
-
+        </div>
+    </body>
 </html>
 

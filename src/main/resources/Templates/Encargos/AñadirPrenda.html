@@ -13,54 +13,51 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </div>
         <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
         <div class="vertical-div">
-            <h2>Añadir Prenda</h2>
-            <p>
-            <form th:action="@{/guardarPrenda}" method="post" th:object="${prenda}">
+            <h2>Añadir Prenda</h2>            
+            <form th:action="@{/guardarPrenda}" method="post" th:object="${prenda}" class="form">
                 <input type="hidden" name="id" th:field="*{id}"/>
                 <p>
                     <label for="nombre">Nombre:</label>
-                    <input type="text" name="nombre" th:field="*{nombre}"/>
+                    <input type="text" name="nombre" th:field="*{nombre}" class="form-input"/>
                     <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="red-text"/>
                 </p>
                 <p>
                     <label for="unidades">Unidades:</label>
-                    <input type="number" name="unidades" th:field="*{unidades}"/>
+                    <input type="number" name="unidades" th:field="*{unidades}" class="form-input"/>
                     <span th:if="${#fields.hasErrors('unidades')}" th:errors="*{unidades}" class="red-text"/>
                 </p>
                 <p>
                     <label for="precio">Precio:</label>
-                    <input type="number" name="precio" step="0.01" th:field="*{precio}"/>
+                    <input type="number" name="precio" step="0.01" th:field="*{precio}" class="form-input"/>
                 </p>
                 <p>
                     <label for="tipo">Tipo:</label>
-                    <input type="text" name="tipo" th:field="*{tipo}"/>
+                    <input type="text" name="tipo" th:field="*{tipo}" class="form-input"/>
                     <span th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}" class="red-text"/>
                 </p>
                 <p>
                     <label for="estado">Estado:</label>
-                    <input type="text" name="estado" th:field="*{estado}"/>
+                    <input type="text" name="estado" th:field="*{estado}" class="form-input"/>
                     <span th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}" class="red-text"/>
                 </p>
                 <p>
                     <label for="talla">Talla:</label>
-                    <input type="number" name="talla" th:field="*{talla}"/>
+                    <input type="number" name="talla" th:field="*{talla}" class="form-input"/>
                     <span th:if="${#fields.hasErrors('talla')}" th:errors="*{talla}" class="red-text"/>
                 </p>
                 <p>
                     <label for="color">Color:</label>
-                    <input type="text" name="color" th:field="*{color}"/>
+                    <input type="text" name="color" th:field="*{color}" class="form-input"/>
                     <span th:if="${#fields.hasErrors('color')}" th:errors="*{color}" class="red-text"/>
                 </p>
                 <p>
                     <label for="categoria">Categoria:</label>
-                    <select name="categoria" th:field="*{categoria}">
+                    <select name="categoria" th:field="*{categoria}" class="form-input">
                         <option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nombre}"></option>
-
                     </select>
                 </p>
-                <input type="submit" name="enviar" value="Guardar"/>        
+                <input type="submit" name="enviar" value="Guardar" class="form-button"/>        
             </form>
-        </p>
-    </div>
-</body>
+        </div>
+    </body>
 </html>

@@ -14,45 +14,45 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
         <div class="vertical-div">
             <h2>Añadir Encargo</h2>
-            <form th:action="@{/guardarEncargo}" method="post" th:object="${encargo}">
+            <form th:action="@{/guardarEncargo}" method="post" th:object="${encargo}" class="form">
                 <input type="hidden" name="id" th:field="*{id}"/>
                 <p>
                     <label for="unidades">Unidades:</label>
-                    <input type="number" name="unidades" th:field="*{unidades}" required/>
+                    <input type="number" name="unidades" th:field="*{unidades}" required class="form-input"/>
                     <span th:if="${#fields.hasErrors('unidades')}" th:errors="*{unidades}" class="red-text"/>
 
                 </p>
                 <p>
                     <label for="precio">Precio:</label>
-                    <input type="number" name="precio" th:field="*{precio}" required/>
+                    <input type="number" name="precio" th:field="*{precio}" required class="form-input"/>
                     <span th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}" class="red-text"/>
 
                 </p>
                 <p>
                     <label for="tipo">Tipo:</label>
-                    <input type="text" name="tipo" th:field="*{tipo}" required/>
+                    <input type="text" name="tipo" th:field="*{tipo}" required class="form-input"/>
                     <span th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}" class="red-text"/>
 
                 </p>
                 <p>
                     <label for="estado">Estado:</label>
-                    <input type="text" name="estado" th:field="*{estado}" required/>
+                    <input type="text" name="estado" th:field="*{estado}" required class="form-input"/>
                     <span th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}" class="red-text"/>
 
                 </p>
                 <p>
                     <label for="talla">Talla:</label>
-                    <input type="text" name="talla" th:field="*{talla}" required/>
+                    <input type="text" name="talla" th:field="*{talla}" required class="form-input"/>
                     <span th:if="${#fields.hasErrors('talla')}" th:errors="*{talla}" class="red-text"/>
 
                 </p>
                 <p>
                     <label for="prenda">Prenda:</label>
-                    <select name="prenda.id" th:field="*{prenda.id}">
+                    <select name="prenda.id" th:field="*{prenda.id}" class="form-input">
                         <option th:each="prenda : ${prendasDisponibles}" th:value="${prenda.id}" th:text="${prenda.nombre}"></option>
                     </select>
                 </p>
-                <input type="submit" name="enviar" value="Guardar"/>        
+                <input type="submit" name="enviar" value="Guardar" class="form-button"/>        
             </form>
         </div>
     </body>
