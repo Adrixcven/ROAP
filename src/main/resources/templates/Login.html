@@ -1,29 +1,22 @@
-<!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
 <html>
-    <head>
+    <head th:include="~{Plantillas/plantillaHeader.html :: header}">
         <title>Login</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>
-            <p>
-                <img th:src="@{'/imatges/logo.png'}" width='50' height='50'/>
-            </p>
-            <form method="post" action="">
+        <div class="campologin">
+            <img th:src="@{'/imatges/logo.png'}" width='50' height='50'></img>
+            <form th:action="@{/login}" method="post" >
                 <label for="usuario" >Usuario:</label>
-                <input type="text" id="usuario" name="usuario" required><br>
+                <input type="text" id="username" name="username" required><br>
 
                 <label for="contraseña">Contraseña:</label>
                 <input type="text" id="password" name="password" required><br>
 
                 <input type="submit" value="Iniciar Sesión">
             </form>
-            <button><a href="/remember" >Recordar contraseña</a></button>
+            <a href="/remember"><button class="botoneslogin">Recordar contraseña</button></a>
         </div>
     </body>
 </html>

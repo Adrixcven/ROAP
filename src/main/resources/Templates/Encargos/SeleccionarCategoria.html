@@ -1,41 +1,31 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Seleccionar Categoria</title>
-    </head>
-    <body>
-        <div>
-            <button><a href="/añadirPrenda">Atras</a></button>
-        </div>
-        <div>
-            <button>Inventario</button>
-            <button><a href="/encargos">Encargos</button>
-            <button><a href="/pedidos">Pedidos</a></button>
-        </div>
-        <div style="display:flex; align-items:center; margin-top:20px;">
-            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
-                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
-            </div>
-            <p>Nombre</p>
-        </div>
-        <h2>Seleccionar Categoria</h2>
-    </head>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="~{Plantillas/plantillaHeader.html :: header}">
+    <meta charset="UTF-8">
+    <title>Seleccionar Categoria</title>
+</head>
+<body>
+    <div>
+        <a th:href="@{/añadirPrenda}"><button class="arrow_box">Atras</button></a>
+    </div>
+    <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
+    <h2>Seleccionar Categoria</h2>
     <table border="1">
         <tr>
             <th>ID</th>
             <th>Nombre</th>
         </tr>
-        <tr>
-            <td>7</td>
-            <td>Camisa</td>
-        </tr>
-        <tr>
-            <td>54</td>
-            <td>Pantalón</td>
+        <tr th:each="categoria : ${categorias}">
+            <td th:text="${categoria.id}"></td>
+            <td th:text="${categoria.nombre}"></td>
         </tr>
     </table>
     <button type="button">Buscar</button>
     <button type="button">Seleccionar</button>
 </body>
+
 </html>

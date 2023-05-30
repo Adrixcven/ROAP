@@ -3,46 +3,37 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
-<html>
-    <head>
-        <title>Pedidos</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:include="~{Plantillas/plantillaHeader.html :: header}">
     </head>
     <body>
+        <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
         <div>
-            <button><a href="/inicial">Atras</a></button>
+            <a th:href="@{/inicial}"><button class="arrow_box">Atras</button></a>
         </div>
-        <div>
-            <button><a>Inventario</a></button>
-            <button><a>Compras</a></button>
-            <button><a href="/pedidos">Pedidos</a></button>
-        </div>
-        <div style="display:flex; align-items:center; margin-top:20px;">
-            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
-                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
-            </div>
-            <p>Nombre</p>
-        </div>
-        <div>
+
+        <div class="separar-derecha">
             <h3>Devoluciones</h3>
-            <div>
-                <button><a href="/addDevolucion">Añadir Devolución</a></button>
-                <button><a href="/gestiondevolucion">Gestionar Devolución</a></button>
+            <div class="vertical-div">
+                <a th:href="@{/pedidos/addDevolucion}"><button class="btn button">Añadir Devolución</button></a>
+                <a th:href="@{/pedidos/gestiondevolucion}"><button class="btn button">Gestionar Devolución</button></a>
             </div>
         </div>
-        <div>
+        <div class="separar-derecha">
             <h3>Pedidos</h3>
-            <div>
-                <button><a href="/addpedido">Añadir Pedido</a></button>
-                <button><a href="/gestionpedido">Gestionar Pedidos</a></button>
+            <div class="vertical-div">
+                <a th:href="@{/pedidos/addpedido}"><button class="btn button">Añadir Pedido</button></a>
+                <a th:href="@{/pedidos/gestionpedidos}"><button class="btn button">Gestionar Pedidos</button></a>
             </div>
         </div>
-        <div>
+        <div class="separar-derecha">
             <h3>Envío</h3>
-            <div>
-                <button><a href="/gestionenvio">Gestionar Envios</a></button>
+            <div class="vertical-div">
+                <a th:href="@{/pedidos/gestionenvio}"><button class="btn button">Gestionar Envios</button></a>
             </div>
         </div>
+        
+
     </body>
+
 </html>

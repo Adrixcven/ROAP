@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org" >
+    <head th:fragment="header">
+        <title>ROAP</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Enllaç als estils de Bootstrap-->
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <!--Enllaç als estils de Font Awesome-->
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+
+        <link th:href="@{/css/style.css}" rel="stylesheet">
+        <!--Llibreries jquery, popper i Java Script de Bootstrap pels elements dinàmics que podem utilitzar amb Bootstrap-->
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </head>
+    <body th:fragment="cuerp">
+        <div class="center-top">
+            <div class="navegacionsuperior">
+                <a th:if="${rolUsuario == '1' or rolUsuario == '3'}" ><button class="btn">Inventario</button></a>
+                <a th:if="${rolUsuario == '1'}" th:href="@{/encargos}"><button class="btn">Encargos</button></a>
+                <a th:if="${rolUsuario == '2'}" th:href="@{/encargosproveedor}"><button class="btn">Encargosprov</button></a>
+                <a th:if="${rolUsuario == '1' or rolUsuario == '3'}" th:href="@{/pedidos}"><button class="btn">Pedidos</button></a>
+            </div>
+        </div>
+        <div class="user">
+            <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50' class="imgusuario"/>
+            <p>[[${username}]]</p>
+        </div>
+        <footer class="footer text-center py-3 mt-auto text-white footere">
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2023 Copyright: 
+                <a class="text-white">ROAP</a>
+            </div>
+        </footer>
+    </body>
+    
+</html>

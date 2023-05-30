@@ -5,27 +5,48 @@
 package cat.copernic.roap.Encargos.controladores;
 
 import cat.copernic.roap.DAO.EncargoDAO;
-import cat.copernic.roap.Pedidos.controladores.*;
+import cat.copernic.roap.Encargos.serveis.EncargoService;
 import cat.copernic.roap.models.Encargo;
-import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  *
- * @author Adrix
+ * @author mfg20
+ */
+/**
+ *
+ * Controlador para consultar encargos.
  */
 @Controller
 public class ControladorConsultarEncargo {
 
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosDAO al controlador
-    private EncargoDAO EncargoDAO;
+    @Autowired
+    private EncargoService encargoService;
+
+    /**
+     *
+     * Método para manejar la solicitud GET "/consultarEncargo". Inicia la
+     * página de consulta de encargos y agrega los datos necesarios al modelo.
+     *
+     * @param model el modelo para pasar datos a la vista
+     * @return la vista "Encargos/consultarEncargo" para mostrar la página de
+     * consulta de encargos
+     */
     @GetMapping("/consultarEncargo")
-    public String inici(Model model) { //Aquest és el mètode que generarà la resposta (recurs a retornar)
-        model.addAttribute("encargo", EncargoDAO.findAll());
-        //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
-        return "Encargos/ConsultarEncargo"; //Retorn de la pàgina Login.html.
+    public String iniciar(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
+        String username = authentication.getName();
+        model.addAttribute("username", username);
+        model.addAttribute("rolUsuario", rolUsuario);
+        List<Encargo> encargos = encargoService.listarEncargo();
+        model.addAttribute("encargos", encargos);
+        return "Encargos/consultarEncargo";
     }
 }

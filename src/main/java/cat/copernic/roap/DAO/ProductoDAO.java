@@ -5,12 +5,14 @@
 package cat.copernic.roap.DAO;
 
 import cat.copernic.roap.models.Producto;
+import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author Adrix
  */
-public interface ProductoDAO  extends CrudRepository<Producto,Integer>{
-    
+public interface ProductoDAO  extends JpaRepository<Producto,Integer>{
+    List<Producto> findByID(int ID);
 }

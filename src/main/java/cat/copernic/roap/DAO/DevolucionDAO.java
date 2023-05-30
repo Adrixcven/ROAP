@@ -5,12 +5,13 @@
 package cat.copernic.roap.DAO;
 
 import cat.copernic.roap.models.Devolucion;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author Adrix
  */
-public interface DevolucionDAO  extends CrudRepository<Devolucion,Integer>{
+public interface DevolucionDAO  extends JpaRepository<Devolucion,Integer>{
     
 }

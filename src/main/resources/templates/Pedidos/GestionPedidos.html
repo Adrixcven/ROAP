@@ -4,27 +4,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
 <html>
-    <head>
-        <title>Gestionar Pedidos</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head  th:include="~{Plantillas/plantillaHeader.html :: header}">
     </head>
     <body>
-        <div>
-            <button><a href="/pedidos">Atras</a></button>
-        </div>
-        <div>
-            <button><a>Inventario</a></button>
-            <button><a>Compras</a></button>
-            <button><a href="/pedidos">Pedidos</a></button>
-        </div>
-        <div style="display:flex; align-items:center; margin-top:20px;">
-            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
-                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
-            </div>
-            <p>Nombre</p>
-        </div>
-        <table>
+        <a href="/pedidos"><button class="arrow_box">Atras</button></a>
+        <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
+        <table class="tablas">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -32,26 +17,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <th>Cliente</th>
                     <th>Estado del pedido</th>
                     <th>Precio total</th>
-                    
+
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="pedidos : ${pedidos}"> 
                     <td th:text="${pedidos.ID}"></td>
-                    <td th:text="${pedidos.Fecha}"></td>
+                    <td th:text="${#dates.format(pedidos.fecha, 'dd/MM/yyyy')}"></td>
                     <td th:text="${pedidos.cliente}"></td>
-                    <td th:text="${pedidos.Estado}"></td> 
-                    <td th:text="${pedidos.PrecioTotal}"></td> 
+                    <td th:text="${pedidos.estado}"></td> 
+                    <td th:text="${pedidos.precioTotal}"></td> 
+                    <td><a th:href="@{/pedidos/editarpedidos/}+${pedidos.ID}">Editar</a></td>
+                    <td><a th:href="@{/pedidos/eliminarpedidos/}+${pedidos.ID}">Dar de baja</a></td>
                 </tr>
             </tbody>
         </table>
-        <div >
+        <div class="busqueda">
             <input type="text" name="search" placeholder="Buscar...">
             <button type="submit"><a>Buscar</a></button>
-        </div>
-        <div>
-            <button><a href="/modificarpedidos">Modificar</a></button>
-            <button><a>Dar de baja</a></button>
         </div>
     </body>
 </html>

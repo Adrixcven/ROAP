@@ -4,35 +4,37 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
 <html>
-    <head>
+    <head th:include="~{Plantillas/plantillaHeader.html :: header}">
         <title>Gestionar Modulos</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <div>
-            <button><a href="/inicial">Atras</a></button>
+            <a th:href="@{/inicial}"><button class="arrow_box">Atras</button></a>
         </div>
-        <div style="display:flex; align-items:center; margin-top:20px;">
-            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
-                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
-            </div>
-            <p>Nombre</p>
+        <div class="user">
+            <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50' class="imgusuario"/>
+            <p>[[${username}]]</p>
         </div>
-        <div class="block" th:each="modulos : ${modulos}">
+        <form th:action="@{/guardarModulo}" method="post" th:each="modulos : ${modulos}" class="formulario">
             <h2 th:text="${modulos.nombre}"></h2>
             <div>
                 <img th:if="${modulos.ID} == 1" th:src="@{'/imatges/pedidos.png'}" width='50' height='50'/>
                 <img th:if="${modulos.ID} == 2" th:src="@{'/imatges/inventario.png'}" width='50' height='50'/>
                 <img th:if="${modulos.ID} == 3" th:src="@{'/imatges/encargos.png'}" width='50' height='50'/>
+                <img th:if="${modulos.ID} == 4" th:src="@{'/imatges/encargosproveedor.png'}" width='50' height='50'/>
             </div>
             <label class="checkbox">
-                <input type="checkbox" th:checked="${modulos.proveedor}"> Proveedor
+                <input type="checkbox" name="proveedor" th:checked="${modulos.proveedor}"> Proveedor
             </label>
             <label class="checkbox">
-                <input type="checkbox" th:checked="${modulos.vendedor}"> Vendedor
+                <input type="checkbox" name="vendedor" th:checked="${modulos.vendedor}" class="checkbox-custom"> Vendedor
             </label>
-        </div>
-       
+            <input type="hidden" th:name="ID" th:value="${modulos.ID}">
+            <input type="hidden" th:name="nombre" th:value="${modulos.nombre}">
+            <input type="submit" value="Guardar">
+        </form>
+
     </body>
 </html>

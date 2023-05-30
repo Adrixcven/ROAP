@@ -5,12 +5,12 @@
 package cat.copernic.roap.DAO;
 
 import cat.copernic.roap.models.Categorias;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author Adrix
  */
-public interface CategoriasDAO  extends CrudRepository<Categorias,Integer>{
+public interface CategoriasDAO  extends JpaRepository<Categorias,Integer>{
     
 }

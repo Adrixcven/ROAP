@@ -4,43 +4,46 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
 <html>
-    <head>
+    <head th:include="~{Plantillas/plantillaHeader.html :: header}">
         <title>Gestionar Usuarios</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <div>
-            <button><a href="/inicial">Atras</a></button>
+            <a th:href="@{/inicial}"><button class="arrow_box">Atras</button></a>
         </div>
-        <div>
-            <button><a href="/adduser">Añadir Usuario</a></button>
+        <div class="center-top">
+            <a th:href="@{/gestionusers/adduser}"><button class="btn button"><i class="fas fa-user-plus"></i>  Añadir Usuario</button></a>
         </div>
-        <div>
-            <button><a href="/modifyuser">Modificar Usuario</a></button>
+
+        <div class="user">
+            <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50' class="imgusuario"/>
+            <p>[[${username}]]</p>
         </div>
-        <div style="display:flex; align-items:center; margin-top:20px;">
-            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
-                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
+
+        <form method="post" action="">
+            <div th:if="${error}" style="color: red;">
+                <p th:text="${error}"></p>
             </div>
-            <p>Nombre</p>
-        </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Rol</th>
-                    <th>Estado</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="usuarios : ${usuarios}"> 
-                    <td th:text="${usuarios.Nombre}"></td>
-                    <td th:text="${usuarios.Rol}"></td> 
-                    <td><input type="checkbox"></td>
-                </tr>
-               
-            </tbody>
-        </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Rol</th>
+                        <th>Modificar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="usuarios : ${usuarios}"> 
+                        <td th:text="${usuarios.Nombre}"></td>
+                        <td th:text="${usuarios.rol}"></td> 
+                        <td><a th:href="@{/gestionusers/editaruser/}+${usuarios.DNI}">Modificar Usuario</a></td>
+                        <td><a th:href="@{/gestionusers/eliminaruser/}+${usuarios.DNI}">Eliminar Usuario</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
     </body>
 </html>

@@ -5,12 +5,13 @@
 package cat.copernic.roap.DAO;
 
 import cat.copernic.roap.models.Envio;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author Adrix
  */
-public interface EnvioDAO  extends CrudRepository<Envio,Integer>{
-    
+public interface EnvioDAO  extends JpaRepository<Envio,Integer>{
+    Envio findByIdpedido(int idpedido);
 }

@@ -5,12 +5,13 @@
 package cat.copernic.roap.DAO;
 
 import cat.copernic.roap.models.Pedidos;
+import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author Adrix
  */
-public interface PedidosDAO  extends CrudRepository<Pedidos,Integer>{
-    
+public interface PedidosDAO  extends JpaRepository<Pedidos,Integer>{
 }

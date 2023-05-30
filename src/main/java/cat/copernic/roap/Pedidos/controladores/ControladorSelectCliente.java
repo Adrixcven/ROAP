@@ -5,6 +5,7 @@
 package cat.copernic.roap.Pedidos.controladores;
 
 import cat.copernic.roap.DAO.ClienteDAO;
+import cat.copernic.roap.Pedidos.servicios.ClienteService;
 import cat.copernic.roap.models.Cliente;
 import cat.copernic.roap.models.Pedidos;
 import java.util.ArrayList;
@@ -21,9 +22,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ControladorSelectCliente {
     @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosDAO al controlador
     private ClienteDAO ClienteDAO; //Atribut per poder utilitzar les funcions CRUD de la interfície GosDAO
-    @GetMapping("/seleccionarCliente")
+    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de GosService al controlador    
+    private ClienteService clienteService;
+    @GetMapping("/pedidos/seleccionarCliente")
     public String inici(Model model){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
-        model.addAttribute("clientes", ClienteDAO.findAll());
+        model.addAttribute("clientes", clienteService.listarCliente());
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
         return "Pedidos/SelectCliente"; //Retorn de la pàgina Login.html.
     }

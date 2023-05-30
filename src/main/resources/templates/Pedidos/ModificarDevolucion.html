@@ -1,41 +1,52 @@
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Modificar Devolución</title>
+    <head  th:include="~{Plantillas/plantillaHeader.html :: header}">
     </head>
     <body>
         <div>
-            <button><a href="/pedidos">Atras</a></button>
+            <a href="/pedidos/gestiondevolucion"><button class="arrow_box">Atras</button></a>
         </div>
-        <div>
-            <button><a>Inventario</a></button>
-            <button><a>Compras</a></button>
-            <button><a href="/pedidos">Pedidos</a></button>
+        <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
+        <div class="vertical-div">
+            <h2>Modificar Devolución</h2>
+            <form th:action="@{/modificardevolucion}"  method="post" th:object="${devolucion}" class="form">
+                <p>
+                <label for="prenda">Producto:</label>
+                <select id="selector" name="selector">
+                    <option th:each="prenda : ${prenda}" th:value="${prenda.id}" th:text="${prenda.nombre}"></option>
+                </select>
+                </p>
+                <p>
+                <label for="cantidad">Cantidad</label>
+                <input type="number" id="cantidad" name="cantidad"  th:field="*{cantidad}" required><br>
+                <span th:if="${#fields.hasErrors('cantidad')}" th:errors="*{cantidad}" class="red-text"/>
+                </p>
+                <p>
+                <fieldset>
+                    <legend>Estado:</legend>
+                    <label>
+                        <input type="radio" id="completado" name="radio" value="Completado" th:field="*{estado}"> Completado
+                    </label>
+                    <label>
+                        <input type="radio" id="envio" name="radio" value="En Envio" th:field="*{estado}"> En Envio
+                    </label>
+                    <label>
+                        <input type="radio" id="cancelado" name="radio" value="Cancelado" th:field="*{estado}"> Cancelado
+                    </label>
+                </fieldset>
+                <span th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}" class="red-text"/>
+                </p>
+                <p>
+                <label for="cliente">Cliente:</label>
+                <select name="cliente">
+                    <option th:each="cliente : ${cliente}" th:value="${cliente.DNI}" th:text="${cliente.nombre}"></option>
+                </select>
+                </p>
+                <input type="hidden" id="quantity" th:field="${quantity}"/>
+                <input type="hidden" th:field="*{fecha}"/>
+                <input type="hidden" th:field="*{ID}"/>
+
+                <input type="submit" value="Guardar">
+            </form>
         </div>
-        <div style="display:flex; align-items:center; margin-top:20px;">
-            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
-                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
-            </div>
-            <p>Nombre</p>
-        </div>
-        <h2>Modificar Devolución</h2>
-        <form method="post" action="">
-            <label for="producto">Producto:</label>
-            <select id="selector" name="selector">
-                <option th:each="productos : ${productos}" 
-                        th:value="${productos.ID}" 
-                        th:text="${productos.Nombre}"></option>
-            </select>
-
-            <label for="cantidad">Cantidad</label>
-            <input type="number" id="cantidad" name="cantidad" value="" required><br>
-
-            <label for="cliente">Cliente:</label>
-            <label for="nombrecliente">Cliente</label>
-            <button><a>Seleccionar Cliente</a></button>
-
-            <input type="submit" value="Guardar">
-        </form>
-
     </body>
 </html>

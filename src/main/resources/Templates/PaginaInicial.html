@@ -1,42 +1,47 @@
-<!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
-    <head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags">
+    <head th:include="~{Plantillas/plantillaHeader.html :: header}">
         <title>Pagina Inicial</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>
-            <button>Gestionar Usuarios</button>
+        <div class="center-top">
+            <a th:href="@{/gestionusers}"><button th:if="${rolUsuario == '1'} " class="btn button"><i class="fas fa-user-cog"></i> Gestionar Usuarios</button></a>
+            <a th:href="@{/gestionmodulo}"><button th:if="${rolUsuario == '1'}" class="btn button"><i class="fas fa-tools"></i> Gestionar módulos</button></a>
         </div>
-        <div>
-            <button>Gestionar módulos</button>
+        <div class="user">
+            <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50' class="imgusuario"/>
+            <p>[[${username}]]</p>
         </div>
-        <div style="display:flex; align-items:center; margin-top:20px;">
-            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
-                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
+        <div th:if="${rolUsuario == '1'}" class="contenedor">
+            <div th:each="modulos : ${modulos}" class="itemmodulos">
+                <a th:href="@{'/' + ${modulos.nombre.toLowerCase()}}"><button class="buttonmodulos">
+                        <img th:src="@{'/imatges/' + ${modulos.nombre.toLowerCase()} + '.png'}" width='50' height='50'/>
+                        <p th:text="${modulos.nombre}"></p>
+                    </button></a>
             </div>
-            <p>Nombre</p>
         </div>
-        <button><a href="/Pedidos">
-            <img th:src="@{'/imatges/pedidos.png'}" width='50' height='50'/>
-            <span>Pedidos</span>
-         
-            </a></button>
-        <button>
-            <img th:src="@{'/imatges/inventario.png'}" width='50' height='50'/>
-            <span>Inventario</span>
-        </button>
-        <button><a href="/encargos">
-            <img th:src="@{'/imatges/encargos.png'}" width='50' height='50'/>
-            <span>Encargos</span>
-        </button>
-        <div>
-            <button>Cerrar Sesión</button>
+        <div th:if="${rolUsuario == '3'}" class="contenedor">
+            <div th:each="modulos : ${modulos}" >
+                <a th:href="@{'/' + ${modulos.nombre.toLowerCase()}}"><button th:if="${modulos.vendedor}" class="btn buttonmodulos">
+                        <img th:src="@{'/imatges/' + ${modulos.nombre.toLowerCase()} + '.png'}" width='50' height='50'/>
+                        <p th:text="${modulos.nombre}"></p>
+                    </button></a>
+            </div>
         </div>
+        <div th:if="${rolUsuario == '2'}" class="contenedor">
+            <div th:each="modulos : ${modulos}" class="itemmodulos">
+                <a th:href="@{'/' + ${modulos.nombre.toLowerCase()}}"><button th:if="${modulos.proveedor}" class="btn buttonmodulos">
+                        <img th:src="@{'/imatges/' + ${modulos.nombre.toLowerCase()} + '.png'}" width='50' height='50'/>
+                        <p th:text="${modulos.nombre}"></p>
+                    </button></a>
+            </div>
+        </div>
+        <div class="cerrarsesion">
+            <a th:href="@{/logout}"><button> <i class="fas fa-user-times"></i> Cerrar Sesión</button></a>
+        </div>
+        
+        
     </body>
 </html>
