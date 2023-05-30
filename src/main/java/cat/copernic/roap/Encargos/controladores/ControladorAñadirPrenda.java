@@ -52,9 +52,11 @@ public class ControladorAñadirPrenda {
      *identifica el mètode al qual ha d'enviar les dades introduïdes mitjançant el formulari.
      */
     @PostMapping("/guardarPrenda")
-    public String guardarPrenda(@Valid Prenda prenda, Errors error) {
-        if(error.hasErrors()){ 
-             return "Encargos/AñadirPrenda"; 
+    public String guardarPrenda(@Valid Prenda prenda, Errors error, Model model) {
+        if (error.hasErrors()) {
+            List<Categorias> categorias = prendaService.listarCategorias();
+            model.addAttribute("categorias", categorias);
+            return "Encargos/AñadirPrenda";
         }
         prendaService.anadirPrenda(prenda);
         return "redirect:/gestionarPrendas";

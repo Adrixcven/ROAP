@@ -47,9 +47,11 @@ public class ControladorAñadirEncargo {
     }
 
     @PostMapping("/guardarEncargo")
-    public String guardarEncargo(@Valid @ModelAttribute("encargo") Encargo encargo, Errors error) {
+    public String guardarEncargo(@Valid @ModelAttribute("encargo") Encargo encargo, Errors error, Model model) {
         if (error.hasErrors()) {
-            return "Encargos/AñadirEncargo"; 
+            List<Prenda> prendasDisponibles = encargoService.listarPrenda();
+            model.addAttribute("prendasDisponibles", prendasDisponibles);
+            return "Encargos/AñadirEncargo";
         }
 
         encargoService.anadirEncargo(encargo);
