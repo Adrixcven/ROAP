@@ -55,7 +55,7 @@ public class Prenda implements Serializable {
     @Positive(message = "{Positive.prenda.talla}")
     private int talla;
     
-    @Column(name = "talla")
+    @Column(name = "color")
     @NotEmpty(message = "{NotEmpty.prenda.talla}")
     private String color;
     
