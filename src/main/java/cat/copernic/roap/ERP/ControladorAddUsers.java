@@ -59,6 +59,6 @@ public class ControladorAddUsers {
 
         usuariosservice.addUsuario(usuario); 
 
-        return "redirect:/gestionusers"; 
+        return "redirect:/inicial"; 
     }
 }
