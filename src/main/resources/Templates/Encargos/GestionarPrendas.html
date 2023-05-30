@@ -17,9 +17,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <h2>Gestionar Prendas</h2>
             </div>
             <form method="post" action="">
-                <div th:if="${error}" style="color: red;">
-                    <p th:text="${error}"></p>
-                </div>
                 <table class="tablas">
                     <thead>
                         <tr>
@@ -50,10 +47,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         </tr>
                     </tbody>
                 </table>
+                <div th:if="${error}" style="color: red;">
+                    <p th:text="${error}"></p>
+                </div>
             </form>
         </div>
     </body>
 </html>
-
-
-
