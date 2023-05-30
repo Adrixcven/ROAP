@@ -1,7 +1,5 @@
-# Clov-is
-Clov-is es una aplicación desarrollada para dispositivos móviles que se integra con Destiny 2, el popular juego de disparos en línea. La aplicación permite a los jugadores ver estadísticas detalladas de sus armas y equipos de juego.
-### Link a Power Point de la Aplicación
-</br>
+# ROAP
+ROAP es una ERP especializada para tiendas de ropa, diseñada para gestionar eficientemente las operaciones comerciales, incluyendo inventario, ventas y compras de las tiendas que lo usen
 
 
 ### Link a la Memoria de la ERP
@@ -14,10 +12,10 @@ https://docs.google.com/presentation/d/1L1zT6WvCW92q7zKBSL8sGjI0pkKg_LWF63Ezf23E
 
 ### Link al GitLab de la ERP
 </br>
-https://git.copernic.cat/ferrer.sanz.adria/clovis
+https://github.com/Adrixcven/Roap/tree/master
 
 ### Link al vídeo demostración de la ERP
 </br>
-https://drive.google.com/file/d/1Saq2t50NNdN2UNyIH3lKdULUvubAysWj/view?usp=sharing
+https://www.youtube.com/watch?v=DimUSlSwS3E
 
 
