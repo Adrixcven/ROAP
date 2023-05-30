@@ -26,35 +26,50 @@ import org.springframework.validation.Errors;
  *
  * @author mfg20
  */
+/**
+ * Controlador para añadir categorías.
+ */
 @Controller
 public class ControladorAñadirCategoria {
 
-    @Autowired //Anotació que injecta tots els mètodes i possibles dependències de PrendaService al controlador    
+    @Autowired // Anotación que injecta todos los métodos y posibles dependencias de CategoriaService al controlador
     private CategoriaService categoriaService;
 
+    /**
+     * Método que se ejecuta al acceder a la URL "/añadirCategoria" mediante una petición GET.
+     * Genera la respuesta (recurso a retornar).
+     *
+     * @param model     Modelo utilizado para pasar datos a la vista.
+     * @param categorias Objeto Categorias.
+     * @return La página "Encargos/añadirCategoria".
+     */
     @GetMapping("/añadirCategoria")
-    public String inici(Model model, Categorias categorias) { //Aquest és el mètode que generarà la resposta (recurs a retornar)
-        //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
-        //model.addAttribute("categorias", categoriaService.listarCategorias());
+    public String inici(Model model, Categorias categorias) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
         String username = authentication.getName();
         model.addAttribute("username", username);
         model.addAttribute("rolUsuario", rolUsuario);
-        return "Encargos/añadirCategoria"; //Retorn de la pàgina Login.html.
+        return "Encargos/añadirCategoria";
     }
 
-    public String crearFormularioCategoria(Categorias categorias) {
-
-        return "Encargos/añadirCategoria"; //Retorna la pàgina on es mostrarà el formulari de les dades dels gos
-    }
-
-    /*Definim el mètode per assignar els valors introduïts en el formulari a l'objecte prenda
-     *passat com a paràmetre.
+    /**
+     * Método que crea el formulario para la categoría.
      *
-     *L'anotació @PostMapping, indica al sistema que el mètode que fem servir per enviar les dades és
-     *post. Com a paràmetre hem de passar el valor de l'action del formulari, d'aquesta manera el sistema 
-     *identifica el mètode al qual ha d'enviar les dades introduïdes mitjançant el formulari.
+     * @param categorias Objeto Categorias.
+     * @return La página "Encargos/añadirCategoria".
+     */
+    public String crearFormularioCategoria(Categorias categorias) {
+        return "Encargos/añadirCategoria";
+    }
+
+    /**
+     * Método que guarda una categoría enviada a través de un formulario.
+     *
+     * @param categorias Objeto Categorias.
+     * @param errors     Errores producidos en la validación del formulario.
+     * @param model      Modelo utilizado para pasar datos a la vista.
+     * @return Redirección a la página "/gestionarCategoria".
      */
     @PostMapping("/guardarCategoria")
     public String guardarCategoria(@Valid Categorias categorias, Errors errors, Model model) {
@@ -71,5 +86,4 @@ public class ControladorAñadirCategoria {
 
         return "redirect:/gestionarCategoria";
     }
-
 }

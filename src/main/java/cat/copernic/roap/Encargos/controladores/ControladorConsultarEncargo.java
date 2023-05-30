@@ -19,15 +19,28 @@ import org.springframework.web.bind.annotation.GetMapping;
  *
  * @author mfg20
  */
+/**
+ *
+ * Controlador para consultar encargos.
+ */
 @Controller
 public class ControladorConsultarEncargo {
 
     @Autowired
     private EncargoService encargoService;
 
+    /**
+     *
+     * Método para manejar la solicitud GET "/consultarEncargo". Inicia la
+     * página de consulta de encargos y agrega los datos necesarios al modelo.
+     *
+     * @param model el modelo para pasar datos a la vista
+     * @return la vista "Encargos/consultarEncargo" para mostrar la página de
+     * consulta de encargos
+     */
     @GetMapping("/consultarEncargo")
     public String iniciar(Model model) {
-       Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
         String username = authentication.getName();
         model.addAttribute("username", username);

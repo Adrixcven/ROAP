@@ -17,27 +17,51 @@ import org.springframework.stereotype.Service;
  *
  * @author mfg20
  */
+/**
+ *
+ * Servicio para la gestión de categorías.
+ */
 @Service
 public class CategoriaService implements CategoriaServiceInterface {
 
     @Autowired
     private CategoriasDAO categoriasDAO;
-    
+
     @Autowired
     private PrendaDAO prenda;
 
+    /**
+     *
+     * Obtiene una lista de todas las categorías.
+     *
+     * @return una lista de categorías
+     */
     @Override
     @Transactional(readOnly = true)
     public List<Categorias> listarCategoria() {
         return categoriasDAO.findAll();
     }
 
+    /**
+     *
+     * Añade una nueva categoría.
+     *
+     * @param categoria la categoría a añadir
+     */
     @Override
     @Transactional
     public void anadirCategoria(Categorias categoria) {
         categoriasDAO.save(categoria);
     }
 
+    /**
+     *
+     * Elimina una categoría.
+     *
+     * @param categoria la categoría a eliminar
+     *
+     * @throws IllegalStateException si existen prendas asociadas a la categoría
+     */
     @Override
     @Transactional
     public void eliminarCategoria(Categorias categoria) {
@@ -55,6 +79,14 @@ public class CategoriaService implements CategoriaServiceInterface {
         categoriasDAO.delete(categoria);
     }
 
+    /**
+     *
+     * Busca una categoría por su identificador.
+     *
+     * @param categoria la categoría con el identificador a buscar
+     * @return la categoría encontrada, o null si no se encontró ninguna
+     * categoría con ese identificador
+     */
     @Override
     @Transactional(readOnly = true)
     public Categorias buscarCategoria(Categorias categoria) {

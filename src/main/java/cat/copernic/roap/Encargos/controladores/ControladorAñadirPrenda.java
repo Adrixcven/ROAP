@@ -23,12 +23,31 @@ import org.springframework.web.bind.annotation.PostMapping;
  *
  * @author mfg20
  */
+/**
+ *
+ * Controlador para añadir prendas.
+ */
 @Controller
 public class ControladorAñadirPrenda {
 
     @Autowired //Anotació que injecta tots els mètodes i possibles dependències de PrendaService al controlador    
     private PrendaService prendaService;
 
+    /**
+     *
+     * Método para manejar la solicitud GET "/añadirPrenda".
+     *
+     * Inicia la página de añadir prenda y agrega los datos necesarios al
+     * modelo.
+     *
+     * @param model el modelo para pasar datos a la vista
+     *
+     * @param prenda el objeto Prenda utilizado para capturar los datos del
+     * formulario
+     *
+     * @return la vista "Encargos/AñadirPrenda" para mostrar el formulario de
+     * añadir prenda
+     */
     @GetMapping("/añadirPrenda")
     public String inici(Model model, Prenda prenda) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -41,17 +60,35 @@ public class ControladorAñadirPrenda {
         return "Encargos/AñadirPrenda";
     }
 
+    /**
+     *
+     * Método para crear el formulario de prenda.
+     *
+     * @param prenda el objeto Prenda utilizado para capturar los datos del
+     * formulario
+     * @return la vista "Encargos/AñadirPrenda" para mostrar el formulario de
+     * añadir prenda
+     */
     public String crearFormularioPrenda(Prenda prenda) {
 
         return "Encargos/AñadirPrenda"; //Retorna la pàgina on es mostrarà el formulari de les dades dels gos
     }
 
-    /*Definim el mètode per assignar els valors introduïts en el formulari a l'objecte prenda
-     *passat com a paràmetre.
+    /**
      *
-     *L'anotació @PostMapping, indica al sistema que el mètode que fem servir per enviar les dades és
-     *post. Com a paràmetre hem de passar el valor de l'action del formulari, d'aquesta manera el sistema 
-     *identifica el mètode al qual ha d'enviar les dades introduïdes mitjançant el formulari.
+     * Método para manejar la solicitud POST "/guardarPrenda".
+     *
+     * Guarda la prenda enviada en el formulario y realiza validaciones de
+     * errores.
+     *
+     * @param prenda el objeto Prenda enviado desde el formulario
+     *
+     * @param error objeto Errors para verificar si hay errores de validación
+     *
+     * @param model el modelo para pasar datos a la vista
+     *
+     * @return la vista "Encargos/AñadirPrenda" si hay errores, de lo contrario,
+     * redirecciona a "/gestionarPrendas"
      */
     @PostMapping("/guardarPrenda")
     public String guardarPrenda(@Valid Prenda prenda, Errors error, Model model) {
