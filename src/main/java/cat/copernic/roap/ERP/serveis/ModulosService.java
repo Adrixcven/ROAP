@@ -54,7 +54,7 @@ public class ModulosService implements ModulosServiceInterface{
     /**
      * Agrega un módulo.
      *
-     * @param modulo el objeto Modulos que se va a agregar.
+     * @param usuario el objeto Modulos que se va a agregar.
      */
     @Override
     @Transactional
@@ -67,7 +67,7 @@ public class ModulosService implements ModulosServiceInterface{
     /**
      * Elimina un módulo.
      *
-     * @param modulo el objeto Modulos que se va a eliminar.
+     * @param usuario el objeto Modulos que se va a eliminar.
      */
     @Override
     @Transactional 
@@ -80,7 +80,7 @@ public class ModulosService implements ModulosServiceInterface{
     /**
      * Busca un módulo por su identificador.
      *
-     * @param modulo el objeto Modulos que se va a buscar.
+     * @param usuario el objeto Modulos que se va a buscar.
      * @return el objeto Modulos correspondiente al identificador proporcionado, o null si no se encuentra.
      */
     @Override

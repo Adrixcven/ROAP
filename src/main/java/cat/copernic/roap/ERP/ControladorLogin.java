@@ -21,27 +21,29 @@ import org.springframework.web.bind.annotation.PostMapping;
  */
 @Controller
 public class ControladorLogin {
-    
+
     /**
      * Maneja las solicitudes GET a la ruta "/login".
      *
      * @param user Detalles del usuario autenticado.
-     * @return Si el usuario no es nulo, redirige a la página "/inicial". De lo contrario, retorna la página "Login".
+     * @return Si el usuario no es nulo, redirige a la página "/inicial". De lo
+     * contrario, retorna la página "Login".
      */
     @GetMapping("/login")
-    public String login(@AuthenticationPrincipal UserDetails user){
+    public String login(@AuthenticationPrincipal UserDetails user) {
         if (user != null) {
             return "redirect:/inicial";
         }
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
-        return "Login"; 
+        return "Login";
     }
 
     /**
-     * Maneja la solicitud GET para "/logout".
+     * Logout the user and redirect to the login page.
      *
-     * @param user los detalles de autenticación del usuario actualmente autenticado
-     * @return Devuelve la página "Login" después de asignar el valor nulo a la variable de usuario.
+     * @param request the HttpServletRequest object
+     * @return a String representing the redirect path to the login page
+     * @throws ServletException if an error occurs during the logout process
      */
     @GetMapping("/logout")
     public String logout(HttpServletRequest request) throws ServletException {
