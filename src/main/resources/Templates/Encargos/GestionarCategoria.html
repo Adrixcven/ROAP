@@ -6,34 +6,34 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:include="~{Plantillas/plantillaHeader.html :: header}">
         <meta charset="UTF-8">
-        <title>Gestionar Categoria</title>
     </head>
     <body>
         <div>
-            <button><a th:href="@{/encargosproveedor}">Atras</a></button>
+            <a th:href="@{/encargosproveedor}"><button class="arrow_box">Atras</button></a>
         </div>
         <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
-        <h2>Gestionar Categoria</h2>
-        <div th:if="${error}" style="color: red;">
-            <p th:text="${error}"></p>
+        <div class="vertical-div">
+            <h2>Gestionar Categoria</h2>
+            <div th:if="${error}" style="color: red;">
+                <p th:text="${error}"></p>
+            </div>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <td><label for="Nombre">Nombre</label></td>
+                        <td><label for="Editar">Editar</label></td>
+                        <td><label for="Eliminar">Eliminar</label></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="categoria : ${categorias}">
+                        <td th:text="${categoria.nombre}"></td>
+                        <td><a th:href="@{/editarcat/{id}(id=${categoria.id})}" th:text="Editar"/></td>
+                        <td><a th:href="@{/eliminarcat/{id}(id=${categoria.id})}" th:text="Eliminar"/></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <table border="1">
-            <thead>
-                <tr>
-                    <td><label for="Nombre">Nombre</label></td>
-                    <td><label for="Editar">Editar</label></td>
-                    <td><label for="Eliminar">Eliminar</label></td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="categoria : ${categorias}">
-                    <td th:text="${categoria.nombre}"></td>
-                    <td><a th:href="@{/editarcat/{id}(id=${categoria.id})}" th:text="Editar"/></td>
-                    <td><a th:href="@{/eliminarcat/{id}(id=${categoria.id})}" th:text="Eliminar"/></td>
-                </tr>
-            </tbody>
-        </table>
     </body>
-    
 </html>
 

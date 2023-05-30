@@ -4,18 +4,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:include="~{Plantillas/plantillaHeader.html :: header}">
-    <title>Encargos</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-    <div>
-        <button><a th:href="@{/inicial}">Atras</a></button>
-    </div>
-    <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
-    <div>
-       <h3>Encargos</h3>
+    <head th:include="~{Plantillas/plantillaHeader.html :: header}">
+        <title>Encargos</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <a th:href="@{/inicial}"><button class="arrow_box">Atras</button></a>
+        </div>
+        <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
+        <div>
+            <h3>Encargos</h3>
             <div>
                 <button><a th:href="@{/añadirEncargo}">Añadir Encargo</a></button>
                 <button><a th:href="@{/gestionarEncargos}">Modificar Encargo</a></button> 

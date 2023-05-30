@@ -6,53 +6,54 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:include="~{Plantillas/plantillaHeader.html :: header}">
         <meta charset="UTF-8">
-        <title>Modificar Encargo</title>
     </head>
     <body>
         <div>
-            <button><a th:href="@{/encargos}">Atras</a></button>
+            <a th:href="@{/encargos}"><button class="arrow_box">Atras</button></a>
         </div>
         <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
-        <h2>Añadir Encargo</h2>
-        <form th:action="@{/guardarEncargo}" method="post" th:object="${encargo}">
-            <input type="hidden" name="id" th:field="*{id}"/>
-            <p>
-                <label for="unidades">Unidades:</label>
-                <input type="number" name="unidades" th:field="*{unidades}" required/>
-                <span th:if="${#fields.hasErrors('unidades')}" th:errors="*{unidades}" class="red-text"/>
+        <div class="vertical-div">
+            <h2>Añadir Encargo</h2>
+            <form th:action="@{/guardarEncargo}" method="post" th:object="${encargo}">
+                <input type="hidden" name="id" th:field="*{id}"/>
+                <p>
+                    <label for="unidades">Unidades:</label>
+                    <input type="number" name="unidades" th:field="*{unidades}" required/>
+                    <span th:if="${#fields.hasErrors('unidades')}" th:errors="*{unidades}" class="red-text"/>
 
-            </p>
-            <p>
-                <label for="precio">Precio:</label>
-                <input type="number" name="precio" th:field="*{precio}" required/>
-                <span th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}" class="red-text"/>
+                </p>
+                <p>
+                    <label for="precio">Precio:</label>
+                    <input type="number" name="precio" th:field="*{precio}" required/>
+                    <span th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}" class="red-text"/>
 
-            </p>
-            <p>
-                <label for="tipo">Tipo:</label>
-                <input type="text" name="tipo" th:field="*{tipo}" required/>
-                <span th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}" class="red-text"/>
+                </p>
+                <p>
+                    <label for="tipo">Tipo:</label>
+                    <input type="text" name="tipo" th:field="*{tipo}" required/>
+                    <span th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}" class="red-text"/>
 
-            </p>
-            <p>
-                <label for="estado">Estado:</label>
-                <input type="text" name="estado" th:field="*{estado}" required/>
-                <span th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}" class="red-text"/>
+                </p>
+                <p>
+                    <label for="estado">Estado:</label>
+                    <input type="text" name="estado" th:field="*{estado}" required/>
+                    <span th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}" class="red-text"/>
 
-            </p>
-            <p>
-                <label for="talla">Talla:</label>
-                <input type="text" name="talla" th:field="*{talla}" required/>
-                <span th:if="${#fields.hasErrors('talla')}" th:errors="*{talla}" class="red-text"/>
+                </p>
+                <p>
+                    <label for="talla">Talla:</label>
+                    <input type="text" name="talla" th:field="*{talla}" required/>
+                    <span th:if="${#fields.hasErrors('talla')}" th:errors="*{talla}" class="red-text"/>
 
-            </p>
-            <p>
-                <label for="prenda">Prenda:</label>
-                <select name="prenda.id" th:field="*{prenda.id}">
-                    <option th:each="prenda : ${prendasDisponibles}" th:value="${prenda.id}" th:text="${prenda.nombre}"></option>
-                </select>
-            </p>
-            <input type="submit" name="enviar" value="Guardar"/>        
-        </form>
+                </p>
+                <p>
+                    <label for="prenda">Prenda:</label>
+                    <select name="prenda.id" th:field="*{prenda.id}">
+                        <option th:each="prenda : ${prendasDisponibles}" th:value="${prenda.id}" th:text="${prenda.nombre}"></option>
+                    </select>
+                </p>
+                <input type="submit" name="enviar" value="Guardar"/>        
+            </form>
+        </div>
     </body>
 </html>
