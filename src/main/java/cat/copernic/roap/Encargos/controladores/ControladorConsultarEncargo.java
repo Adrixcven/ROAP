@@ -27,9 +27,11 @@ public class ControladorConsultarEncargo {
 
     @GetMapping("/consultarEncargo")
     public String iniciar(Model model) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+       Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
         String username = authentication.getName();
+        model.addAttribute("username", username);
+        model.addAttribute("rolUsuario", rolUsuario);
         List<Encargo> encargos = encargoService.listarEncargo();
         model.addAttribute("encargos", encargos);
         return "Encargos/consultarEncargo";

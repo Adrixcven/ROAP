@@ -36,7 +36,9 @@ public class ControladorGestionarPrendas {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
         String username = authentication.getName();
-        model.addAttribute("prenda", prendaService.listarPrenda());  
+        model.addAttribute("username", username);
+        model.addAttribute("rolUsuario", rolUsuario);
+        model.addAttribute("prenda", prendaService.listarPrenda());
         model.addAttribute("categoria", prendaService.listarCategorias());
         return "Encargos/GestionarPrendas";
     }
@@ -53,17 +55,27 @@ public class ControladorGestionarPrendas {
 
     @GetMapping("/editar/{id}")
     public String editar(Prenda prenda, Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
+        String username = authentication.getName();
+        model.addAttribute("username", username);
+        model.addAttribute("rolUsuario", rolUsuario);
         model.addAttribute("prenda", prendaService.buscarPrenda(prenda));
         List<Categorias> categorias = prendaService.listarCategorias();
         model.addAttribute("categorias", categorias);
         return "Encargos/AñadirPrenda";
     }
-    
+
     @ExceptionHandler(DataIntegrityViolationException.class)
     public String handleDataIntegrityViolationException(DataIntegrityViolationException ex, Model model) {
         model.addAttribute("error", "No se puede eliminar la prenda porque está referenciada en un encargo.");
         model.addAttribute("prenda", prendaService.listarPrenda());
         model.addAttribute("categoria", prendaService.listarCategorias());
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
+        String username = authentication.getName();
+        model.addAttribute("username", username);
+        model.addAttribute("rolUsuario", rolUsuario);
         return "Encargos/GestionarPrendas";
     }
 

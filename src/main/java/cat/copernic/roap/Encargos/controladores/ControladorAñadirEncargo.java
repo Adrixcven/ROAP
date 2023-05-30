@@ -35,6 +35,8 @@ public class ControladorAñadirEncargo {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
         String username = authentication.getName();
+        model.addAttribute("username", username);
+        model.addAttribute("rolUsuario", rolUsuario);
         // Crear una instancia de Encargo y agregarla al modelo
         Encargo encargo = new Encargo();
         model.addAttribute("encargo", encargo);
@@ -49,6 +51,11 @@ public class ControladorAñadirEncargo {
     @PostMapping("/guardarEncargo")
     public String guardarEncargo(@Valid @ModelAttribute("encargo") Encargo encargo, Errors error, Model model) {
         if (error.hasErrors()) {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
+            String username = authentication.getName();
+            model.addAttribute("username", username);
+            model.addAttribute("rolUsuario", rolUsuario);
             List<Prenda> prendasDisponibles = encargoService.listarPrenda();
             model.addAttribute("prendasDisponibles", prendasDisponibles);
             return "Encargos/AñadirEncargo";

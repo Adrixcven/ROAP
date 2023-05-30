@@ -6,50 +6,51 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:include="~{Plantillas/plantillaHeader.html :: header}">
         <meta charset="UTF-8">
-        <title>Gestionar Prendas</title>
     </head>
     <body>
         <div>
-            <button><a th:href="@{/encargosproveedor}">Atras</a></button>
+            <a th:href="@{/encargosproveedor}"><button class="arrow_box">Atras</button></a>
         </div>
         <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
-        <h2>Gestionar Prendas</h2>
-        <form method="post" action="">
-            <div th:if="${error}" style="color: red;">
-                <p th:text="${error}"></p>
+        <div class="vertical-div">
+            <div class="title-div">
+                <h2>Gestionar Prendas</h2>
             </div>
-            <table border="1">
-                <thead>
-                    <tr>
-                        <td><label for="nombre">Nombre</label></td>
-                        <td><label for="unidades">Unidades</label></td>
-                        <td><label for="precio">Precio</label></td>
-                        <td><label for="tipo">Tipo de prenda</label></td>
-                        <td><label for="estado">Estado de la prenda</label></td>
-                        <td><label for="talla">Talla</label></td>
-                        <td><label for="color">Color</label></td>
-                        <td><label for="categoria">Categoria</label></td>
-                        <td><label for="talla">Editar</label></td>
-                        <td><label for="color">Eliminar</label></td>                        
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="prenda : ${prenda}"> 
-                        <td th:text="${prenda.nombre}"></td>
-                        <td th:text="${prenda.unidades}"></td>
-                        <td th:text="${prenda.precio}"></td>
-                        <td th:text="${prenda.tipo}"></td>
-                        <td th:text="${prenda.estado}"></td>
-                        <td th:text="${prenda.talla}"></td> 
-                        <td th:text="${prenda.color}"></td> 
-                        <td><span th:text="${prenda.categoria}"></span></td>
-                        <td><a th:href="@{/editar/}+${prenda.id}" th:text="Editar"/></td>
-                        <td><a th:href="@{/eliminar/}+${prenda.id}" th:text="Eliminar"/></td>
-                    </tr>
-                </tbody>
-            </table>
-        </form>
+            <form method="post" action="">
+                <table class="tablas">
+                    <thead>
+                        <tr>
+                            <th><label for="nombre">Nombre</label></th>
+                            <th><label for="unidades">Unidades</label></th>
+                            <th><label for="precio">Precio</label></th>
+                            <th><label for="tipo">Tipo de prenda</label></th>
+                            <th><label for="estado">Estado de la prenda</label></th>
+                            <th><label for="talla">Talla</label></th>
+                            <th><label for="color">Color</label></th>
+                            <th><label for="categoria">Categoria</label></th>
+                            <th><label for="editar">Editar</label></th>
+                            <th><label for="eliminar">Eliminar</label></th>                        
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="prenda : ${prenda}"> 
+                            <td th:text="${prenda.nombre}"></td>
+                            <td th:text="${prenda.unidades}"></td>
+                            <td th:text="${prenda.precio}"></td>
+                            <td th:text="${prenda.tipo}"></td>
+                            <td th:text="${prenda.estado}"></td>
+                            <td th:text="${prenda.talla}"></td> 
+                            <td th:text="${prenda.color}"></td> 
+                            <td><span th:text="${prenda.categoria}"></span></td>
+                            <td><a th:href="@{/editar/}+${prenda.id}" th:text="Editar"/></td>
+                            <td><a th:href="@{/eliminar/}+${prenda.id}" th:text="Eliminar"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div th:if="${error}" style="color: red;">
+                    <p th:text="${error}"></p>
+                </div>
+            </form>
+        </div>
     </body>
 </html>
-
-

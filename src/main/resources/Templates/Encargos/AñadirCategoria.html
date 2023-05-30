@@ -6,26 +6,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:include="~{Plantillas/plantillaHeader.html :: header}">
         <meta charset="UTF-8">
-        <title>Añadir Prenda</title>
     </head>
     <body>
         <div>
-            <button><a th:href="@{/encargosproveedor}">Atras</a></button>
+            <a th:href="@{/encargosproveedor}"><button class="arrow_box">Atras</button></a>
         </div>
         <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
-        <h2>Añadir Categoria</h2>
-        <p>
-        <form action="/guardarCategoria" method="post" th:object="${categorias}">
-            <input type="hidden" name="id" th:field="*{id}" />
-            <p>
-                <label for="nombre">Nombre:</label>
-                <input type="text" name="nombre" th:field="*{nombre}" required/>
-                <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="red-text"/>
-            </p>
-            <input type="submit" name="enviar" value="Guardar" />
-        </form>
-    </p>
-</body>
-
+        <div class="vertical-div">
+            <h2>Añadir Categoria</h2>
+            <form action="/guardarCategoria" method="post" th:object="${categorias}" class="form">
+                <input type="hidden" name="id" th:field="*{id}" />
+                <p>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" name="nombre" th:field="*{nombre}" required class="form-input"/>
+                    <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="red-text"/>
+                </p>
+                <input type="submit" name="enviar" value="Guardar" class="form-button"/>
+            </form>
+        </div>
+    </body>
 </html>
 

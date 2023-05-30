@@ -32,6 +32,8 @@ public class ControladorModificarEncargo {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
         String username = authentication.getName();
+        model.addAttribute("username", username);
+        model.addAttribute("rolUsuario", rolUsuario);
         List<Encargo> encargos = encargoService.listarEncargo();
         model.addAttribute("encargos", encargos);
         return "Encargos/GestionarEncargos";
@@ -53,6 +55,11 @@ public class ControladorModificarEncargo {
         List<Prenda> prendasDisponibles = encargoService.listarPrenda();
         model.addAttribute("encargo", encargoExistente);
         model.addAttribute("prendasDisponibles", prendasDisponibles);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
+        String username = authentication.getName();
+        model.addAttribute("username", username);
+        model.addAttribute("rolUsuario", rolUsuario);
         return "Encargos/AñadirEncargo";
     }
 
