@@ -8,10 +8,12 @@ import cat.copernic.roap.Encargos.serveis.PrendaService;
 import cat.copernic.roap.models.Categorias;
 import cat.copernic.roap.models.Prenda;
 import cat.copernic.roap.models.Producto;
+import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -45,7 +47,10 @@ public class ControladorAñadirPrenda {
      *identifica el mètode al qual ha d'enviar les dades introduïdes mitjançant el formulari.
      */
     @PostMapping("/guardarPrenda")
-    public String guardarPrenda(Prenda prenda) {
+    public String guardarPrenda(@Valid Prenda prenda, Errors error) {
+        if(error.hasErrors()){ 
+             return "Encargos/AñadirPrenda"; 
+        }
         prendaService.anadirPrenda(prenda);
         return "redirect:/gestionarPrendas";
     }

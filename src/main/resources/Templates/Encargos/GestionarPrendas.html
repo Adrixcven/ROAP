@@ -1,6 +1,10 @@
 <!DOCTYPE html>
-<html>
-    <head>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:include="~{Plantillas/plantillaHeader.html :: header}">
         <meta charset="UTF-8">
         <title>Gestionar Prendas</title>
     </head>
@@ -8,19 +12,12 @@
         <div>
             <button><a th:href="@{/encargosProveedor}">Atras</a></button>
         </div>
-        <div>
-            <button>Inventario</button>
-            <button><a th:href="@{/encargos}">Encargos</button>
-            <button><a th:href="@{/pedidos}">Pedidos</a></button>
-        </div>
-        <div style="display:flex; align-items:center; margin-top:20px;">
-            <div style="width:50px; height:50px; background-color:#ccc; margin-right:10px;">
-                <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50'/>
-            </div>
-            <p>Nombre</p>
-        </div>
+        <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
         <h2>Gestionar Prendas</h2>
         <form method="post" action="">
+            <div th:if="${error}" style="color: red;">
+                <p th:text="${error}"></p>
+            </div>
             <table border="1">
                 <thead>
                     <tr>
@@ -45,7 +42,7 @@
                         <td th:text="${prenda.estado}"></td>
                         <td th:text="${prenda.talla}"></td> 
                         <td th:text="${prenda.color}"></td> 
-                       <td><span th:text="${prenda.categoria}"></span></td>
+                        <td><span th:text="${prenda.categoria}"></span></td>
                         <td><a th:href="@{/editar/}+${prenda.id}" th:text="Editar"/></td>
                         <td><a th:href="@{/eliminar/}+${prenda.id}" th:text="Eliminar"/></td>
                     </tr>
@@ -55,4 +52,5 @@
 
     </body>
 </html>
+
 
