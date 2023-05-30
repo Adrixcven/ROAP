@@ -18,23 +18,33 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <input type="hidden" name="id" th:field="*{id}"/>
             <p>
                 <label for="unidades">Unidades:</label>
-                <input type="number" name="unidades" th:field="*{unidades}"/>
+                <input type="number" name="unidades" th:field="*{unidades}" required/>
+                <span th:if="${#fields.hasErrors('unidades')}" th:errors="*{unidades}" class="red-text"/>
+
             </p>
             <p>
                 <label for="precio">Precio:</label>
-                <input type="number" name="precio" th:field="*{precio}"/>
+                <input type="number" name="precio" th:field="*{precio}" required/>
+                <span th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}" class="red-text"/>
+
             </p>
             <p>
                 <label for="tipo">Tipo:</label>
-                <input type="text" name="tipo" th:field="*{tipo}"/>
+                <input type="text" name="tipo" th:field="*{tipo}" required/>
+                <span th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}" class="red-text"/>
+
             </p>
             <p>
                 <label for="estado">Estado:</label>
-                <input type="text" name="estado" th:field="*{estado}"/>
+                <input type="text" name="estado" th:field="*{estado}" required/>
+                <span th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}" class="red-text"/>
+
             </p>
             <p>
                 <label for="talla">Talla:</label>
-                <input type="text" name="talla" th:field="*{talla}"/>
+                <input type="text" name="talla" th:field="*{talla}" required/>
+                <span th:if="${#fields.hasErrors('talla')}" th:errors="*{talla}" class="red-text"/>
+
             </p>
             <p>
                 <label for="prenda">Prenda:</label>
@@ -44,7 +54,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             </p>
             <input type="submit" name="enviar" value="Guardar"/>        
         </form>
-
     </body>
 
 </html>

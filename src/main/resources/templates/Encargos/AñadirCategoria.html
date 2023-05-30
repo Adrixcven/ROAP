@@ -10,7 +10,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <div>
-            <button><a th:href="@{/encargosProveedor}">Atras</a></button>
+            <button><a th:href="@{/encargosproveedor}">Atras</a></button>
         </div>
         <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
         <h2>Añadir Categoria</h2>
@@ -19,11 +19,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <input type="hidden" name="id" th:field="*{id}" />
             <p>
                 <label for="nombre">Nombre:</label>
-                <input type="text" name="nombre" th:field="*{nombre}" />
+                <input type="text" name="nombre" th:field="*{nombre}" required/>
+                <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="red-text"/>
             </p>
             <input type="submit" name="enviar" value="Guardar" />
         </form>
-
     </p>
 </body>
 
