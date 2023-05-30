@@ -33,6 +33,10 @@ public class ControladorPaginaInicial {
     @GetMapping("/inicial")
     public String inici(Model model, Principal principal) { //Aquest és el mètode que generarà la resposta (recurs a retornar)
         Authentication authentication = (Authentication) principal;
+        if (authentication == null){
+            return "redirect:/login";
+        }
+        
         String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
         String username = authentication.getName();
         model.addAttribute("username", username);
