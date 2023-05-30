@@ -12,15 +12,51 @@ import cat.copernic.roap.models.Prenda;
  *
  * @author mfg20
  */
+/**
+ *
+ * Interfaz para el servicio de gestión de prendas.
+ */
 public interface PrendaServiceInterface {
-    public List<Prenda> listarPrenda(); //Mètode que implementarem per llistar prendas
-    
+
+    /**
+     *
+     * Obtiene una lista de todas las prendas.
+     *
+     * @return una lista de prendas
+     */
+    public List<Prenda> listarPrenda();
+
+    /**
+     *
+     * Obtiene una lista de todas las categorías.
+     *
+     * @return una lista de categorías
+     */
     public List<Categorias> listarCategorias();
 
-    public void anadirPrenda(Prenda prenda); //Mètode que implementarem per afegir una prenda
+    /**
+     *
+     * Añade una nueva prenda.
+     *
+     * @param prenda la prenda a añadir
+     */
+    public void anadirPrenda(Prenda prenda);
 
-    public void eliminarPrenda(Prenda prenda); //Mètode que implementarem per eliminar una prenda
+    /**
+     *
+     * Elimina una prenda.
+     *
+     * @param prenda la prenda a eliminar
+     */
+    public void eliminarPrenda(Prenda prenda);
 
-    public Prenda buscarPrenda(Prenda prenda); //Mètode que implementarem per cercar una prenda
-    
+    /**
+     *
+     * Busca una prenda por su identificador.
+     *
+     * @param prenda la prenda con el identificador a buscar
+     * @return la prenda encontrada, o null si no se encontró ninguna prenda con
+     * ese identificador
+     */
+    public Prenda buscarPrenda(Prenda prenda);
 }
