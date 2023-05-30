@@ -39,10 +39,12 @@ public class ControladorGestionEnvio {
      * @return la página "Pedidos/GestionEnvio"
      */
     @GetMapping("/pedidos/gestionenvio")
-    public String inici(Model model){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
+    public String ConsultarEnvios(Model model){ //Aquest és el mètode que generarà la resposta (recurs a retornar)
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
         String username = authentication.getName();
         model.addAttribute("username", username);
+        model.addAttribute("rolUsuario", rolUsuario);
         model.addAttribute("envios", envioService.listarEnvio());
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
         return "Pedidos/GestionEnvio"; //Retorn de la pàgina Login.html.

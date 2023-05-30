@@ -7,11 +7,13 @@ package cat.copernic.roap.Encargos.controladores;
 import cat.copernic.roap.Encargos.serveis.EncargoService;
 import cat.copernic.roap.models.Encargo;
 import cat.copernic.roap.models.Prenda;
+import jakarta.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,7 +42,11 @@ public class ControladorAñadirEncargo {
     }
 
     @PostMapping("/guardarEncargo")
-    public String guardarEncargo(@ModelAttribute("encargo") Encargo encargo) {
+    public String guardarEncargo(@Valid @ModelAttribute("encargo") Encargo encargo, Errors error) {
+        if (error.hasErrors()) {
+            return "Encargos/AñadirEncargo"; 
+        }
+
         encargoService.anadirEncargo(encargo);
         return "redirect:/gestionarEncargos";
     }

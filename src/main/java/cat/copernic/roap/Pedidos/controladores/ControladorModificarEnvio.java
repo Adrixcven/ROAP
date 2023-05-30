@@ -37,8 +37,10 @@ public class ControladorModificarEnvio {
         /*Cerquem el gos passat per paràmetre, al qual li correspón l'idgos de @GetMapping mitjançant 
          *el mètode cercarGos de la capa de servei.*/
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
         String username = authentication.getName();
         model.addAttribute("username", username);
+        model.addAttribute("rolUsuario", rolUsuario);
         model.addAttribute("envio", envioService.buscarEnvio(envio));
 
         return "Pedidos/ModificarEnvio"; //Retorna la pàgina amb el formulari de les dades del gos

@@ -4,6 +4,7 @@
  */
 package cat.copernic.roap.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,6 +13,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Positive;
 import java.io.Serializable;
 import lombok.Data;
 
@@ -30,10 +33,24 @@ public class Encargo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "unidades")
+    @Positive(message = "{Positive.encargo.unidades}")
     private int unidades;
+    
+    @Column(name = "precio")
+    @Positive(message = "{Positive.encargo.precio}")
     private int precio;
+    
+    @Column(name = "tipo")
+    @NotEmpty(message = "{NotEmpty.encargo.tipo}")
     private String tipo;
+    
+    @Column(name = "estado")
+    @NotEmpty(message = "{NotEmpty.encargo.estado}")
     private String estado;
+    
+    @Column(name = "talla")
+    @NotEmpty(message = "{NotEmpty.encargo.talla}")
     private String talla;
 
     @ManyToOne

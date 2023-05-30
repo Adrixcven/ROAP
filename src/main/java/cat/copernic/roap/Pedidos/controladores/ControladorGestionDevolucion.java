@@ -43,7 +43,7 @@ public class ControladorGestionDevolucion {
      * @return la vista "Pedidos/GestionDevolucion"
      */
     @GetMapping("/pedidos/gestiondevolucion")
-    public String inici(Model model) { //Aquest és el mètode que generarà la resposta (recurs a retornar)
+    public String ConsultarDevolucion(Model model) { //Aquest és el mètode que generarà la resposta (recurs a retornar)
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         model.addAttribute("username", username);
@@ -82,8 +82,10 @@ public class ControladorGestionDevolucion {
         /*Cerquem el gos passat per paràmetre, al qual li correspón l'idgos de @GetMapping mitjançant 
          *el mètode cercarGos de la capa de servei.*/
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
         String username = authentication.getName();
         model.addAttribute("username", username);
+        model.addAttribute("rolUsuario", rolUsuario);
         model.addAttribute("quantity", devolucion.getCantidad());
         model.addAttribute("cliente", ClienteService.listarCliente());
         model.addAttribute("prenda", prendaService.listarPrenda());

@@ -62,9 +62,9 @@ public class WebApplication {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         return http.csrf().disable().authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/pedidos", "/pedidos/**").hasAnyAuthority("1", "2")
+                .requestMatchers("/pedidos", "/pedidos/**").hasAnyAuthority("1", "3")
                 .requestMatchers("/encargos", "/gestionusers", "/gestionmodulo").hasAuthority("1")
-                .requestMatchers("/encargosProveedor").hasAuthority("3")
+                .requestMatchers("/encargosProveedor").hasAuthority("2")
                 .requestMatchers("/remember", "/gestionusers/adduser", "/guardarUsuario", "/**").permitAll()
                 .anyRequest().authenticated() 
                 )

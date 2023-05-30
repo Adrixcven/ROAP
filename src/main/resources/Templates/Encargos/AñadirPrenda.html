@@ -10,7 +10,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <div>
-            <button><a th:href="@{/encargosProveedor}">Atras</a></button>
+            <button><a th:href="@{/encargosproveedor}">Atras</a></button>
         </div>
         <div th:include="Plantillas/plantillaHeader.html:: cuerp"></div>
         <h2>Añadir Prenda</h2>
@@ -20,10 +20,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <p>
                 <label for="nombre">Nombre:</label>
                 <input type="text" name="nombre" th:field="*{nombre}"/>
+                <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="red-text"/>
             </p>
             <p>
                 <label for="unidades">Unidades:</label>
                 <input type="number" name="unidades" th:field="*{unidades}"/>
+                <span th:if="${#fields.hasErrors('unidades')}" th:errors="*{unidades}" class="red-text"/>
             </p>
             <p>
                 <label for="precio">Precio:</label>
@@ -32,18 +34,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <p>
                 <label for="tipo">Tipo:</label>
                 <input type="text" name="tipo" th:field="*{tipo}"/>
+                <span th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}" class="red-text"/>
             </p>
             <p>
                 <label for="estado">Estado:</label>
                 <input type="text" name="estado" th:field="*{estado}"/>
+                <span th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}" class="red-text"/>
             </p>
             <p>
                 <label for="talla">Talla:</label>
                 <input type="number" name="talla" th:field="*{talla}"/>
+                <span th:if="${#fields.hasErrors('talla')}" th:errors="*{talla}" class="red-text"/>
             </p>
             <p>
                 <label for="color">Color:</label>
                 <input type="text" name="color" th:field="*{color}"/>
+                <span th:if="${#fields.hasErrors('color')}" th:errors="*{color}" class="red-text"/>
             </p>
             <p>
                 <label for="categoria">Categoria:</label>
