@@ -18,7 +18,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <input type="hidden" name="id" th:field="*{id}" />
                 <p>
                     <label for="nombre">Nombre:</label>
-                    <input type="text" name="nombre" th:field="*{nombre}" required class="form-input"/>
+                    <input type="text" name="nombre" th:field="*{nombre}" required class="form-input"/><br>
                     <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="red-text"/>
                 </p>
                 <input type="submit" name="enviar" value="Guardar" class="form-button"/>

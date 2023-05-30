@@ -12,10 +12,12 @@ import cat.copernic.roap.models.Pedidos;
 import cat.copernic.roap.models.Usuario;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -56,6 +58,9 @@ public class ControladorGestionarUsers {
      */
     @GetMapping("/gestionusers/editaruser/{DNI}")
     public String editarUser(Usuario usuario, Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        model.addAttribute("username", username);
         
         model.addAttribute("usuarios", usuariosservice.buscarUsuario(usuario));
 
@@ -74,5 +79,14 @@ public class ControladorGestionarUsers {
         usuariosservice.eliminarUsuario(usuario);
 
         return "redirect:/gestionusers";
+    }
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public String handleDataIntegrityViolationException(DataIntegrityViolationException ex, Model model) {
+        model.addAttribute("error", "No se puede eliminar el usuario, ya que tiene un pedido a su nombre.");
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        model.addAttribute("username", username);
+        model.addAttribute("usuarios", usuariosservice.listarUsuario());
+        return "GestionUsers"; 
     }
 }

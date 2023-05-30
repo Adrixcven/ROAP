@@ -54,8 +54,10 @@ public class ControladorGestionPedidos {
     @GetMapping("/pedidos/gestionpedidos")
     public String inici(Model model) { //Aquest és el mètode que generarà la resposta (recurs a retornar)
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
         String username = authentication.getName();
         model.addAttribute("username", username);
+        model.addAttribute("rolUsuario", rolUsuario);
         model.addAttribute("pedidos", pedidosService.listarPedidos());
         //log.info("Executant el controlador Spring MVC"); //Afegeix al log el missatge passat com a paràmetre.
         return "Pedidos/GestionPedidos"; //Retorn de la pàgina Login.html.

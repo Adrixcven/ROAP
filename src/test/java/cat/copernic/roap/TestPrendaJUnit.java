@@ -8,6 +8,7 @@ import cat.copernic.roap.models.Prenda;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -38,6 +39,7 @@ public class TestPrendaJUnit {
      * Prueba los métodos getter y setter de la entidad Prenda.
      * Verifica que los valores establecidos sean los mismos que los obtenidos.
      */
+    @DisplayName("Verifica que los valores sean los Obtenidos con JUnit")
     @Test
     public void testGettersAndSetters() {
         assertEquals(1, prenda.getId());
@@ -55,6 +57,7 @@ public class TestPrendaJUnit {
      * Prueba el método toString() de la entidad Prenda.
      * Verifica que el resultado del método coincida con el formato esperado.
      */
+    @DisplayName("Busca si el String es igual al esperado")
     @Test
     public void testToString() {
         String expectedToString = "Prenda(id=1, nombre=Camiseta, unidades=10, precio=19.99, tipo=Ropa, estado=Nuevo, talla=5, color=Azul, categoria=2)";

@@ -45,8 +45,10 @@ public class ControladorGestionDevolucion {
     @GetMapping("/pedidos/gestiondevolucion")
     public String ConsultarDevolucion(Model model) { //Aquest és el mètode que generarà la resposta (recurs a retornar)
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String rolUsuario = authentication.getAuthorities().iterator().next().getAuthority();
         String username = authentication.getName();
         model.addAttribute("username", username);
+        model.addAttribute("rolUsuario", rolUsuario);
 
         
         model.addAttribute("devoluciones", devolucionService.listarDevolucion());

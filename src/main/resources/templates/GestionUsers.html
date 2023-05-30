@@ -21,23 +21,29 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <img th:src="@{'/imatges/PlaceholderPerson.png'}" width='50' height='50' class="imgusuario"/>
             <p>[[${username}]]</p>
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Rol</th>
-                    <th>Modificar</th>
-                    <th>Eliminar</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="usuarios : ${usuarios}"> 
-                    <td th:text="${usuarios.Nombre}"></td>
-                    <td th:text="${usuarios.rol}"></td> 
-                    <td><a th:href="@{/gestionusers/editaruser/}+${usuarios.DNI}">Modificar Usuario</a></td>
-                    <td><a th:href="@{/gestionusers/eliminaruser/}+${usuarios.DNI}">Eliminar Usuario</a></td>
-                </tr>
-            </tbody>
-        </table>
+
+        <form method="post" action="">
+            <div th:if="${error}" style="color: red;">
+                <p th:text="${error}"></p>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Rol</th>
+                        <th>Modificar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="usuarios : ${usuarios}"> 
+                        <td th:text="${usuarios.Nombre}"></td>
+                        <td th:text="${usuarios.rol}"></td> 
+                        <td><a th:href="@{/gestionusers/editaruser/}+${usuarios.DNI}">Modificar Usuario</a></td>
+                        <td><a th:href="@{/gestionusers/eliminaruser/}+${usuarios.DNI}">Eliminar Usuario</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
     </body>
 </html>
