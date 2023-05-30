@@ -66,7 +66,7 @@ public class WebApplication {
                 .requestMatchers("/encargos", "/gestionusers", "/gestionmodulo").hasAuthority("1")
                 .requestMatchers("/encargosproveedor").hasAnyAuthority("1", "2")
                 .requestMatchers("/remember", "/gestionusers/adduser", "/guardarUsuario", "/**").permitAll()
-                .anyRequest().authenticated() 
+                .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form 
                 .loginPage("/login")  
