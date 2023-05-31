@@ -1,6 +1,6 @@
 # ROAP
 ROAP es una ERP especializada para tiendas de ropa, diseñada para gestionar eficientemente las operaciones comerciales, incluyendo inventario, ventas y compras de las tiendas que lo usen
-
+![image](https://github.com/Adrixcven/Adrixcven/blob/main/roap_logo.png)]
 
 ### Link a la Memoria de la ERP
 </br>
