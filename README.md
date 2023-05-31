@@ -3,6 +3,8 @@ ROAP es una ERP especializada para tiendas de ropa, diseñada para gestionar efi
 
 
 ![image](https://github.com/Adrixcven/Adrixcven/blob/main/roap_logo.png)
+</br>
+
 
 ### Link a la Memoria de la ERP
 </br>
@@ -20,4 +22,8 @@ https://github.com/Adrixcven/Roap/tree/master
 </br>
 https://www.youtube.com/watch?v=DimUSlSwS3E
 
+### Imagenes de la ERP
 
+![image](https://github.com/Adrixcven/Adrixcven/blob/main/Imagenes/ROAP/Pantalla%20principal.png)
+![image](https://github.com/Adrixcven/Adrixcven/blob/main/Imagenes/ROAP/Pantalla%20de%20Pedidos.png)
+![image](https://github.com/Adrixcven/Adrixcven/blob/main/Imagenes/ROAP/Pantalla%20de%20gestionar%20prenda.png)
